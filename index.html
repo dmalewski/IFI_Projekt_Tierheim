@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+
+	<head>
+		<meta name="description" content="Webanwendung" />
+		<meta name="keywords" content="Tierheim, Tiervermittlung, Tiere, Tier, Adoption"/>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<title> Wunschliste </title>
+	</head>
+	
+	<body>
+		
+		<div class="wrapper">
+			<!-- header -->
+			<header>
+								
+				<!-- navigation -->
+					
+					<div class="topnav" id="myTopnav">
+							<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a> <!-- button mobile version -->
+							<a href="index.html">Home</a>
+							<a href="about.html">Über uns</a>	
+							<a href="demo.html">Demo</a>
+					</div>	
+						
+					<div class="topnavR">
+							<a href="login.html">Meine Wunschliste</a>
+					</div>
+				<!-- Skript zum erstellen des Homebuttons in der mobilen Ansicht -->
+				<script type="text/javascript">
+					function myFunction() {
+						var x = document.getElementById("myTopnav");
+						if (x.className === "topnav") {
+							x.className += " responsive";
+						} else {
+							x.className = "topnav";
+						}
+					}
+				</script>
+				
+			</header
+			
+			
+			
+			<!-- Hauptbereich -->
+			<div role="main">
+				<section >
+					<div class="caption">
+					
+					</div>
+					<article>
+					
+							<script type="text/javascript">
+								var Jetzt = new Date();
+								var Tag = Jetzt.getDate();
+								var Monat = Jetzt.getMonth() + 1;
+								var Jahr = Jetzt.getYear();
+								var Stunden = Jetzt.getHours();
+								var Minuten = Jetzt.getMinutes();
+								var NachVoll = ((Minuten < 10) ? ":0" : ":");
+								if (Jahr < 2000)
+								Jahr = Jahr + 1900;
+								document.write("<b> Heute haben wir den " +
+								Tag + "." + Monat + "." + Jahr + ". Es ist : " +
+								Stunden + NachVoll + Minuten + " Uhr " + "<\/b>");
+							</script>
+						
+						<p class="main">	
+							kfsldkaldkldskfldsklsaklaskflsaklfklfskl
+							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal	kfsldkaldkldskfldsklsaklaskflsaklfklfskl
+							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
+								kfsldkaldkldskfldsklsaklaskflsaklfklfskl
+							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
+								kfsldkaldkldskfldsklsaklaskflsaklfklfskl
+							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
+								kfsldkaldkldskfldsklsaklaskflsaklfklfskl
+							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
+								kfsldkaldkldskfldsklsaklaskflsaklfklfskl
+							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal	kfsldkaldkldskfldsklsaklaskflsaklfklfskl
+							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
+								kfsldkaldkldskfldsklsaklaskflsaklfklfskl
+							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
+								kfsldkaldkldskfldsklsaklaskflsaklfklfskl
+							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
+								kfsldkaldkldskfldsklsaklaskflsaklfklfskl
+							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
+								kfsldkaldkldskfldsklsaklaskflsaklfklfskl
+							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
+						</p>
+					</article>
+				</section>
+			</div>
+			
+			<!-- footer -->
+			<footer class="page-footer" role="contentinfo">
+				<nav role="navigation">
+					<ul title="more information">
+						<li><a href="impressum.html">Impressum</a></li>
+						<li><a href="contact.html">Kontakt</a></li>
+						<li><p>© 2017 by MARTHA</p></li>
+					</ul>
+				</nav>
+			</footer>	
+			
+		</div>
+	</body>
+	
+</html>
