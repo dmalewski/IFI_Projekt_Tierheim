@@ -1,110 +1,69 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 
-	<head>
-		<meta name="description" content="Webanwendung" />
-		<meta name="keywords" content="Tierheim, Tiervermittlung, Tiere, Tier, Adoption"/>
-		<meta charset="utf-8"/>
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<title> Tiervermittlung </title>
-	</head>
-	
-	<body>
-		
-		<div class="wrapper">
-			<!-- header -->
-			<header>
-								
-				<!-- navigation -->
-					
-					<div class="topnav" id="myTopnav">
-							<!-- menu button mobile version -->
-							<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a> 
-							<a href="index.html">Home</a>
-							<a href="about.html">Über uns</a>	
-							<a href="demo.html">Wichtiges</a>
-					</div>	
-						
-					<div class="topnavR">
-							<a href="login.html">Hallo!</a>
-					</div>
-				<!-- Skript zum erstellen des Homebuttons in der mobilen Ansicht -->
-				<script type="text/javascript">
-					function myFunction() {
-						var x = document.getElementById("myTopnav");
-						if (x.className === "topnav") {
-							x.className += " responsive";
-						} else {
-							x.className = "topnav";
-						}
-					}
-				</script>
-				
-			</header>
-			
-			
-			
-			<!-- Hauptbereich -->
-			<div role="main">
-				<section >
-					<div class="caption">
-					
-					</div>
-					<article>
-					
-							<script type="text/javascript">
-								var Jetzt = new Date();
-								var Tag = Jetzt.getDate();
-								var Monat = Jetzt.getMonth() + 1;
-								var Jahr = Jetzt.getYear();
-								var Stunden = Jetzt.getHours();
-								var Minuten = Jetzt.getMinutes();
-								var NachVoll = ((Minuten < 10) ? ":0" : ":");
-								if (Jahr < 2000)
-								Jahr = Jahr + 1900;
-								document.write("<b> Heute haben wir den " +
-								Tag + "." + Monat + "." + Jahr + ". Es ist : " +
-								Stunden + NachVoll + Minuten + " Uhr " + "<\/b>");
-							</script>
-						
-						<p class="main">	
-							kfsldkaldkldskfldsklsaklaskflsaklfklfskl
-							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal	kfsldkaldkldskfldsklsaklaskflsaklfklfskl
-							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
-								kfsldkaldkldskfldsklsaklaskflsaklfklfskl
-							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
-								kfsldkaldkldskfldsklsaklaskflsaklfklfskl
-							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
-								kfsldkaldkldskfldsklsaklaskflsaklfklfskl
-							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
-								kfsldkaldkldskfldsklsaklaskflsaklfklfskl
-							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal	kfsldkaldkldskfldsklsaklaskflsaklfklfskl
-							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
-								kfsldkaldkldskfldsklsaklaskflsaklfklfskl
-							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
-								kfsldkaldkldskfldsklsaklaskflsaklfklfskl
-							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
-								kfsldkaldkldskfldsklsaklaskflsaklfklfskl
-							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
-								kfsldkaldkldskfldsklsaklaskflsaklfklfskl
-							kflkslaklfaklafklakfslkdlaskflkalklkfsdlksal
-						</p>
-					</article>
-				</section>
-			</div>
-			
-			<!-- footer -->
-			<footer class="page-footer" role="contentinfo">
-				<nav role="navigation">
-					<ul title="more information">
-						<li><a href="impressum.html">Impressum</a></li>
-						<li><a href="contact.html">Kontakt</a></li>
-						<li><p>© 2017 by MARTHA</p></li>
-					</ul>
-				</nav>
-			</footer>	
-			
-		</div>
-	</body>
-	
-</html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Responsive Dropdown Navigation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial scale=1">
+        <link rel="stylesheet" type='text/css' href="style.css">
+    </head>
+    <body>
+        
+        <header>
+            
+            <h1> <img src="logo.png" width="95" height="65" boader="0" alt=""/></h1>
+            
+            <nav>
+                
+                <ul>
+                    
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">über uns</a></li>
+                    <li><a href="#">Demo</a></li>
+                    <li><a href="#">Link Button</a></li>
+                    
+                </ul>
+            </nav>
+            
+            <a id="i-nav" href="#"></a>
+            
+        </header>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        
+        <script type="text/javascript" src="custom.js"></script>
+        
+        
+        
+        
+             <div id="nav2">
+                <a href="#"><img src="gross.png" width="95" height="65" boader="0" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a href="#"><img src="gruppentier.png" width="95" height="65" boader="0" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a href="#"><img src="klein.png" width="95" height="65" boader="0" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a href="#"><img src="mittel.png" width="95" height="65" boader="0" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a href="#"><img src="kinderlieb.png" width="95" height="65" boader="0" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                 <a href="#"><img src="unmaennlich.png" width="95" height="65" boader="0" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                 <a href="#"><img src="unweiblich.png" width="95" height="65" boader="0" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                 <a href="#"><img src="vertraeglichAlle.png" width="95" height="65" boader="0" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                 <a href="#"><img src="seniorengeeignet.png" width="95" height="65" boader="0" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                 <a href="#"><img src="spezielleKenntnisse.png" width="95" height="65" boader="0" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                 <a href="#"><img src="wachhund.png" width="95" height="65" boader="0" alt=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+             </div>
+       
+        
+        
+        
+        
+        <footer>
+             <div id="footer">
+                <a href="#">Impresum&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a href="#">Kontakt</a>
+             </div>
+            
+         </footer>
+        
+    </body>
+    
+    </html>
