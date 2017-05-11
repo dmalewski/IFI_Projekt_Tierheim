@@ -1,4 +1,15 @@
-
+.amensic-image-wrapper{
+max-width:90%;
+height:auto;
+position: relative;
+display:block;
+margin:0 auto;
+}
+.amensic-image-wrapper img{
+width:100% !important;
+height:auto !important;
+display:block;
+}
 
 .wrapper{
 	background: #blue;
@@ -132,13 +143,10 @@ header {
 
 
 #nav2 {
-    position: static;
-
-    min-height: 100%;
+   /** min-height: 100%; */
     width: 100%;
-    margin: 0 auto;
-    background-color: sienna;
-    padding: 60px 0px;
+    margin: 0;
+    background-color: #b0dbf7;
     text-align: center;
 }
 
