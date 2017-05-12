@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <% include ../partials/head %>
+    </head>
+
+    <body>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Hello, world!</h1>
+                <p>This is a template for a simple marketing or informational
+                    website. It includes a large callout called a jumbotron and three
+                    supporting pieces of content. Use it as a starting point to create
+                    something more unique.</p>
+                <p>
+                    <a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a>
+                </p>
+            </div>
+        </div>
+ 
+        <div class="container">
+            <% include ../partials/content %>
+            <hr>
+             <% include ../partials/footer.ejs %>
+        </div>
+
+--------------------------------------------------
+        <!-- /container -->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#home').addClass("active");
+            });
+        </script>
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        
+        <!-- Placed at the end of the document so the pages load faster -->
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://code.jquery.com/jquery.js"></script>
+       
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+
+
+
+        <div class="wrapper">
+            
+            <% include ../partials/logo %>
+            <% include ../partials/navigations %>
+         
+
+            <h2><%= headline %></h2> 
+
+            <div role="main">
+                Hauptbereich
+            </div>
+
+           
+       
+            
+        </div>
+    </body>
+</html>
