@@ -9,7 +9,8 @@ app.set('view engine', 'ejs');
 app.get('/',(req, res)=>{
     res.render('pages/home',{
         title: 'Home',
-        headline: 'Willkommen',
+        headline: 'Tiervermittlung',
+        text: 'Wir Menschen tragen eine große Verantwortung den Tieren gegenüber. Wir haben sie gerne um uns herum, um uns nicht einsam zu fühlen und entledigen uns ihrer, sobald wir sie nicht mehr brauchen. Dabei empfinden Tiere wie der Mensch Freude und Schmerz, Glück und Unglück. Auf den folgenden Seiten finden Sie bei uns Hunde, Katzen, Kleintiere, Vögel und sogar Exoten, die darauf warten ein neues Zuhause zu finden.'
     });
 });
 
@@ -45,6 +46,27 @@ app.get('/exoten',(req, res)=>{
     res.render('pages/exoten',{
         title: 'Exoten',
         headline: 'In Progress'
+    });
+});
+
+app.get('/impressum',(req, res)=>{
+    res.render('pages/impressum',{
+        title: 'Impressum',
+        headline: 'Impressum',
+    });
+});
+
+app.get('/kontakt',(req, res)=>{
+    res.render('pages/kontakt',{
+        title: 'Kontakt',
+        headline: 'Kontaktieren Sie uns:',
+    });
+});
+
+app.get('/links',(req, res)=>{
+    res.render('pages/links',{
+        title: 'Links',
+        headline: 'Nützliche weiterführende Links',
     });
 });
 

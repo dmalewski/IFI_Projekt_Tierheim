@@ -1,23 +1,34 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
+<!-- Navigation, responisve -->
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  
     <div class="container">
+        
         <div class="navbar-header">
+
+            
+
+            <!-- Menusymbol responsiv -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span> <span class="icon-bar"></span> 
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <img src="../images/logo.png" width="20%" alt="" />
             <a class="navbar-brand" href="#"><%= title %></a>
+            
         </div>
-        <div class="navbar-collapse collapse">
+
+        <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li id="home"><a href="/">Tiervermittlung</a></li>
-                <li id="hunde"><a href="/hunde">Hunde</a></li>
-                <li id="katzen"><a href="/katzen">Katzen</a></li>
-                <li id="kleintiere"><a href="/kleintiere">Kleintiere</a></li>
-                <li id="voegel"><a href="/voegel">Vögel</a></li>
-                <li id="exoten"><a href="/exoten">Exoten</a></li>
+                <li><a href="/hunde">Hunde</a></li>
+                <li><a href="/katzen">Katzen</a></li>
+                <li><a href="/kleintiere">Kleintiere</a></li>
+                <li><a href="/voegel">Vögel</a></li>
+                <li><a href="/exoten">Exoten</a></li>
             </ul>
-        </div>
-        <!--/.navbar-collapse -->
+        </div><!--/.nav-collapse -->
 
     </div>
+
 </div>
