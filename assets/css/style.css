@@ -114,7 +114,6 @@ p {
 }
 
 /** ----------------------------- Navigationbar ---------------- */
-
 @media (min-width: 768px){
     .container {
         width: 750px;
@@ -170,9 +169,8 @@ p {
     left: 0;
     z-index: 1030;
 }
-
 .navbar-inverse {
-    background-color: #aaa;
+    background-color: rosybrown;
     border-color: #eef;
 }
 .navbar-inverse .navbar-nav > li > a {
@@ -197,79 +195,29 @@ p {
     border: 1px solid transparent;
     border-radius: 4px;
 }
-input, button, select, textarea {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-}
-button, html input[type="button"], input[type="reset"], input[type="submit"] {
-    cursor: pointer;
-    -webkit-appearance: button;
-}
-button, select {
-    text-transform: none;
-}
-button, input {
-    line-height: normal;
-}
-button, input, select, textarea {
-    margin: 0;
-    font-family: inherit;
-    font-size: 100%;
-}
-input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
-    padding: 1px 6px;}
-input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
-    align-items: flex-start;
-    text-align: center;
-    cursor: default;
-    color: buttontext;
-    background-color: buttonface;
-    box-sizing: border-box;
-    padding: 2px 6px 3px;
-    border-width: 2px;
-    border-style: outset;
-    border-color: buttonface;
-    border-image: initial;
-}
-input, textarea, select, button {
-    text-rendering: auto;
-    color: initial;
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    margin: 0em 0em 0em 0em;
-    font: 13.3333px Arial;
-}
-input, textarea, select, button, meter, progress {
-    -webkit-writing-mode: horizontal-tb;
-}
+
 button {
     -webkit-appearance: button;
 }
 
-@media (min-width: 768px)
+@media (min-width: 768px){
 .navbar-fixed-top .navbar-collapse, .navbar-static-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
     padding-right: 0;
     padding-left: 0;
-}
-@media (min-width: 768px)
+}}
+@media (min-width: 768px){
 .navbar-collapse.in {
     overflow-y: visible;
-}
+}}
 .navbar-collapse.in {
     overflow-y: auto;
 }
-@media (min-width: 768px)
+@media (min-width: 768px){
 .navbar-collapse {
     width: auto;
     border-top: 0;
     box-shadow: none;
-}
+}}
 .navbar-collapse {
     max-height: 340px;
     padding-right: 15px;
@@ -279,27 +227,58 @@ button {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
     -webkit-overflow-scrolling: touch;
 }
-@media (min-width: 768px)
+@media (min-width: 768px){
 .navbar {
     border-radius: 4px;
-}
-@media (min-width: 768px)
+}}
+@media (min-width: 768px){
 .navbar-fixed-top, .navbar-fixed-bottom {
     border-radius: 0;
-}
-@media (min-width: 768px)
+}}
+@media (min-width: 768px){
 .navbar-nav > li > a {
     padding-top: 15px;
     padding-bottom: 15px;
-}
+}}
 
 a:-webkit-any-link {
     color: -webkit-link;
     cursor: auto;
     text-decoration: none;
+} 
+
+
+
+
+
+
+input, button, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+    -webkit-appearance: button;
 }
 
-/** ---------------------------------------*/
+button, select {
+    text-transform: none;
+}
+
+button, input {
+    line-height: normal;
+}
+
+button, input, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: 100%;
+}
+
+
+
+/** ------------ Listen allgemein --------------------------*/
 
 ul, menu, dir {
     display: block;
@@ -320,14 +299,26 @@ a {
     background: transparent;
 }
 
-/** -------------allgemeines ---------------------- */
+@media (min-width: 768px){
+    .container {
+        width: 750px;
+    }
+}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/** ------------ allgemein --------------------------*/
 body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
     display: block;
-    margin: 8px;
+    margin: 0px;
     font-family: "Helvetica Neu", Arial, Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.4.28571429;
     background-color: #fff;
 }
