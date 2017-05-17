@@ -1,4 +1,34 @@
-/** ----------------------------- Navigationbar ---------------- */
+.navbar-fixed-top, .navbar-fixed-bottom {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+@media (min-width: 768px){
+.navbar {
+    border-radius: 4px;
+}}
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+}
+@media (min-width: 768px)
+bootstrap.css:812
+.container {
+    width: 750px;
+}
+bootstrap.css:784
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+/** ----------------------------- Navigationbar ---------------- 
 @media (min-width: 768px){
     .container {
         width: 750px;
@@ -154,4 +184,4 @@ button, input, select, textarea {
     margin: 0;
     font-family: inherit;
     font-size: 100%;
-}
+} */
