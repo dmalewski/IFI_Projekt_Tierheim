@@ -1,11 +1,11 @@
-<!-- Navigation, responisve: hier finden wir unsere Navigation der Webseite im responisve Design -->
+<!-- Navigation, responisve: hier finden wir unsere Navigation der Webseite im responisve Design
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   
     <div class="container">
         
         <div class="navbar-header">
 
-            <!-- Menusymbol responsiv -->
+            <!-- Menusymbol responsiv 
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -13,13 +13,13 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- LOGO 
-            <img src="../images/logo.png" width="15%" alt="" />-->
-            <!-- Anzeige aktueller Seite -->
+            <img src="../images/logo.png" width="15%" alt="" />
+            <!-- Anzeige aktueller Seite 
             <a class="navbar-brand" href="#"><%= title %></a>
             
         </div>
 
-        <!-- angezeigte Navigation -->
+        <!-- angezeigte Navigation 
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/hunde">Hunde</a></li>
@@ -28,8 +28,26 @@
                 <li><a href="/voegel">Vögel</a></li>
                 <li><a href="/exoten">Exoten</a></li>
             </ul>
-        </div><!--/.nav-collapse -->
+        </div><!--/.nav-collapse 
 
     </div>
 
 </div>
+-->
+
+<header id="header">
+    <div class="headcontainer">
+        <h1>
+            <%= title %>
+        </h1>
+        <nav id="nav">
+            <ul>
+                <li><a href="/hunde">Hunde</a></li>
+                <li><a href="/katzen">Katzen</a></li>
+                <li><a href="/kleintiere">Kleintiere</a></li>
+                <li><a href="/voegel">Vögel</a></li>
+                <li><a href="/exoten">Exoten</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>

@@ -6,28 +6,19 @@
     </head>
 
     <body>
-
-        
-
-        <!-- Head -->
+        <!-- navigation with navheader -->
         <% include ../partials/navigations %>
-        <div class="jumbotron">
+        <div class="maincontainer">
             <div class="container">
                 <h1><%= headline %></h1>
                 <p><%= text %></p>
                 <p><a class="btn btn-primary btn-lg" role="button">weiterführende Links &raquo;</a></p>
             </div>
         </div>
+        <!-- content -->
         <% include ../partials/content %>
-        <div class="footer" id="footer">
-                <% include ../partials/footer.ejs %>
-        </div>
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- footer -->
+        <% include ../partials/footer.ejs %>
           
     </body>
 </html>

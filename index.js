@@ -70,6 +70,13 @@ app.get('/links',(req, res)=>{
     });
 });
 
+app.get('/tier',(req, res)=>{
+    res.render('pages/tier',{
+        title: 'Ihre Auswahl',
+        headline: 'Ihre Auswahl: ',
+    });
+});
+
 app.listen(8080, (err)=>{
     if (err){
         return console.error(err.message);

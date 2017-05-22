@@ -1,5 +1,12 @@
-/** Stylesheet nur für den Footer */
+/** stylesheet for footer 
+    always at the bottom, but not fixed
+	arrangend in three columns
+    responsive, arrangement in one column
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    it's ready!
+*/
 
+/* ----------------------------- footer ------------------------*/
 #footer > .container {
     padding-left: 15px;
     padding-right: 15px;
@@ -12,7 +19,6 @@
 	text-align: left;
 	font: bold 16px sans-serif;
 	padding: 55px 50px;
-	margin-top: 80px;
 }
 .footer-distributed .footer-left,
 .footer-distributed .footer-center,
@@ -20,11 +26,12 @@
 	display: inline-block;
 	vertical-align: top;
 }
-/* Footer left */
+
+/* footer left */
 .footer-distributed .footer-left{
     width: 40%;
 }
-/* The company logo */
+/* company logo here please */
 .footer-distributed h3{
 	color:  #ffffff;
 	font: normal 36px 'Cookie', cursive;
@@ -33,7 +40,8 @@
 .footer-distributed h3 span{
 	color:  sandybrown;
 }
-/* Footer links */
+
+/* footer left */
 .footer-distributed .footer-links{
 	color:  #ffffff;
 	margin: 20px 0 12px;
@@ -51,7 +59,7 @@
 	font-weight: normal;
 	margin: 0;
 }
-/* Footer Center */
+/* footer center */
 .footer-distributed .footer-center{
 	width: 35%;
 }
@@ -87,7 +95,7 @@
 	color:  sandybrown;
 	text-decoration: none;;
 }
-/* Footer Right */
+/* footer right */
 .footer-distributed .footer-right{
     width: 20%;
 }
@@ -123,6 +131,7 @@
 	margin-bottom: 5px;
 }
 
+/* ----------------------------- mobile version ------------------------*/
 @media (max-width: 880px) {
 	.footer-distributed{
 		font: bold 14px sans-serif;
