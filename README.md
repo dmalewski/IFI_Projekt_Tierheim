@@ -6,6 +6,9 @@ npm install --save ejs
 
 zum Ausführen: node index.js
 
+Ich habe nochmal andere Icons benutzt, sorry :), aber ich wollte mit diesem Effekt spielen, wenn man ein Icon anklickt und das war bei unseren bisherigen Icons etwas schwieriger.
+
+
 
 
 # Wenn Icons nicht angeklickt wurden:
