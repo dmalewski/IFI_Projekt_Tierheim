@@ -1,0 +1,94 @@
+* {
+    font-family: 'Josefin Sans';
+}
+
+h1 {
+    position:absolute;
+    left:50%;
+    margin-left:-150px; /*Hälfte der Breite*/
+}
+
+body {
+    font-family: FagonRegular;
+}
+
+.suche_rechts {
+    width: 265px;
+    height:800px;
+    background-color: darkcyan;
+    position:absolute;
+    left:50%;
+    margin-left:-150px; /*Hälfte der Breite*/
+    margin-top: 50px;
+    padding: 20px 30px;
+        padding-top: 20px;
+        padding-right: 30px;
+        padding-bottom: 20px;
+        padding-left: 30px;
+}
+
+.suchfeld {
+    margin-top: 50px;
+    background-color: palevioletred;
+    float: left;
+    width: 300px;
+    height: 500px;  
+    position:absolute;
+    left:50%;
+    margin-left:-150px; /*Hälfte der Breite*/
+}       
+
+.size {
+    font-size: 20px;
+    color: white;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-right: 20px; 
+    margin-left: 10px;
+}   
+
+.breed {
+    font-size: 20px;
+    color: white;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-right: 20px;
+    margin-left: 10px; 
+}
+
+.breed_input {
+    margin-top: 10px;
+}
+
+.breed_select {
+    padding-left: 100px;
+}
+
+.gender {
+    font-size: 20px;
+    color: white;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-right: 20px; 
+    margin-left: 10px;
+}
+
+.age {
+    font-size: 20px;
+    color: white;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-right: 20px; 
+    margin-left: 10px;
+}
+
+.traits {
+    font-size: 20px;
+    color: white;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-right: 20px; 
+    margin-left: 10px;
+}
+
+

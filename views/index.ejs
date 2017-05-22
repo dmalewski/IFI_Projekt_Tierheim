@@ -1,0 +1,174 @@
+<html>
+    <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/index.css"> 
+    <link rel="icon" type="image/vnd.microsoft.icon" href="/images/favicon.ico">
+
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Josefin+Sans" rel="stylesheet"> 
+
+    <title>Suche</title>
+
+    </head>
+        <body>
+            <h1>Ich suche einen Hund...</h1>
+
+            <div class="suche_rechts">
+                <table cellspacing="0" cellpadding="0" width="100%">
+                    <tbody>
+                        <!-- Größe des Hundes -->
+                        <tr>
+                            <td width="105px">
+                                
+                                <div class="size">Größe</div>
+                                    <div class="size_icons">
+                                        <!-- alte Icons
+                                        <img src="/images/klein.png"/>
+                                        <img src="/images/mittel.png"/>
+                                        <img src="/images/gross.png"/>
+                                        -->
+
+                                        <!-- klein -->
+                                        <img src="/images/size_small_unselected.png" id="small_dog" onclick="changeImage_smallDog()" style="margin-left: 10px;"/>
+
+                                        <!-- mittel -->
+                                        <img src="/images/size_middle_unselected.png" id="middle_dog" onclick="changeImage_middleDog()"/>
+
+                                        <!-- groß -->
+                                        <img src="/images/size_big_unselected.png" id="big_dog" onclick="changeImage_bigDog()"/>
+                                        
+                                    </div>
+                                
+                                     <p>
+                                         <div style="margin:10px 10px; border-bottom:1px solid white;"/> 
+                                    </p>
+                            </td>
+                        </tr>   
+
+                         <!-- Rasse des Hundes -->
+                        <tr>
+                            <td width="105px">
+                                 <div class="breed">Rasse</div>
+                                        <input class="breed_input" style="width: 265px" maxlength="50" id="plzid" name="plz" 
+                                        data-original-title=""  value="" type="text">
+                                        <br/>
+                                        <select id="rasseblock" name="breed_select" style="width: 265px">
+                                            <option value="alle">alle</option>
+                                            <option value="1012"> ... </option>
+                                            <option value="1319"> ... </option>
+                                            <option value="592"> ... </option>                 
+                                        </select>
+                                 </div>
+                                    <p>
+                                         <div style="margin:10px 10px; border-bottom:1px solid white;"/> 
+                                    </p>
+                            </td>
+                        </tr>
+
+                         <!-- Geschlecht des Hundes -->
+                        <tr>
+                            <td width="105px">
+                                 <div class="gender">Geschlecht</div>
+                                    <div class="gender_icons">
+                                        <img src="/images/male_unselected.png" style="margin-left: 50px; height: 70px; width: 70px;" 
+                                         id="imgClickAndChange_male" onclick="changeImage_male()"/>
+                                         <img src="/images/female_unselected.png" style="margin-left: 20px; height: 70px; width: 70px;"
+                                          id="imgClickAndChange_female" onclick="changeImage_female()"/>
+                                    </div>     
+                                </div>
+                                    <p>
+                                        <div style="margin:10px 10px; border-bottom:1px solid white;"/> 
+                                    </p>
+                            </td>
+                        </tr>
+
+                        <!-- Alter des Hundes -->
+                        <tr>
+                            <td width="105px">
+                                 <div class="age">Alter</div>
+                                    <div class="age_icons">
+                                        <img src="/images/young.png" style="height: 70px; width: 70px;
+                                            margin-left:10px;"/>
+                                            
+
+                                        <img src="/images/adult.png" style="height: 70px; width: 70px;
+                                            margin-left:10px;"/>
+                                        
+                                        <img src="/images/senior.png" style="height: 70px; width: 70px; 
+                                            margin-left:10px;"/>
+
+                                            <p style="margin-left: 23px; color: white;">
+                                                young &emsp;&emsp;&ensp; adult &emsp;&emsp;&ensp; senior
+                                            </p>
+                                         
+                                    </div>
+                                </div>
+                                    <p>
+                                         <div style="margin:10px 10px; border-bottom:1px solid white;"/> 
+                                    </p>
+                            </td>
+                        </tr>
+
+
+                        <!-- Eigenschaften des Hundes -->
+                        <tr>
+                            <td width="105px">
+                                 <div class="traits">Eigenschaften</div>
+                                    <div class="traits_icons">
+                                    
+
+                                           
+                                    </div>
+                                </div>
+                                    <p>
+                                         <div style="margin:10px 10px; border-bottom:1px solid white;"/> 
+                                    </p>
+                            </td>
+                        </tr>
+
+
+
+                    </tbody>
+                </table>
+            </div>
+           
+
+
+            <!-- Formular
+            <div class="suchfeld">
+                <form>
+                    <div class="groesse" style="height:50px">
+                        Größe
+                         <img id="groß" src="/images/gross.png" style="width: 50px; float:right; margin-left: 5px;"></img>
+                         <img id="mittel" src="/images/mittel.png" style="width: 50px; float:right; margin-left: 5px;"></img>
+                         <img id="klein" src="/images/klein.png" style="width: 50px; float:right; margin-left: 5px;"></img> 
+                      
+                        
+                   
+                    </div>
+                    <p>      <div style="margin:10px 10px; border-bottom:1px solid white;"></div>  </p>
+                    <div class="breed" style="height:50px">   
+                        Rasse
+                                <input size="25" maxlength="100" name="breed_input"/>
+                                <select id="rasseblock" name="breed_select" style="width:205px;margin-top:3px; margin-left:10px;">
+                                    <option value="alle">alle</option>
+                                    <option value="1012"> ... </option>
+                                    <option value="1319"> ... </option>
+                                    <option value="592"> ... </option>                 
+                                </select>
+                    </div>
+                     <p>      <div style="margin:10px 10px; border-bottom:1px solid white;"></div>  </p>
+                    <div class="geschlecht" style="height:50px">
+                        Geschlecht
+                            <img id="klein" src="/images/maennlich.png" style="width: 50px; float:right; margin-left: 5px;"></img> 
+                            <img id="klein" src="/images/weiblich.png" style="width: 50px; float:right; margin-left: 5px;"></img> 
+                    </div>
+                    <p>      <div style="margin:10px 10px; border-bottom:1px solid white;"></div>  </p>
+                </form>
+            </div>
+             -->
+
+    <script src="js/index.js"> </script> 
+    </body>
+</html>
