@@ -1,16 +1,21 @@
-<!Doctype html>
-
 <html>
     <head>
         <% include ../partials/header %>
     </head>
 
     <body>
-        <div class="wrapper">
-
-            <% include ../partials/navigations %>
-            <h1>In Progress</h1>
-        
+        <!-- navigation with navheader -->
+        <% include ../partials/navigations %>
+        <div class="maincontainer">
+            <div class="container">
+                <h1><%= headline %></h1>
+            </div>
         </div>
+        <!-- content -->
+
+
+        <!-- footer -->
+        <% include ../partials/footer.ejs %>
+          
     </body>
 </html>

@@ -52,21 +52,21 @@ app.get('/exoten',(req, res)=>{
 app.get('/impressum',(req, res)=>{
     res.render('pages/impressum',{
         title: 'Impressum',
-        headline: 'Impressum',
+        headline: 'In Progress',
     });
 });
 
 app.get('/kontakt',(req, res)=>{
     res.render('pages/kontakt',{
         title: 'Kontakt',
-        headline: 'Kontaktieren Sie uns:',
+        headline: 'In Progress',
     });
 });
 
 app.get('/links',(req, res)=>{
     res.render('pages/links',{
         title: 'Links',
-        headline: 'Nützliche weiterführende Links',
+        headline: 'In Progress',
     });
 });
 
