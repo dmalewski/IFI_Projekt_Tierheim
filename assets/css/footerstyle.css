@@ -1,4 +1,6 @@
-/** stylesheet for footer 
+/** 
+	>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	stylesheet for footer 
     always at the bottom, but not fixed
 	arrangend in three columns
     responsive, arrangement in one column
@@ -36,6 +38,7 @@
 	color:  #ffffff;
 	font: normal 36px 'Cookie', cursive;
 	margin: 0;
+	/*padding: 15px;*/
 }
 .footer-distributed h3 span{
 	color:  sandybrown;
