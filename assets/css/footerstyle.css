@@ -38,7 +38,6 @@
 	color:  #ffffff;
 	font: normal 36px 'Cookie', cursive;
 	margin: 0;
-	/*padding: 15px;*/
 }
 .footer-distributed h3 span{
 	color:  sandybrown;
@@ -52,7 +51,9 @@
 }
 .footer-distributed .footer-links a{
 	display:inline-block;
-	line-height: 1.8;
+	margin: 8px;
+	line-height: 2.0;
+	font-size: 18px;
 	text-decoration: none;
 	color:  inherit;
 }
@@ -118,6 +119,7 @@
 }
 .footer-distributed .footer-icons{
 	margin-top: 25px;
+	margin-bottom: 25px;
 }
 .footer-distributed .footer-icons a{
 	display: inline-block;

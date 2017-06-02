@@ -1,30 +1,6 @@
-#main {
-        background: transparent;
-        background-color: transparent;
-        background-image: none;
-        background-attachment: scroll;
-        background-clip: border-box;
-        background-origin: padding-box;
-        /*background-position-x: 0%;
-        background-position-y: 0%;
-        background-size: auto auto;*/
-        padding-top: 0;
+.form{
+	margin: 2em;
 }
-.contactcontainer {
-    margin: 0 auto;
-    text-align: left;
-    max-width:960px;
-}
-/*
-h1,.h1 {
-	color:#1a171b;
-	font-size:26px;
-	font-weight:normal;
-	line-height:30px;
-	margin:0 0 .5em;
-	padding:0;
-	text-transform:uppercase;
-}*/
 
 .row {
 	list-style:none;
@@ -41,21 +17,6 @@ h1,.h1 {
   clear:both;
 }
 
-.col-6 {
-	float:left;
-	margin:0;
-	padding:0 1.5160%;
-	position:relative;
-}
-
-.col-1 {
-	width:96.970%;
-}
-
-.col-4 {
-	width:21.97127437591552556739316059%;
-}
-
 /* -------------------------------- contact form -------------------------------------------------- */
 .form-action {
 	padding:.4em 0 0;
@@ -67,6 +28,7 @@ label {
 	display:block;
 }
 
+/* button */
 input[type="submit"],
 .btn {
 	border:0;
@@ -124,6 +86,7 @@ input[type="submit"]:focus {
 	text-decoration:none;
 }
 
+/* textarea */
 input[type="text"],
 textarea {
 	border:1px solid #e4e4e6;
@@ -142,19 +105,19 @@ textarea {
 	resize:vertical;
 }
 
-.DefaultFirstNameForm, #DefaultFirstNameForm {
-	position:absolute;
-	left:-4214px;
-	top:-5142px;
+/* -------------------------------- GOOGLE MAP ------------------------------------------ */
+
+.responsiveContainer {
+ 	position: relative;
+  	padding-bottom: 56%;
+  	height: 0;
+  	overflow: hidden;
 }
 
-/* -------------------------------- GOOGLE MAP ------------------------------------------ */
-#map	{
-	height:auto;
-	width: 6000px;
-	font-size: 9px;
-}
-#iframe {
-	height: 600px;
-	width: 600px;
+.responsiveContainer iframe {
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	width: 100%;
+  	height: 100%;
 }

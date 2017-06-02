@@ -22,34 +22,39 @@ app.get('/hunde',(req, res)=>{
     res.render('pages/hunde',{
         title: 'Hunde',
         headline: 'Vermittlung von Hunden',
+        text: ``
     });
 });
 
 app.get('/katzen',(req, res)=>{
     res.render('pages/katzen',{
         title: 'Katzen',
-        headline: 'In Progress'
+        headline: 'In Progress',
+        text: ``
     });
 });
 
 app.get('/kleintiere',(req, res)=>{
     res.render('pages/kleintiere',{
         title: 'Kleintiere',
-        headline: 'In Progress'
+        headline: 'In Progress',
+        text: ``
     });
 });
 
 app.get('/voegel',(req, res)=>{
     res.render('pages/voegel',{
         title: 'Vögel',
-        headline: 'In Progress'
+        headline: 'In Progress',
+        text: ``
     });
 });
 
 app.get('/exoten',(req, res)=>{
     res.render('pages/exoten',{
         title: 'Exoten',
-        headline: 'In Progress'
+        headline: 'In Progress',
+        text: ``
     });
 });
 
@@ -57,7 +62,9 @@ app.get('/impressum',(req, res)=>{
     res.render('pages/impressum',{
         title: 'Impressum',
         headline: 'Impressum',
-        text: ``,
+        text: `Sinn und Zweck des Im­pres­sum ist die Kenn­zeich­nung des An­bie­ters. Ver­brau­cher und Wett­be­wer­ber 
+                sol­len durch An­ga­be ei­ner la­dungsfähi­gen Adres­se die Möglich­keit be­kom­men, mit dem Be­trei­ber der 
+                Web­sei­te in Kon­takt zu tre­ten und ggf. recht­li­che Schrit­te ge­gen die­sen ein­zu­lei­ten.`,
         headline1: 'Allgemeine Datenschutzerklärung',
         text1: `Durch die Nutzung unserer Website erklären Sie sich mit der Erhebung,
                 Verarbeitung und Nutzung von Daten gemäß der nachfolgenden Beschreibung einverstanden. 
@@ -73,14 +80,17 @@ app.get('/impressum',(req, res)=>{
 app.get('/kontakt',(req, res)=>{
     res.render('pages/kontakt',{
         title: 'Kontakt',
-        headline: 'Kontaktieren Sie doch uns',
+        headline: 'Kontakt',
+        text: `Haben Sie Fragen, Anregungen, Tipps oder Interesse an unserer Seite, füllen Sie doch einfach
+                das Kontaktformular aus und senden Sie es ab. Wir freuen uns auf Ihre Nachricht! Ihr Team4`
     });
 });
 
 app.get('/links',(req, res)=>{
     res.render('pages/links',{
         title: 'Links',
-        headline: 'In Progress',
+        headline: 'weiterführende Links',
+        text: `Auf den Nachfolgenden Links können Sie sich über uns, die Tiere und die mit uns kooperierenden Tierheime informieren.`
     });
 });
 
@@ -88,6 +98,7 @@ app.get('/tier',(req, res)=>{
     res.render('pages/tier',{
         title: 'Ihre Auswahl',
         headline: 'Ihre Auswahl: ',
+        text: ``
     });
 });
 

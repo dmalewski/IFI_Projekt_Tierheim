@@ -52,16 +52,10 @@ html {
     z-index: 2;
     padding: 50px;
     margin-bottom: 10px;
-    font-size: 21px;
+    font-size: 19px;
     font-weight: 200;  
     line-height: 2.1428571435;
     width: 100%;
-    /* linkdecoration */
-    color: ghostwhite;
-    text-shadow:  1px  1px 2px saddlebrown,
-                  1px -1px 2px saddlebrown,
-                 -1px  1px 2px saddlebrown,
-                 -1px -1px 2px saddlebrown;
     /* background-image */
     background-image: url("../images/titel6.jpg");          /* ------------------------------ hier anders einbinden? */
     background-repeat: no-repeat;
@@ -69,9 +63,11 @@ html {
     background-position: center;
     background-size: cover; 
 }
+
 .maincontainer .container {
     width: 100%;
 }
+
 .container {
     padding-top: 15px;
     padding-right: 15px;
@@ -79,34 +75,29 @@ html {
     margin-right: auto;
     margin-left: auto;
 }
+
+.maincontainer .container > p{
+    /* text decoration */
+    color: ghostwhite;
+    text-shadow:  1px  1px 2px saddlebrown,
+                  1px -1px 2px saddlebrown,
+                 -1px  1px 2px saddlebrown,
+                 -1px -1px 2px saddlebrown;
+}
+
 div {
     display: block;
 }
 
 
 /* ----------------------------- button in head container ----------------------------*/
-/* hier muss noch aufgeräumt werden */
-a {
-    color: sandybrown;
-    text-decoration: none;
-    background: transparent;
-}
-.btn-lg {
-    padding: 10px 16px;
-    font-size: 18px;
-    line-height: 1.33;
-    border-radius: 6px;
-}
-.btn-default {
-    color: #333333;
-    background-color: #ffffff;
-    border-color: #cccccc;
-}
-.btn {
+.navbtn {
     display: inline-block;
-    padding: 6px 12px;
+    text-decoration: none;
     margin-bottom: 0;
+    padding: 2px 5px 2px 5px;
     font-size: 19px;
+    color: #1f1f1f;
     font-weight: normal;
     line-height: 1.428571429;
     text-align: center;
@@ -114,14 +105,28 @@ a {
     vertical-align: middle;
     cursor: pointer;
     background-image: none;
-    border: 1px solid transparent;
+    border: 0px solid transparent;
     border-radius: 4px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
+    /* color transition */
+    background: -moz-linear-gradient(top,  #ededf0 0%, #8B6969 100%);
+	background: -webkit-linear-gradient(top,  #ededf0 0%, #8B6969 100%);
+	background: -o-linear-gradient(top,  #ededf0 0%, #8B6969 100%);
+	background: -ms-linear-gradient(top,  #ededf0 0%, #8B6969 100%);
+	background: linear-gradient(to bottom,  #ededf0 0%,#8B6969 100%);
 }
 
-
-
+.navbtn:hover,
+.navbtn:focus {
+    color: sienna;
+	background: -moz-linear-gradient(top,  #ededf0 0%, peru 100%);
+	background: -webkit-linear-gradient(top,  #ededf0 0%, peru 100%);
+	background: -o-linear-gradient(top,  #ededf0 0%,peru 100%);
+	background: -ms-linear-gradient(top,  #ededf0 0%, peru 100%);
+	background: linear-gradient(to bottom,  #ededf0 0%,peru 100%);
+	text-decoration:none;
+}
