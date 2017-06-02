@@ -1,7 +1,7 @@
 
 /* -------------------------- mobile version ----------------------------------------------- */
 @media sceen and (min-width 768px){
-    .maincontainer{
+    .contentcontainer{
         padding-top: 48px;
         padding-bottom: 48px;
     }
@@ -21,21 +21,31 @@
     font-weight: 200;  
     line-height: 2.1428571435;
     /* linkdecoration */
-    color: ghostwhite;
-    text-shadow:  1px  1px 2px saddlebrown,
-                  1px -1px 2px saddlebrown,
-                 -1px  1px 2px saddlebrown,
-                 -1px -1px 2px saddlebrown;
+    color: black;
+    
     /* background color */
     background-color: whitesmoke;
 }
-.inner {
-    width: 90%;
+
+.contentcontainer .inner {
+    width: 85%;
     max-width: 80em;
     margin: auto;
 }
 
-/* --------------------------Gridpane ----------------------------------------------- */
+/* -------------------------- Impressum content ----------------------------------------------- */
+.zentriert {
+    font-size: 18px;
+    text-align: center;
+}
+
+.block {
+    hyphens: auto; 
+    text-align: justify
+}
+
+
+/* -------------------------- Gridpane ----------------------------------------------- */
 .row {
   display: flex;
   flex-flow: row wrap;
@@ -48,12 +58,20 @@
 [class*="col-"] {
   padding: 10px;
   width: 100%;
+  border: solid;
+  border-color:ghostwhite;
+}
+
+/* ---------------------------- animals div ---------------------------------------- */
+img {
+    width: auto;
+    height: 150px;
 }
 
 @media all and ( min-width: 600px ) {
-
   /* set col widths */
   .col-1-3 {
     width: 30%;
   }
 }
+
