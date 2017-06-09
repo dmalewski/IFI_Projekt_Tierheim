@@ -62,9 +62,10 @@ app.get('/anmelden',(req, res)=>{
     res.render('pages/anmelden',{
         title: 'Anmelden',
         headline: `Melden Sie sich jetzt an!`,
-        text: `Melden Sie sich jetzt bei Tiervermittlung an und fügen Sie unkompliziert und schnell die zu 
-                vermittelnden Tiere ein. Wir helfen Ihnen die passenden Halter zu finden.`
-    });
+        text: `Melden Sie sich jetzt bei Tiervermittlung an und fügen Sie unkompliziert und mit wenigen Klicks Ihre Schützlinge
+                 im gesamten deutschsprachigen Raum ein. Wir helfen Ihnen die passenden Halter schnell und einfach zu ermitteln.
+                 Das Einstellen ist intuitiv und schnell zu erledigen`
+              });
 });
 
 app.get('/impressum',(req, res)=>{
