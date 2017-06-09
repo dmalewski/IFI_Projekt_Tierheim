@@ -3,32 +3,35 @@
     <!-- contact form -->
     <form>
         <div class="form-item">
-            <label for="aName">Name *</label>
+            <label for="aName" title="Name">Name: *</label>
             <input id="aName" name="aName" type="text" tabindex="90" />                        
         </div>
         <div class="form-item">
-            <label for="aFirstname">Vorname</label>
+            <label for="aFirstname" title:"Vorname">Vorname:</label>
             <input id="aFirstname" type="text" class="DefaultInput" tabindex="20" name="aFirstName" value="" />
         </div>
         <div class="form-item">
-            <label for="aMail">E-Mail *</label>
+            <label for="aMail" title="E-Mail">E-Mail: *</label>
             <input id="aMail" name="aMail" type="text" tabindex="91" />
         </div>
         <div class="form-item">
-            <label for="aPhone">Telefon</label>
+            <label for="aPhone" title="Telefon">Telefon:</label>
             <input id="aPhone" name="aPhone" type="text" tabindex="92" />
         </div>
         <div class="form-item">
-            <label for="aSubject">Betreff *</label>
+            <label for="aSubject" title="Betreff">Betreff: *</label>
             <input id="aSubject" name="aSubject" type="text" tabindex="94" />
         </div>
         <div class="form-item">
-            <label for="aText">Nachricht *</label>
+            <label for="aText" title="Nachricht">Nachricht: *</label>
             <textarea id="aText" name="aText" cols="40" rows="3" tabindex="95"></textarea>
         </div>
         <div class="form-action">
-            <input type="submit" value="absenden" tabindex="96" />
+            <input type="submit" value="Absenden" tabindex="96" />
+            <input type=reset value="Abbrechen" tabindex="96" />
         </div>
+     
+
     </form>
     <div class="responsiveContainer">
         <!-- inclusion google maps -->

@@ -29,32 +29,41 @@ app.get('/hunde',(req, res)=>{
 app.get('/katzen',(req, res)=>{
     res.render('pages/katzen',{
         title: 'Katzen',
-        headline: 'In Progress',
-        text: ``
+        headline: 'Vermittlung von Katzen',
+        text: `In Progress`
     });
 });
 
 app.get('/kleintiere',(req, res)=>{
     res.render('pages/kleintiere',{
         title: 'Kleintiere',
-        headline: 'In Progress',
-        text: ``
+        headline: 'Vermittlung von Kleintieren',
+        text: `In Progress`
     });
 });
 
 app.get('/voegel',(req, res)=>{
     res.render('pages/voegel',{
         title: 'Vögel',
-        headline: 'In Progress',
-        text: ``
+        headline: 'Vermittlung von Vögeln',
+        text: `In Progress`
     });
 });
 
 app.get('/exoten',(req, res)=>{
     res.render('pages/exoten',{
         title: 'Exoten',
-        headline: 'In Progress',
-        text: ``
+        headline: 'Vermittlung von Exoten',
+        text: `In Progress`
+    });
+});
+
+app.get('/anmelden',(req, res)=>{
+    res.render('pages/anmelden',{
+        title: 'Anmelden',
+        headline: `Melden Sie sich jetzt an!`,
+        text: `Melden Sie sich jetzt bei Tiervermittlung an und fügen Sie unkompliziert und schnell die zu 
+                vermittelnden Tiere ein. Wir helfen Ihnen die passenden Halter zu finden.`
     });
 });
 

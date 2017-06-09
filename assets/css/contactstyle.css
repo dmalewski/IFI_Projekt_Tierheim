@@ -19,7 +19,7 @@
 
 /* -------------------------------- contact form -------------------------------------------------- */
 .form-action {
-	padding:.4em 0 0;
+	padding:.5em 0 0;
 	text-align:right;
 }
 
@@ -30,15 +30,16 @@ label {
 
 /* button */
 input[type="submit"],
+input[type="reset"],
 .btn {
 	border:0;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	border-radius:3px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
 	display:inline-block;
-	font:normal normal bold 14px/14px Arial,Helvetica,sans-serif;
-	height:30px;
-	line-height:30px;
+	font:normal normal bold 16px/16px Arial,Helvetica,sans-serif;
+	height:40px;
+	line-height:40px;
 	margin:0;
 	padding:0 15px;
 	visibility:visible;
@@ -52,14 +53,28 @@ input[type="submit"]:focus,
 	text-decoration:none;
 }
 
-input[type="submit"] {
-	background: #646567;
-	color:#fff;
+input[type="reset"]:hover,
+input[type="reset"]:focus,
+.btn:hover,
+.btn:focus {
+	cursor:pointer;
+	text-decoration:none;
+}
+
+input[type="submit"],
+input[type="reset"] {
+	background: sandybrown;
+	color: white;
 }
 
 input[type="submit"]:hover,
 input[type="submit"]:focus {
-	background: #1a171b;
+	background: limegreen;
+}
+
+input[type="reset"]:hover,
+input[type="reset"]:focus {
+	background: indianred;
 }
 
 .btn {
