@@ -1,42 +1,48 @@
 <html>
     <head>
     <meta charset="utf-8">
+
     <link rel="stylesheet" href="/css/index.css"> 
     <link rel="icon" type="image/vnd.microsoft.icon" href="/images/favicon.ico">
-
-    
 
     <link href="https://fonts.googleapis.com/css?family=Dosis|Josefin+Sans" rel="stylesheet"> 
 
     <title>Suche</title>
 
+	<link rel="stylesheet" href="/selectize/dist/css/selectize.css">
+	
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="/selectize/dist/js/standalone/selectize.js"></script>    
+
+</head>
+
     </head>
         <body>
             <h1>Ich suche einen Hund...</h1>
-
+            
             <div class="suche_rechts">
+                <form action="/search">
                 <table cellspacing="0" cellpadding="0" width="100%">
                     <tbody>
                         <!-- Größe des Hundes -->
+                        <!-- req.body.size -->
+                        <input type="hidden" id="size" value="" name="size"/>
                         <tr>
                             <td width="105px">
                                 
                                 <div class="size">Größe</div>
                                     <div class="size_icons">
-                                        <!-- alte Icons
-                                        <img src="/images/klein.png"/>
-                                        <img src="/images/mittel.png"/>
-                                        <img src="/images/gross.png"/>
-                                        -->
-
                                         <!-- klein -->
-                                        <img src="/images/size_small_unselected.png" id="small_dog" onclick="changeImage_smallDog()" style="margin-left: 10px;"/>
+                                        <img src="/images/size_small_unselected.png" id="small_dog" 
+                                        onclick="changeImage_smallDog()" style="margin-left: 10px;"/>
 
                                         <!-- mittel -->
-                                        <img src="/images/size_middle_unselected.png" id="middle_dog" onclick="changeImage_middleDog()"/>
+                                        <img src="/images/size_middle_unselected.png" id="middle_dog" 
+                                        onclick="changeImage_middleDog()" style="margin-left: 10px;"/>
 
                                         <!-- groß -->
-                                        <img src="/images/size_big_unselected.png" id="big_dog" onclick="changeImage_bigDog()"/>
+                                        <img src="/images/size_big_unselected.png" id="big_dog" 
+                                        onclick="changeImage_bigDog()" style="margin-left: 10px;"/>
                                         
                                     </div>
                                 
@@ -47,18 +53,25 @@
                         </tr>   
 
                          <!-- Rasse des Hundes -->
+                         <!-- req.body.size -->
                         <tr>
                             <td width="105px">
                                  <div class="breed">Rasse</div>
-                                        <input class="breed_input" style="width: 265px" maxlength="50" id="plzid" name="plz" 
-                                        data-original-title=""  value="" type="text">
-                                        <br/>
-                                        <select id="rasseblock" name="breed_select" style="width: 265px">
-                                            <option value="alle">alle</option>
-                                            <option value="1012"> ... </option>
-                                            <option value="1319"> ... </option>
-                                            <option value="592"> ... </option>                 
+                                        <select id="rasseblock" name="breed_select" style="width: 255px;" select="selected">
+                                            <option selected="selected"/>
+                                            <% breeds.forEach(function (breed) { %>
+                                                <option value="<%= breed %>"><%= breed %></option>  
+                                            <% }) %>  
                                         </select>
+                                        <script>
+                                            $('#rasseblock').selectize({
+                                                sortField: {
+                                                    field: 'text',
+                                                    direction: 'asc'
+                                                },
+                                                dropdownParent: 'body'
+                                            });
+                                        </script>
                                  </div>
                                     <p>
                                          <div style="margin:10px 10px; border-bottom:1px solid white;"/> 
@@ -67,6 +80,7 @@
                         </tr>
 
                          <!-- Geschlecht des Hundes -->
+                         <input type="hidden" id="gender" value="" name="gender"/>
                         <tr>
                             <td width="105px">
                                  <div class="gender">Geschlecht</div>
@@ -84,19 +98,20 @@
                         </tr>
 
                         <!-- Alter des Hundes -->
+                        <input type="hidden" id="age" value="" name="age"/>
                         <tr>
                             <td width="105px">
                                  <div class="age">Alter</div>
                                     <div class="age_icons">
-                                        <img src="/images/young.png" style="height: 70px; width: 70px;
-                                            margin-left:10px;"/>
-                                            
 
-                                        <img src="/images/adult.png" style="height: 70px; width: 70px;
-                                            margin-left:10px;"/>
+                                        <img src="/images/jung_ungefuellt.png" style="height: 70px; width: 70px;
+                                            margin-left:10px;" id="imgClickAndChange_young" onclick="changeImage_young()"/>
                                         
-                                        <img src="/images/senior.png" style="height: 70px; width: 70px; 
-                                            margin-left:10px;"/>
+                                        <img src="/images/erwachsen_ungefuellt.png" style="height: 70px; width: 70px;
+                                            margin-left:10px;" id="imgClickAndChange_adult" onclick="changeImage_adult()"/>
+                                        
+                                        <img src="/images/senior_ungefuellt.png" style="height: 70px; width: 70px;
+                                            margin-left:10px;" id="imgClickAndChange_senior" onclick="changeImage_senior()"/>
 
                                             <p style="margin-left: 23px; color: white;">
                                                 young &emsp;&emsp;&ensp; adult &emsp;&emsp;&ensp; senior
@@ -116,9 +131,52 @@
                             <td width="105px">
                                  <div class="traits">Eigenschaften</div>
                                     <div class="traits_icons">
-                                    
-
+                                            <img src="/images/vertraeglich_maennlich_ungefuellt.png" id="imgClickAndChange_likes_male"
+                                            onClick="changeImage_likes_male()" style="height: 70px; width: 70px; margin-left:10px;"/>
+                                            
+                                            <img src="/images/vertraeglich_weiblich_ungefuellt.png" id="imgClickAndChange_likes_female"
+                                            onClick="changeImage_likes_female()" style="height: 70px; width: 70px; margin-left:10px;"/>
                                            
+                                            <img src="/images/vertraeglich_beide_ungefuellt.png" id="imgClickAndChange_both_genders"
+                                            onClick="changeImage_both_genders()" style="height: 70px; width: 70px; margin-left:10px;"/>
+                                           
+                                            <img src="/images/kastriert_ungefuellt.png" id="imgClickAndChange_castrated"
+                                            onClick="changeImage_castrated()" style="height: 70px; width: 70px; margin-left:10px;"/>
+                                          
+                                            <img src="/images/einzeltier_ungefuellt.png" id="imgClickAndChange_solo"
+                                            onClick="changeImage_solo()" style="height: 70px; width: 70px; margin-left:10px;"/>
+                                        
+                                            <img src="/images/gruppentier_ungefuellt.png" id="imgClickAndChange_group"
+                                            onClick="changeImage_group()" style="height: 70px; width: 70px; margin-left:10px;"/>
+
+                                            <img src="/images/katzenlieb_ungefuellt.png" id="imgClickAndChange_likes_cat"
+                                            onClick="changeImage_likes_cat()" style="height: 70px; width: 70px; margin-left:10px;"/>
+                                          
+                                            <img src="/images/kinderlieb_ungefuellt.png" id="imgClickAndChange_likes_child"
+                                            onClick="changeImage_likes_child()" style="height: 70px; width: 70px; margin-left:10px;"/>
+                                          
+                                            <img src="/images/seniorengeeignet_ungefuellt.png" id="imgClickAndChange_likes_senior"
+                                            onClick="changeImage_likes_senior()" style="height: 70px; width: 70px; margin-left:10px;"/>
+                                           
+                                            <img src="/images/jagdtrieb_ungefuellt.png" id="imgClickAndChange_hunt"
+                                            onClick="changeImage_hunt()" style="height: 70px; width: 70px; margin-left:10px;"/>
+
+                                            <img src="/images/wachhund_ungefuellt.png" id="imgClickAndChange_guard"
+                                            onClick="changeImage_guard()" style="height: 70px; width: 70px; margin-left:10px;"/>
+
+                                            <img src="/images/anfaenger_ungefuellt.png" id="imgClickAndChange_beginner"
+                                            onClick="changeImage_beginner()" style="height: 70px; width: 70px; margin-left:10px;"/>
+
+                                            <img src="/images/speziell_ungefuellt.png" id="imgClickAndChange_experienced"
+                                            onClick="changeImage_experienced()" style="height: 70px; width: 70px; margin-left:10px;"/>
+
+                                            <img src="/images/krank_ungefuellt.png" id="imgClickAndChange_sick"
+                                            onClick="changeImage_sick()" style="height: 70px; width: 70px; margin-left:10px;"/>
+
+                                            <!--                                       
+                                            <img src="/images/wachhund.png" style="height: 70px; width: 70px; 
+                                            margin-left:10px;"/> 
+                                            -->
                                     </div>
                                 </div>
                                     <p>
@@ -127,10 +185,15 @@
                             </td>
                         </tr>
 
-
-
+                        <tr>
+                            <td>
+                                <button type="submit" name="send" value="yes" method="get">Suchen</button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
+                </form>
+            
             </div>
            
 

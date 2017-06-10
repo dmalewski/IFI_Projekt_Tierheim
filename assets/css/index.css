@@ -3,7 +3,7 @@
 }
 
 h1 {
-    position:absolute;
+    position: absolute;
     left:50%;
     margin-left:-150px; /*Hälfte der Breite*/
 }
@@ -13,9 +13,9 @@ body {
 }
 
 .suche_rechts {
-    width: 265px;
-    height:800px;
-    background-color: darkcyan;
+    width: 280px;
+    height:1200px;
+    background-color: #4a587a;
     position:absolute;
     left:50%;
     margin-left:-150px; /*Hälfte der Breite*/
@@ -44,7 +44,7 @@ body {
     margin-top:10px;
     margin-bottom:10px;
     padding-right: 20px; 
-    margin-left: 10px;
+    margin-left: 15px;
 }   
 
 .breed {
@@ -61,7 +61,7 @@ body {
 }
 
 .breed_select {
-    padding-left: 100px;
+    margin-left: 120px;
 }
 
 .gender {
@@ -89,6 +89,16 @@ body {
     margin-bottom:10px;
     padding-right: 20px; 
     margin-left: 10px;
+}
+
+button {
+    font-size: 20px;
+    position: central;
+    color: white;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-right: 20px; 
+    margin-left: 80px;
 }
 
 

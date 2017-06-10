@@ -1,0 +1,25 @@
+<html>
+    <head>
+    <meta charset="utf-8">
+
+    <link rel="icon" type="image/vnd.microsoft.icon" href="/images/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Josefin+Sans" rel="stylesheet"> 
+
+    <title>Ausgabe</title>
+
+</head>
+
+    </head>
+        <body>
+            <h1>Diese Hunde wurden gefunden:</h1>
+            
+            <% dogs.forEach(function (dog) { %>
+                    <li>
+                    <%= dog.name %>, <%= dog.gender %>, <%= dog.bread %>
+                    </li>                        
+           <% }) %>
+            
+     
+    </body>
+</html>
