@@ -1,9 +1,13 @@
 const express = require('express');
 
+const bodyparser = require('body-parser');
+
 const app = express();
 
-app.use(express.static('./assets'));
+const {persistMail} = require('./lib/persister');
 
+app.use(express.static('./assets'));
+app.use(bodyparser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
 app.get('/',(req, res)=>{
@@ -93,6 +97,28 @@ app.get('/kontakt',(req, res)=>{
         headline: 'Kontakt',
         text: `Haben Sie Fragen, Anregungen, Tipps oder Interesse an unserer Seite, füllen Sie doch einfach
                 das Kontaktformular aus und senden Sie es ab. Wir freuen uns auf Ihre Nachricht! Ihr Team4`
+    });
+});
+
+app.post('/kontakt',(req, res)=>{
+
+  const name =req.body.aName;
+  const vorname =req.body.aFirstname;
+  const telefon =req.body.aPhone;
+  const email =req.body.aemail;
+  const betreff =req.body.aSubject;
+  const nachricht = req.body.aText;
+
+  persistMail(name, name)
+    .then(() => {
+            res.render('pages/danke',{
+                title: `Kontakt, ${name}!`,
+                headline: `dankeschön, ${name}!`,
+                subheadline:'Ihre Nachricht wurde erfolgreich gesendet!',
+            });
+    })
+    .catch((err) => {
+          res.send('hat nicht geklappt');
     });
 });
 
