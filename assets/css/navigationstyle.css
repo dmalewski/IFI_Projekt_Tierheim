@@ -52,15 +52,15 @@
 }
 
 /* ----------------------------- mobile version -------------------------  */
-/* -------- hier wird die Navigationsleiste responsive angepasst, wenn der Bildschirm kleiner 835px ist -------- */
-@media screen and (max-width: 835px) {
+/* -------- hier wird die Navigationsleiste responsive angepasst -------- */
+@media screen and (max-width: 845px) {
   .topnav a:not(:first-child) {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
   }
 }
-@media screen and (max-width: 835px) {
+@media screen and (max-width: 845px) {
   .topnav.responsive {position: absolut;}
   .topnav.responsive .icon {
     position: absolute;

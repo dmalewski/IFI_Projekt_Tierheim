@@ -139,7 +139,7 @@
 /* ----------------------------- mobile version ------------------------*/
 /* -------- hier wird der footer responsive angepasst, wenn der Bildschirm kleiner 835px ist 
 			wir erhalten somit aus dem dreispaltigen dann ein einspaltiges Layout -------- */
-@media (max-width: 835px) {
+@media (max-width: 845px) {
 	.footer-distributed{
 		font: bold 14px sans-serif;
 	}
