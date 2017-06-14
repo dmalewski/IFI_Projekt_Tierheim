@@ -7,18 +7,26 @@
 */
 
 
-/* -------------------------- mobile version ----------------------------------------------- */
-@media sceen and (min-width 768px){
+/* -------------------------- mobile version ----------------------------------------------- 
+@media screen and (min-width 768px){
     .contentcontainer{
         padding-top: 48px;
         padding-bottom: 48px;
     }
 }
-@media screen and (max-width: 1024px){
+@media screen and (min-width: 832px){
     .inner {
-        width: 900px;
+        width: 580px;
     }
 }
+@media (min-width: 768px){
+    .inner {
+        width: 750px;
+     
+    }
+}*/
+
+
 
 /* -------------------------- content container & more ----------------------------------------------- */
 
@@ -37,21 +45,36 @@
     width: 85%;
     max-width: 80em;
     margin: auto;
+       display: -webkit-flex;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
 }
 
-/* -------------------------- Impressum content ----------------------------------------------- */
-.zentriert {
-    font-size: 18px;
+.elements {
+    float: left;
+    width: 400px;
+    padding: 20px 0;
+}
+
+ul {
     text-align: center;
+     margin: 0;
+     padding: 0;
+}
+li{
+    float: left;
+    margin-right: 10px;
+    padding: 5px 10px;
+    display: inline;                /* li nebeneinander anzeigen */
+    list-style-type: none;
 }
 
-.block {
-    hyphens: auto; 
-    text-align: justify
-}
-
-
-/* -------------------------- Gridpane ----------------------------------------------- */
+/* -------------------------- Gridpane ----------------------------------------------- 
 .row {
   display: flex;
   flex-flow: row wrap;
@@ -66,14 +89,15 @@
   width: 100%;
   border: solid;
   border-color:ghostwhite;
-}
+} */
 
 /* ---------------------------- animals div ---------------------------------------- */
 img {
     width: auto;
-    height: 150px;
+    max-height: 150px;
 }
 
+/* ####################################################################################### HIER NOCH ANPASSEN*/
 @media all and ( min-width: 600px ) {
   /* set col widths */
   .col-1-3 {

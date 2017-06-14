@@ -51,16 +51,16 @@
   background-color: sandybrown;
 }
 
-/* ----------------------------- mobile version ------------------------  */
-@media screen and (max-width: 670px) {
+/* ----------------------------- mobile version -------------------------  */
+/* -------- hier wird die Navigationsleiste responsive angepasst, wenn der Bildschirm kleiner 835px ist -------- */
+@media screen and (max-width: 835px) {
   .topnav a:not(:first-child) {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
   }
 }
-
-@media screen and (max-width: 670px) {
+@media screen and (max-width: 835px) {
   .topnav.responsive {position: absolut;}
   .topnav.responsive .icon {
     position: absolute;
