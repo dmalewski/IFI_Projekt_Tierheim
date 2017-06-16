@@ -14,10 +14,10 @@ app.get('/',(req, res)=>{
     res.render('pages/home',{
         title: 'Home',
         headline: 'Vermittlung',
-        text: `Wir Menschen tragen eine große Verantwortung den Tieren gegenüber. Wir haben sie gerne um 
-        uns herum, um uns nicht einsam zu fühlen und entledigen uns ihrer, sobald wir sie nicht mehr brauchen. 
-        Dabei empfinden Tiere wie der Mensch Freude und Schmerz, Glück und Unglück. Auf den folgenden Seiten 
-        finden Sie bei uns Hunde, Katzen, Kleintiere, Vögel und sogar Exoten, die darauf warten ein neues 
+        text: `Wir Menschen tragen eine große Verantwortung den Tieren gegenüber. Wir haben sie gerne um
+        uns herum, um uns nicht einsam zu fühlen und entledigen uns ihrer, sobald wir sie nicht mehr brauchen.
+        Dabei empfinden Tiere wie der Mensch Freude und Schmerz, Glück und Unglück. Auf den folgenden Seiten
+        finden Sie bei uns Hunde, Katzen, Kleintiere, Vögel und sogar Exoten, die darauf warten ein neues
         Zuhause zu finden.`
     });
 });
@@ -81,17 +81,17 @@ app.get('/impressum',(req, res)=>{
     res.render('pages/impressum',{
         title: 'Impressum',
         headline: 'Impressum',
-        text: `Sinn und Zweck des Im­pres­sum ist die Kenn­zeich­nung des An­bie­ters. Ver­brau­cher und Wett­be­wer­ber 
-                sol­len durch An­ga­be ei­ner la­dungsfähi­gen Adres­se die Möglich­keit be­kom­men, mit dem Be­trei­ber der 
+        text: `Sinn und Zweck des Im­pres­sum ist die Kenn­zeich­nung des An­bie­ters. Ver­brau­cher und Wett­be­wer­ber
+                sol­len durch An­ga­be ei­ner la­dungsfähi­gen Adres­se die Möglich­keit be­kom­men, mit dem Be­trei­ber der
                 Web­sei­te in Kon­takt zu tre­ten und ggf. recht­li­che Schrit­te ge­gen die­sen ein­zu­lei­ten.`,
         headline1: 'Allgemeine Datenschutzerklärung',
         text1: `Durch die Nutzung unserer Website erklären Sie sich mit der Erhebung,
-                Verarbeitung und Nutzung von Daten gemäß der nachfolgenden Beschreibung einverstanden. 
-                Unsere Website kann grundsätzlich ohne Registrierung besucht werden. Dabei werden Daten wie 
-                beispielsweise aufgerufene Seiten bzw. Namen der abgerufenen Datei, Datum und Uhrzeit zu 
-                statistischen Zwecken auf dem Server gespeichert, ohne dass diese Daten unmittelbar auf 
-                Ihre Person bezogen werden. Personenbezogene Daten, insbesondere Name, Adresse oder 
-                E-Mail-Adresse werden soweit möglich auf freiwilliger Basis erhoben. Ohne Ihre Einwilligung 
+                Verarbeitung und Nutzung von Daten gemäß der nachfolgenden Beschreibung einverstanden.
+                Unsere Website kann grundsätzlich ohne Registrierung besucht werden. Dabei werden Daten wie
+                beispielsweise aufgerufene Seiten bzw. Namen der abgerufenen Datei, Datum und Uhrzeit zu
+                statistischen Zwecken auf dem Server gespeichert, ohne dass diese Daten unmittelbar auf
+                Ihre Person bezogen werden. Personenbezogene Daten, insbesondere Name, Adresse oder
+                E-Mail-Adresse werden soweit möglich auf freiwilliger Basis erhoben. Ohne Ihre Einwilligung
                 erfolgt keine Weitergabe der Daten an Dritte.`
     });
 });
