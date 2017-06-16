@@ -62,23 +62,19 @@
 /* -------------------------- alle Elemente wie Hunde, Katzen, etc. werden in einer Liste ausgegeben ----------------------------------------------- */
 
 .inner .elements {
-     position: absolute;
-    float: left;
-    width: 400px;
-    padding: 20px 0;
-    top: 50%;
-   left: 20px;
-right: 20px;
-  transform: translateY(-50%);
-  resize: vertical;
-  overflow: auto;
+    position: relative;
+    padding: 20px;
+    top: 50%;  
+    resize: vertical;
+}
+.element{
+    margin: 10px;
 }
 ul {
      margin: 0;
      padding: 0;
 }
 li{
-    margin-right: 10px;
     padding: 5px 10px;
     float: left;
     display: inline;                /* li nebeneinander anzeigen */
