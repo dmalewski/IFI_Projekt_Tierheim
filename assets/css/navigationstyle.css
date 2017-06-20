@@ -47,14 +47,14 @@
 /* ----------------------------- mobile version -------------------------  */
 /* -------- hier wird die Navigationsleiste responsive angepasst --------- */
 
-@media screen and (max-width: 845px) {
+@media screen and (max-width: 913px) {
   .topnav a:not(:first-child) {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
   }
 }
-@media screen and (max-width: 845px) {
+@media screen and (max-width: 913px) {
   .topnav.responsive {position: absolut;}
   .topnav.responsive .icon {
     position: absolute;

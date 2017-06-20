@@ -7,10 +7,16 @@ Dabei wird pro Webseite eine Anzahl von 12 Hunden angezeigt.-->
         <!--<ul id="dogs">-->
             <% dogs.forEach(function (dog) { %>
             <div class="dogs">
+                <a href="#hund">
                <!-- <li id="dogs">-->
-                    <div class="image-wrapper">
+                    <!--<div class="image-wrapper">-->
+                        <figure>
                         <img src="<%= dog.img %>"></img>
-                    </div>
+                        </figure>
+                        <figcaption>
+                            <p id="dogs"><%= dog.name %></p>
+                        </figcaption>
+               <!--     </div>-->
                     <dl>
                         <dt id="dogs">Name</dt>
                         <dd><%= dog.name %></dd>
@@ -19,9 +25,10 @@ Dabei wird pro Webseite eine Anzahl von 12 Hunden angezeigt.-->
                         <dt id="dogs"></dt>
                         <dd></dd>
                     </dl>
-               <!-- </li> -->
+                </a>
+            <!--   </li> -->
             </div>
             <% }) %>
          
-        </ul>
+       <!-- </ul>-->
 </div>       
