@@ -5,9 +5,7 @@
     responsive 
     we use javascript for the menu icon
     >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    it's ready
 */
-
 
 /* ----------------------------- container and header section ------------------------ */
 .topnav {
@@ -17,7 +15,6 @@
   background-color: rosybrown;
   position: fixed;
   }
-
 .topnav a {
   float: left;
   display: block;
@@ -29,16 +26,13 @@
   border-top: 1px solid #a68383;
   font-size: 19px;
 }
-
 .topnav a:hover {
   background-color: rosybrown;
   color: darkslategray;
 }
-
 .topnav .icon {
   display: none;
 }
-
 .bigger{
   top: 0px;
   margin: 0px;
@@ -46,13 +40,13 @@
   text-transform: uppercase;
   font-size: 1.4em;
 }
-
 .anmelden{
   background-color: sandybrown;
 }
 
 /* ----------------------------- mobile version -------------------------  */
-/* -------- hier wird die Navigationsleiste responsive angepasst -------- */
+/* -------- hier wird die Navigationsleiste responsive angepasst --------- */
+
 @media screen and (max-width: 845px) {
   .topnav a:not(:first-child) {display: none;}
   .topnav a.icon {

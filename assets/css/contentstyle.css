@@ -1,96 +1,80 @@
 /**
     >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    stylesheet for the main content container
+    stylesheet for the main content container in flexbox design
     responsive 
     >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    it's not done, I have to fix some bugs
 */
-
-
-/* -------------------------- mobile version ----------------------------------------------- 
-@media screen and (min-width 768px){
-    .contentcontainer{
-        padding-top: 48px;
-        padding-bottom: 48px;
-    }
-}
-@media screen and (min-width: 832px){
-    .inner {
-        width: 580px;
-    }
-}
-@media (min-width: 768px){
-    .inner {
-        width: 750px;
-     
-    }
-}*/
-
-
 
 /* -------------------------- content container & more ----------------------------------------------- */
 
 .contentcontainer{
+    width: 100%;
     z-index: 2;
-    padding: 0px;
     margin-bottom: 10px;
-    font-size: 21px;
-    font-weight: 200;  
-    line-height: 2.1428571435;
-    /* background color */
     background-color: ghostwhite;
 }
-
 .contentcontainer .inner {
-    width: 85%;
-    max-width: 80em;
+    width: 100%;
     margin: auto;
-    display: -webkit-flex;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-align-items: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
     justify-content: center;
-        position: relative;
-    resize: vertical;
-  overflow: auto;
-}
-
-/* -------------------------- alle Elemente wie Hunde, Katzen, etc. werden in einer Liste ausgegeben ----------------------------------------------- */
-
-.inner .elements {
     position: relative;
-    padding: 20px;
-    top: 50%;  
-    resize: vertical;
+    overflow: auto;
+    background-color: red;
 }
-.element{
-    margin: 10px;
+.innercontainer{
+    background-color: blue;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 85%;
+    word-wrap:break-word;
 }
-ul {
+
+/* -------------------------- all ojects like dogs, cats, ... ----------------------------------------------- */
+
+/* ----- images ------ */
+.image-wrapper {
+    max-width:95%;
+    height:auto;
+    position: relative;
+    display:block;
+   /* margin:0 auto;*/
+}
+.image-wrapper img {
+    width:100% !important;
+    height:auto !important;
+    display:block;
+    border-style: groove;
+}
+
+.dogs{
+    width: 25%;
+    background-color: white;
+    padding: 10px;
+    border: solid;
+}
+ul#dogs {
      margin: 0;
      padding: 0;
 }
-li{
-    padding: 5px 10px;
+/*li#dogs{
     float: left;
-    display: inline;                /* li nebeneinander anzeigen */
+    display: inline;                
     list-style-type: none;
-}
-dl {
-    padding: 0.5em;
-}
-dt {
+    border: solid;
+}*/
+dt#dogs {
     float: left;
     clear: left;
     width: 100px;
     text-align: right;
     font-weight: bold;
 }
-dt::after {
+dt#dogs::after {
     content: ":";
 }
 dd {
@@ -98,10 +82,24 @@ dd {
     padding: 0 0 0.5em 0;
 }
 
-/* ---------------------------- animals div ---------------------------------------- */
-img {
-    width: auto;
-    max-height: 150px;
+/* --------------------------------------------- */
+li{
+    padding: 0px 10px;
+    list-style-type: none;
+    border: solid;
 }
 
 
+/* ---------------------------- image style of the objects ---------------------------------------- */
+img {
+    max-height: auto;
+}
+
+@media screen and (max-width: 845px) {
+	.dogs{
+		display: block;
+		width: 100%;
+		margin-bottom: 20px;
+		text-align: center;
+	}
+}

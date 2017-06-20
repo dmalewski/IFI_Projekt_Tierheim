@@ -3,163 +3,25 @@ in den verschiedenen Tierheimen warten
 Tierdaten sind in der Datenabnk gespeichert und werden hier mittels Schleife ausgegeben. 
 Dabei wird pro Webseite eine Anzahl von 12 Hunden angezeigt.-->
 
-<div class="elements">
-        <ul>
-            <li>
-                <div class="element">
-                    <img src="/images/titel1.jpg"></img>
+<div class="innercontainer">
+        <!--<ul id="dogs">-->
+            <% dogs.forEach(function (dog) { %>
+            <div class="dogs">
+               <!-- <li id="dogs">-->
+                    <div class="image-wrapper">
+                        <img src="<%= dog.img %>"></img>
+                    </div>
                     <dl>
-                        <dt>Name</dt>
-                        <dd>irgendwas</dd>
-                        <dt>Alter</dt>
-                        <dd>und hier auch iwas</dd>
+                        <dt id="dogs">Name</dt>
+                        <dd><%= dog.name %></dd>
+                        <dt id="dogs">Alter</dt>
+                        <dd><%= dog.age %></dd>
+                        <dt id="dogs"></dt>
+                        <dd></dd>
                     </dl>
-                </div>
-            </li>
-            <li>
-                <div class="element">
-                    <img src="/images/titel1.jpg"></img>
-                    <dl>
-                        <dt>Name</dt>
-                        <dd>irgendwas</dd>
-                        <dt>Alter</dt>
-                        <dd>und hier auch iwas</dd>
-                    </dl>
-                </div>
-            </li>
-            <li>
-                <div class="element">
-                    <img src="/images/titel1.jpg"></img>
-                    <dl>
-                        <dt>Name</dt>
-                        <dd>irgendwas</dd>
-                        <dt>Alter</dt>
-                        <dd>und hier auch iwas</dd>
-                    </dl>
-                </div>
-            </li>
-            <li>
-                <div class="element">
-                    <img src="/images/titel1.jpg"></img>
-                    <dl>
-                        <dt>Name</dt>
-                        <dd>irgendwas</dd>
-                        <dt>Alter</dt>
-                        <dd>und hier auch iwas</dd>
-                    </dl>
-                </div>
-            </li>
-            <li>
-                <div class="element">
-                    <img src="/images/titel1.jpg"></img>
-                    <dl>
-                        <dt>Name</dt>
-                        <dd>irgendwas</dd>
-                        <dt>Alter</dt>
-                        <dd>und hier auch iwas</dd>
-                    </dl>
-                </div>
-            </li>
-            <li>
-                <div class="element">
-                    <img src="/images/titel1.jpg"></img>
-                    <dl>
-                        <dt>Name</dt>
-                        <dd>irgendwas</dd>
-                        <dt>Alter</dt>
-                        <dd>und hier auch iwas</dd>
-                    </dl>
-                </div>
-            </li>
-            <li>
-                <div class="element">
-                    <img src="/images/titel1.jpg"></img>
-                    <dl>
-                        <dt>Name</dt>
-                        <dd>irgendwas</dd>
-                        <dt>Alter</dt>
-                        <dd>und hier auch iwas</dd>
-                    </dl>
-                </div>
-            </li>
-            <li>
-                <div class="element">
-                    <img src="/images/titel1.jpg"></img>
-                    <dl>
-                        <dt>Name</dt>
-                        <dd>irgendwas</dd>
-                        <dt>Alter</dt>
-                        <dd>und hier auch iwas</dd>
-                    </dl>
-                </div>
-            </li>
-        </ul>
-</div>
-<!--
-         <div class="row">
-                <!-- Hier kannst du ändern ######################################################### 
-                    <div class="col-1-3">
-                        <img src="/images/titel1.jpg"></img>
-                        <p>Name</p>
-                        <p>Alter</p>
-                    </div>
-
-                    <div class="col-1-3">
-                        <img src="/images/titel1.jpg"></img>
-                        <p>Name</p>
-                        <p>Alter</p>
-                    </div>
-
-                    <div class="col-1-3">
-                         <img src="/images/titel1.jpg"></img>
-                         <p>Name</p>
-                         <p>Alter</p>
-                    </div>
-
-                    <div class="col-1-3">
-                         <img src="/images/titel1.jpg"></img>
-                         <p>Name</p>
-                         <p>Alter</p>
-                    </div>
-
-                    <div class="col-1-3">
-                    This is column 5
-                    </div>
-
-                    <div class="col-1-3">
-                    This is column 6
-                    </div>
-
-                    <div class="col-1-3">
-                    This is column 7
-                    </div>
-
-                    <div class="col-1-3">
-                    This is column 8
-                    </div>
-
-                    <div class="col-1-3">
-                    This is column 9
-                    </div>
-
-                    <div class="col-1-3">
-                    This is column 10
-                    </div>
-
-                    <div class="col-1-3">
-                    This is column 11
-                    </div>
-
-                    <div class="col-1-3">
-                    This is column 12
-                    </div>
-
-        </div>-->
-
+               <!-- </li> -->
+            </div>
+            <% }) %>
          
-
-<!--/.pagination-->
-
-            
-            
-           
+        </ul>
+</div>       

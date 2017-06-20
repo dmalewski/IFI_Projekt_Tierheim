@@ -5,10 +5,9 @@
 	arrangend in three columns
     responsive, arrangement in one column
     >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    it's ready!
 */
 
-/* ----------------------------- footer ------------------------*/
+/* ------------------------------------ footer -------------------------------*/
 #footer > .container {
     padding-left: 15px;
     padding-right: 15px;
@@ -28,7 +27,6 @@
 	display: inline-block;
 	vertical-align: top;
 }
-
 /* footer left */
 .footer-distributed .footer-left{
     width: 40%;
@@ -42,7 +40,6 @@
 .footer-distributed h3 span{
 	color:  sandybrown;
 }
-
 /* footer left */
 .footer-distributed .footer-links{
 	color:  #ffffff;
@@ -136,10 +133,11 @@
 	margin-bottom: 5px;
 }
 
-/* ----------------------------- mobile version ------------------------*/
-/* -------- hier wird der footer responsive angepasst, wenn der Bildschirm kleiner 835px ist 
-			wir erhalten somit aus dem dreispaltigen dann ein einspaltiges Layout -------- */
-@media (max-width: 845px) {
+/* ------------------------------------ mobile version -------------------------------*/
+/* - hier wird der footer responsive angepasst, wenn der Bildschirm kleiner 
+	845px ist wir erhalten somit aus dem dreispaltigen dann ein einspaltiges Layout - */
+
+@media screen and (max-width: 845px) {
 	.footer-distributed{
 		font: bold 14px sans-serif;
 	}

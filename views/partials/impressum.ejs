@@ -1,15 +1,23 @@
+<!--
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    Template für die Ausgabe des Impressums und der Datenschutzbestimmung
+    einfaches Styling
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-->
 
-<div class="zentriert">
-    <br />
-    <h2><%= headline %></h2>
-    <p>Team4 </p>
-    <p>Flughafenallee, 10 Bremen</p>
-    <p>Telefon: 0421 - 6 44 23</p>
-    <p>Fax: 0421 - 64 62 37</p>
-    <p>E-Mail:Team4studentin@gmail.com</p>
-    <p>Vertreten durch: Team4 GmbH</p>
-    <br />
-    <h2><%= headline1 %></h2>
-    <div class="block"><p><%= text1 %><p></div>
-    <br />
+<div class="innercontainer">
+    <div class="center">
+        <h2><%= headline %></h2>
+        <p>Team4</p>
+        <p>Flughafenallee, 10 Bremen</p>
+        <p><i class="fa fa-phone"></i><span> 0421 - 6 44 23</span></p>
+        <p><i class="fa fa-fax"></i> 0421 - 64 62 37</p>
+        <p><i class="fa fa-envelope"></i><a href="mailto:smartymarta@web.de"> smartymarta@web.de</a></p>
+        <p>Vertreten durch: Team4 GmbH</p>
+    </div>
+    <hr />
+    <div class="block">
+        <h2><%= headline1 %></h2>
+        <p ><%= text1 %><p>
+    </div>
 </div>

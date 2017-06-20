@@ -1,35 +1,31 @@
-/* ----------------------------- mobile version ------------------------
-@media screen and (min-width 768px){
-    .maincontainer{
-        padding-top: 48px;
-        padding-bottom: 48px;
-    }
-}
-@media (min-width: 832px){
-    .container {
-        width: 850px;
-    }
-}
-@media (min-width: 768px){
-    .container {
-        width: 750px;
-    }
-}*/
+/**
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    main stylesheet for the webpage, also stylesheet for impressum & links
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+*/
 
 /* ----------------------------- general ------------------------------*/
+html{
+    width: 100%;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    word-wrap:break-word;
+}
 body {
-    padding-top: 0px;
-    padding-bottom: 0px;
-    display: block;
+    width: 100%;
+    padding: 0px;
     margin: 0px;
+    display: block;
+    /* font style */
     font-family: "Helvetica Neu", Arial, Helvetica, sans-serif;
     font-size: 100%;
     font:inherit;
-    vertical-align: baseline;
-    line-height: 1.4.28571429;
     background-color: #fff;
 }
-h1, .h1{
+h1{
     line-height: 1;
     color: ghostwhite;
     text-shadow:  1px  1px 2px grey,
@@ -37,13 +33,8 @@ h1, .h1{
                  -1px  1px 2px grey,
                  -1px -1px 2px grey;
 }
-html {
-    font-size: 62.5%;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    font-family: sans-serif;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
+h2{
+    text-align: center;
 }
 *, *::before, *::after {
     -webkit-box-sizing: border-box;
@@ -53,27 +44,20 @@ html {
 
 /* ----------------------------- head container ----------------------------*/
 .maincontainer{
+    width: 100%;
     z-index: 2;
     padding: 50px;
     margin-bottom: 10px;
     font-size: 19px;
     font-weight: 200;  
     line-height: 2.1428571435;
-    width: 100%;
     /* background-image */
     background-image: url("../images/titel6.jpg");          
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    background-size: cover; */
-/*
-  background: url(../images/titel6.jpg) no-repeat center center fixed;
-   -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-   background-size: cover; */
+    background-size: cover;
 }
-
 .maincontainer .container {
     width: 100%;
 }
@@ -83,6 +67,7 @@ html {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+    text-align: left;
 }
 .maincontainer .container > p{
     /* text decoration */
@@ -95,7 +80,6 @@ html {
 div {
     display: block;
 }
-
 
 /* ----------------------------- button in head container ----------------------------*/
 .navbtn {
@@ -126,7 +110,6 @@ div {
 	background: -ms-linear-gradient(top,  #ededf0 0%, #8B6969 100%);
 	background: linear-gradient(to bottom,  #ededf0 0%,#8B6969 100%);
 }
-
 .navbtn:hover,
 .navbtn:focus {
     color: sienna;
@@ -136,4 +119,23 @@ div {
 	background: -ms-linear-gradient(top,  #ededf0 0%, peru 100%);
 	background: linear-gradient(to bottom,  #ededf0 0%,peru 100%);
 	text-decoration:none;
+}
+
+/* ----------------------------- textdecoration ----------------------------*/
+.block {
+    text-align: justify;
+    padding: 40px 0px;
+}
+.center{
+    text-align: center;
+    padding: 10px 0px;
+	-webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.partner{
+    padding: 10px;
+    
 }

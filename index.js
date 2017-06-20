@@ -1,24 +1,26 @@
 const express = require('express');
-
 const bodyparser = require('body-parser');
-
 const app = express();
 
 const {persistMail} = require('./lib/persister');
+const read = require('./lib/services/reader');
 
 app.use(express.static('./assets'));
 app.use(bodyparser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 
 app.get('/',(req, res)=>{
-    res.render('pages/home',{
-        title: 'Home',
-        headline: 'Vermittlung',
-        text: `Wir Menschen tragen eine große Verantwortung den Tieren gegenüber. Wir haben sie gerne um
-        uns herum, um uns nicht einsam zu fühlen und entledigen uns ihrer, sobald wir sie nicht mehr brauchen.
-        Dabei empfinden Tiere wie der Mensch Freude und Schmerz, Glück und Unglück. Auf den folgenden Seiten
-        finden Sie bei uns Hunde, Katzen, Kleintiere, Vögel und sogar Exoten, die darauf warten ein neues
-        Zuhause zu finden.`
+     read().then((results) => {
+        res.render('pages/home',{
+            title: 'Home',
+            headline: 'Vermittlung',
+            text: `Wir Menschen tragen eine große Verantwortung den Tieren gegenüber. Wir haben sie gerne um
+            uns herum, um uns nicht einsam zu fühlen und entledigen uns ihrer, sobald wir sie nicht mehr brauchen.
+            Dabei empfinden Tiere wie der Mensch Freude und Schmerz, Glück und Unglück. Auf den folgenden Seiten
+            finden Sie bei uns Hunde, Katzen, Kleintiere, Vögel und sogar Exoten, die darauf warten ein neues
+            Zuhause zu finden.`,
+            dogs:results
+         });
     });
 });
 
@@ -31,7 +33,8 @@ app.get('/hunde',(req, res)=>{
         im Heim. Das können z.B. berufliche Veränderungen und damit verbundener Zeitmangel oder auch Allergien des 
         Vorbesitzers sein. Leider gehört dazu auch manchmal menschlicher Familienzuwachs. Dabei könnte die fachliche 
         Beratung zum richtigen Umgang für Eltern und Kind in den meisten Fällen eventuell vorhandene Zweifel zerstreuen. 
-        Gute Hundeschulen bieten oft auch in diesen Fällen eine Hilfestellung. `
+        Gute Hundeschulen bieten oft auch in diesen Fällen eine Hilfestellung. `,
+        dogs:results
     });
 });
 
