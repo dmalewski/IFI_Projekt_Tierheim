@@ -11,11 +11,34 @@
 
 <% dogs.forEach(function (dog) { %>
 <div class="elementgrid">
-  <a href="#" id="grid">
-    <figure>
+  <a href="#" >
+    <figure class="image-wrapper">
       <img src="<%= dog.img %>"></img>
-      <figcaption>Some text here</figcaption>
     </figure>
+    <figcaption>
+      <p class="center figcap"><%= dog.name %></p>
+      <table>
+        <tr>
+          <td>Alter: </td>
+          <td><%= dog.age %></td>
+        </tr>
+        <tr>
+          <td>Größe: </td>
+          <td><%= dog.height %></td>
+        </tr>
+        <tr>
+          <td>Rasse: </td>
+          <td><%= dog.bread %></td>
+        </tr>
+        <tr>
+          <td>Geschlecht: </td>
+          <td><%= dog.gender %></td>
+        </tr><tr>
+          <td>Kastriert: </td>
+          <td><%= dog.castrated %></td>
+        </tr>
+      </table>
+     
   </a>
 </div>
 <% }) %>

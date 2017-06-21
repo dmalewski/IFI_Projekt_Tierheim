@@ -43,32 +43,44 @@ app.get('/hunde',(req, res)=>{
 app.get('/katzen',(req, res)=>{
     res.render('pages/katzen',{
         title: 'Katzen',
-        headline: 'Vermittlung von Katzen',
-        text: `In Progress`
+        headline: 'In Bearbeitung',
+        text: `Es tut uns leid, jedoch befindet sich diese Seite noch in Bearbeitung. Wir hoffen, dass Ihnen unsere
+        Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das 
+        ein oder andere Tier aus dem Tierheim zu adoptieren und ihm ein tolles neues Zuhause zu bieten.`,
+        signature: `Bis Bald euer Team4!`,
     });
 });
 
 app.get('/kleintiere',(req, res)=>{
     res.render('pages/kleintiere',{
         title: 'Kleintiere',
-        headline: 'Vermittlung von Kleintieren',
-        text: `In Progress`
+        headline: 'In Bearbeitung',
+        text: `Es tut uns leid, jedoch befindet sich diese Seite noch in Bearbeitung. Wir hoffen, dass Ihnen unsere
+        Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das 
+        ein oder andere Tier aus dem Tierheim zu adoptieren und ihm ein tolles neues Zuhause zu bieten.`,
+        signature: `Bis Bald euer Team4!`,
     });
 });
 
 app.get('/voegel',(req, res)=>{
     res.render('pages/voegel',{
         title: 'Vögel',
-        headline: 'Vermittlung von Vögeln',
-        text: `In Progress`
+        headline: 'In Bearbeitung',
+        text: `Es tut uns leid, jedoch befindet sich diese Seite noch in Bearbeitung. Wir hoffen, dass Ihnen unsere
+        Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das 
+        ein oder andere Tier aus dem Tierheim zu adoptieren und ihm ein tolles neues Zuhause zu bieten.`,
+        signature: `Bis Bald euer Team4!`,
     });
 });
 
 app.get('/exoten',(req, res)=>{
     res.render('pages/exoten',{
         title: 'Exoten',
-        headline: 'Vermittlung von Exoten',
-        text: `In Progress`
+        headline: 'In Bearbeitung',
+        text: `Es tut uns leid, jedoch befindet sich diese Seite noch in Bearbeitung. Wir hoffen, dass Ihnen unsere
+        Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das 
+        ein oder andere Tier aus dem Tierheim zu adoptieren und ihm ein tolles neues Zuhause zu bieten.`,
+        signature: `Bis Bald euer Team4!`,
     });
 });
 

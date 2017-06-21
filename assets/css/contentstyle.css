@@ -1,6 +1,7 @@
 /**
     >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     stylesheet for the main content container in flexbox design
+    the objects (dogs, cats, birds, ...) are shown in a gridpane
     responsive 
     >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 */
@@ -24,105 +25,58 @@
     justify-content: center;
     position: relative;
     overflow: auto;
-    background-color: red;
 }
-
 .flexcontainer {
- 
-   display: flex;
-   -webkit-align-items: center;
-   align-items: center;
-   -webkit-justify-content: center;
-   justify-content: center;
-   -webkit-flex-direction: row;
-   flex-direction: row;
-   -webkit-flex-wrap: wrap;
-   flex-wrap: wrap;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
-
 .innercontainer{
-    background-color: blue;
     margin-top: 20px;
     margin-bottom: 20px;
     width: 85%;
     word-wrap:break-word;
 }
 
-/* -------------------------- all ojects like dogs, cats, ... ----------------------------------------------- */
+/* -------------------------- all dog ojects ----------------------------------------------- */
 
 .elementgrid{
-    width: 33,333333333%;
-    padding: 10px;
-    font-size: 0;
-    display: flex;
+    margin: 8px;    
+    height: 500px;
     flex-wrap: wrap;
+    border: 4px solid white;
+    box-shadow: 0 0 1px rgba(0,0,0, .4);
+    background: hsla(0, 1%, 92%, 1); 
 }
-
-a #grid{
-  font-size: 16px;
-  display: inline-block;
-  margin-bottom: 8px;
-  width: calc(50% - 4px);
-  margin-right: 8px;
-  text-decoration: none;
-  color: black;
+.elementgrid:hover{
+    background: hsla(0, 0%, 75%,0.9);
 }
-
+.elementgrid a {
+    text-decoration: none;
+}
 a:nth-of-type(2n) {
   margin-right: 0;
 }
-a:hover img {
-    transform: scale(1.15);
-}
 
+/* ----- image styling ------ */
 figure {
-  margin: 0;
   overflow: hidden;
-  min-width: 250px;
-  max-height: 200px;
+  min-height:266px;
+  width: 250px;
 }
 
-@media screen and (min-width: 50em) {
-    a #grid{
-        width: calc(25% - 6px);
-    }
-    a:nth-of-type(2n) {
-        margin-right: 8px;
-    }
-    a:nth-of-type(4n) {
-        margin-right: 0;
-    }
+.figcap {
+    color: sandybrown;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0 0 1px yellow;
 }
-
-
-figcaption {
-  margin-top: 15px;
-}
-
-img {
-  border: none;
-  max-width: 100%;
-  height: auto;
-  display: block;
-  background: #ccc;
-  transition: transform .2s ease-in-out;
-}
-
-.p a {
-  display: inline;
-  font-size: 13px;
-  margin: 0;
-  text-decoration: underline;
-  color: blue;
-}
-
-.p {
-  text-align: center;
-  font-size: 13px;
-  padding-top: 100px;
-}
-
-/* ----- images ------ 
 .image-wrapper {
     max-width:100%;
     height:auto;
@@ -133,59 +87,20 @@ img {
     width:100% !important;
     height:auto !important;
     display:block;
-    border-style: groove;
-    border-color: rosybrown;
-}*/
-/*
-.dogs{
-    width: 33,33%;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: green;
-    border: solid;
-   
+     margin:8px;
 }
-ul#dogs {
-     margin: 0;
-     padding: 0;
+a:hover img {
+    transform: scale(1.15);
 }
-li#dogs{
-    float: left;
-    display: inline;                
-    list-style-type: none;
-    border: solid;
-}*/
-dt#dogs {
-    float: left;
-    clear: left;
-    width: 100px;
-    text-align: right;
-    font-weight: bold;
-}
-dt#dogs::after {
-    content: ":";
-}
-dd {
-    margin: 0 0 0 110px;
-    padding: 0 0 0.5em 0;
-}
-
-/* --------------------------------------------- */
-li{
-    padding: 0px 10px;
-    list-style-type: none;
-    border: solid;
-}
-
 
 /* ---------------------------- image style of the objects ---------------------------------------- */
 
-
-@media screen and (max-width: 845px) {
-	.dogs{
+@media screen and (max-width: 450px) {
+	.elementgrid{
 		display: block;
 		width: 100%;
 		margin-bottom: 20px;
 		text-align: center;
 	}
 }
+
