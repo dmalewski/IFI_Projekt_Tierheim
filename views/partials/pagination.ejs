@@ -1,13 +1,7 @@
-
-<div class="pagination">
-    <ul>
-      <a href="#">&laquo;</a>
-      <a href="#" class="active">1</a>
-      <a href="#">2</a>
-      <a href="#">3</a>
-      <a href="#">4</a>
-      <a href="#">5</a>
-      <a href="#">6</a>
-      <a href="#">&raquo;</a>
-    </ul>
-</div>
+<% if (pagesCount) { %>
+  <div class="pagination">
+        <% for (let i = 0; i < pagesCount; i++) { %>
+          <a href="/hunde/<%= i %>"><%= i %></a>
+        <% } %>
+  </div>
+<% } %>
