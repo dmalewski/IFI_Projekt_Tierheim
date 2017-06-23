@@ -164,15 +164,23 @@ app.get('/tier',(req, res)=>{
 });
 
 app.get('/hunde/:pages?', async (req, res)=>{
-     const page = res.params.pages || 0;
+     const page = req.params.pages || 0;
 
-     const result = await getHunde(page);
+     const results = await getHunde(page);
 
-     console.log (result);
-
-     res.render('users', result);
+    res.render('pages/hunde',{
+            title: 'Hunde',
+            headline: 'Vermittlung von Hunden',
+            text: `Ein Tier kann aus vielfältigen Gründen im Tierheim sitzen. "Scheidungshunde" sind nicht selten
+            und auch jede andere Art von veränderten Lebensumständen gehören zu den häufigen Gründen für eine Abgabe
+            im Heim. Das können z.B. berufliche Veränderungen und damit verbundener Zeitmangel oder auch Allergien des
+            Vorbesitzers sein. Leider gehört dazu auch manchmal menschlicher Familienzuwachs. Dabei könnte die fachliche
+            Beratung zum richtigen Umgang für Eltern und Kind in den meisten Fällen eventuell vorhandene Zweifel zerstreuen.
+            Gute Hundeschulen bieten oft auch in diesen Fällen eine Hilfestellung. `,
+            dogs: results.hunde,
+            pagesCount: results.pagesCount
+        });
 });
-
 
 app.listen(8080, (err)=>{
     if (err){
