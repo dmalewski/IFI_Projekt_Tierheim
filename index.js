@@ -2,6 +2,9 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const app = express();
 
+const {getHunde} = require('./lib/services/pagination'); <!--pagination-->
+
+
 const {persistMail} = require('./lib/persister');
 const read = require('./lib/services/reader');
 
@@ -29,11 +32,11 @@ app.get('/hunde',(req, res)=>{
         res.render('pages/hunde',{
             title: 'Hunde',
             headline: 'Vermittlung von Hunden',
-            text: `Ein Tier kann aus vielfältigen Gründen im Tierheim sitzen. "Scheidungshunde" sind nicht selten 
-            und auch jede andere Art von veränderten Lebensumständen gehören zu den häufigen Gründen für eine Abgabe 
-            im Heim. Das können z.B. berufliche Veränderungen und damit verbundener Zeitmangel oder auch Allergien des 
-            Vorbesitzers sein. Leider gehört dazu auch manchmal menschlicher Familienzuwachs. Dabei könnte die fachliche 
-            Beratung zum richtigen Umgang für Eltern und Kind in den meisten Fällen eventuell vorhandene Zweifel zerstreuen. 
+            text: `Ein Tier kann aus vielfältigen Gründen im Tierheim sitzen. "Scheidungshunde" sind nicht selten
+            und auch jede andere Art von veränderten Lebensumständen gehören zu den häufigen Gründen für eine Abgabe
+            im Heim. Das können z.B. berufliche Veränderungen und damit verbundener Zeitmangel oder auch Allergien des
+            Vorbesitzers sein. Leider gehört dazu auch manchmal menschlicher Familienzuwachs. Dabei könnte die fachliche
+            Beratung zum richtigen Umgang für Eltern und Kind in den meisten Fällen eventuell vorhandene Zweifel zerstreuen.
             Gute Hundeschulen bieten oft auch in diesen Fällen eine Hilfestellung. `,
             dogs:results
         });
@@ -45,7 +48,7 @@ app.get('/katzen',(req, res)=>{
         title: 'Katzen',
         headline: 'In Bearbeitung',
         text: `Es tut uns leid, jedoch befindet sich diese Seite noch in Bearbeitung. Wir hoffen, dass Ihnen unsere
-        Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das 
+        Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das
         ein oder andere Tier aus dem Tierheim zu adoptieren und ihm ein tolles neues Zuhause zu bieten.`,
         signature: `Bis Bald euer Team4!`,
     });
@@ -56,7 +59,7 @@ app.get('/kleintiere',(req, res)=>{
         title: 'Kleintiere',
         headline: 'In Bearbeitung',
         text: `Es tut uns leid, jedoch befindet sich diese Seite noch in Bearbeitung. Wir hoffen, dass Ihnen unsere
-        Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das 
+        Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das
         ein oder andere Tier aus dem Tierheim zu adoptieren und ihm ein tolles neues Zuhause zu bieten.`,
         signature: `Bis Bald euer Team4!`,
     });
@@ -67,7 +70,7 @@ app.get('/voegel',(req, res)=>{
         title: 'Vögel',
         headline: 'In Bearbeitung',
         text: `Es tut uns leid, jedoch befindet sich diese Seite noch in Bearbeitung. Wir hoffen, dass Ihnen unsere
-        Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das 
+        Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das
         ein oder andere Tier aus dem Tierheim zu adoptieren und ihm ein tolles neues Zuhause zu bieten.`,
         signature: `Bis Bald euer Team4!`,
     });
@@ -78,7 +81,7 @@ app.get('/exoten',(req, res)=>{
         title: 'Exoten',
         headline: 'In Bearbeitung',
         text: `Es tut uns leid, jedoch befindet sich diese Seite noch in Bearbeitung. Wir hoffen, dass Ihnen unsere
-        Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das 
+        Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das
         ein oder andere Tier aus dem Tierheim zu adoptieren und ihm ein tolles neues Zuhause zu bieten.`,
         signature: `Bis Bald euer Team4!`,
     });
@@ -91,7 +94,7 @@ app.get('/anmelden',(req, res)=>{
         text: `Melden Sie sich jetzt bei Tiervermittlung an und fügen Sie unkompliziert und mit wenigen Klicks Ihre Schützlinge
                  im gesamten deutschsprachigen Raum ein. Wir helfen Ihnen die passenden Halter schnell und einfach zu ermitteln.
                  Das Einstellen ist intuitiv und schnell zu erledigen`
-              });
+      });
 });
 
 app.get('/impressum',(req, res)=>{
@@ -159,6 +162,17 @@ app.get('/tier',(req, res)=>{
         text: ``
     });
 });
+
+app.get('/hunde/:pages?', async (req, res)=>{
+     const page = res.params.pages || 0;
+
+     const result = await getHunde(page);
+
+     console.log (result);
+
+     res.render('users', result);
+});
+
 
 app.listen(8080, (err)=>{
     if (err){
