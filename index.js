@@ -10,9 +10,13 @@ const {read, findBreeds} = require("./lib/services/reader");
 
 const {filter} = require("./lib/services/filter");
 
+const {startSchedule} = require("./lib/services/schedule");
+
+
 app.set("view engine","ejs");
 
-app.get("/",(req, res) => {
+app.get("/", async (req, res) => {
+        //startSchedule();
         findBreeds().then((breeds) => {
         res.render("index",{
             title: 'Suche',
@@ -22,39 +26,57 @@ app.get("/",(req, res) => {
 })
 
 app.get("/search",(req, res) => {
-    //?size=Klein,Mittel
-    const sizes = req.query.size.split(',');
+    let sizes = "";
+    console.log("size.length: " + req.query.size.length);
+    if(req.query.size.length) {
+        sizes = req.query.size.split(',');
+    }
 
-    const genders = req.query.gender.split(',');
+    let genders = "";
+    if(req.query.gender.length) {
+        genders = req.query.gender.split(',');
+    }
 
-    const breed = req.query.breed_select;
+    let breed ="";
+    if(req.query.breed_select.length) {
+        breed = req.query.breed_select;
+    }
 
-    //['Klein','Mittel']
+     console.log("age.length: " + req.query.age.length);
+    let ages ="";
+    if(req.query.age.length) {
+        ages = req.query.age.split(',');
+    }
 
-    /*db.collection('dogs').find({
-        height: {
-            "$in": sizes
-        }
-    })
-    */
+    let traits ="";
+    if(req.query.traits.length) {
+        traits = req.query.traits.split(',');
+    }
 
-    console.log("sizes:" + sizes);
-    console.log("genders:" + genders);
-    console.log("breed:" + breed);
+    console.log(sizes);
+    console.log(genders);
+    console.log(breed);
+    console.log(ages);
+    console.log(traits);
 
-    filter(sizes,genders,breed).then((results) => {
-        console.log(results);
+    filter(sizes,genders,breed,ages,traits).then((results) => {
+        //console.log(results);
         res.render("search",{
-            dogs: results
+            dogs: results,
+            message: ""
         });
-    });
+    }).catch(() => {
+        res.render("search", {
+            dogs: [],
+            message: "Es wurde nichts ausgewählt!"
+        })
+    })
 })
 
 app.listen(8080);
 
 console.log("search is listening...");
 
-//Formular
 
 //Daten erweitern, die schon da sind -> Daten anreichern
 
