@@ -3,7 +3,7 @@
         <meta charset="utf-8">
 
         <link rel="stylesheet" href="/css/index.css"> 
-        <link rel="icon" type="image/vnd.microsoft.icon" href="/images/paw_new.png">
+        <link rel="icon" type="image/vnd.microsoft.icon" href="/images/paw.png">
 
         <link href="https://fonts.googleapis.com/css?family=Dosis|Josefin+Sans" rel="stylesheet"> 
 
@@ -19,9 +19,13 @@
     <body>
         <h1>Ich suche einen Hund...</h1>
             
-            <div class="suche_rechts">
-                <form action="/search">
-                <table cellspacing="0" cellpadding="0" width="100%">
+            <div class="feld">
+
+            <form action="/search">
+
+
+            <div class="suche_links">
+                <table cellspacing="0" cellpadding="0" width="50%" name="tabelle_links">
                     <tbody>
                         <!-- Größe des Hundes -->
                         <!-- req.body.size -->
@@ -32,21 +36,21 @@
                                 <div class="size">Größe</div>
                                     <div class="size_icons">
                                         <!-- klein -->
-                                        <img src="/images/small_ungefuellt.png" id="small_dog" 
+                                        <img src="/images/small.png" id="small_dog" 
                                         onclick="changeImage_smallDog()" style="margin-left: 10px;"/>
 
                                         <!-- mittel -->
-                                        <img src="/images/middle_ungefuellt.png" id="middle_dog" 
+                                        <img src="/images/middle.png" id="middle_dog" 
                                         onclick="changeImage_middleDog()" style="margin-left: 10px;"/>
 
                                         <!-- groß -->
-                                        <img src="/images/big_ungefuellt.png" id="big_dog" 
+                                        <img src="/images/big.png" id="big_dog" 
                                         onclick="changeImage_bigDog()" style="margin-left: 10px;"/>
                                         
                                     </div>
                                 
                                      <p>
-                                         <div style="margin:10px 10px; border-bottom:1px solid white;"/> 
+                                         <div style="margin:10px 10px; border-bottom:1px solid white; width: 290px;"/> 
                                     </p>
                             </td>
                         </tr>   
@@ -73,7 +77,7 @@
                                         </script>
                                  </div>
                                     <p>
-                                         <div style="margin:10px 10px; border-bottom:1px solid white;"/> 
+                                         <div style="margin:10px 10px; border-bottom:1px solid white; width: 290px;"/> 
                                     </p>
                             </td>
                         </tr>
@@ -84,14 +88,14 @@
                             <td width="105px">
                                  <div class="gender">Geschlecht</div>
                                     <div class="gender_icons">
-                                        <img src="/images/male_unselected.png" style="margin-left: 50px; height: 70px; width: 70px;" 
+                                        <img src="/images/male.png" style="margin-left: 50px; height: 70px; width: 70px;" 
                                          id="imgClickAndChange_male" onclick="changeImage_male()"/>
-                                         <img src="/images/female_unselected.png" style="margin-left: 20px; height: 70px; width: 70px;"
+                                         <img src="/images/female.png" style="margin-left: 20px; height: 70px; width: 70px;"
                                           id="imgClickAndChange_female" onclick="changeImage_female()"/>
                                     </div>     
                                 </div>
                                     <p>
-                                        <div style="margin:10px 10px; border-bottom:1px solid white;"/> 
+                                        <div style="margin:10px 10px; border-bottom:1px solid white; width: 290px;"/> 
                                     </p>
                             </td>
                         </tr>
@@ -102,13 +106,13 @@
                             <td width="105px">
                                  <div class="age">Alter</div>
                                     <div class="age_icons">
-                                        <img src="/images/baby_ungefuellt.png" style="height: 80px; width: 80px;
+                                        <img src="/images/baby.png" style="height: 80px; width: 80px;
                                             margin-left:10px;" id="imgClickAndChange_young" onclick="changeImage_young()"/>
                                         
-                                        <img src="/images/father_ungefuellt.png" style="height: 80px; width: 80px;
+                                        <img src="/images/adult.png" style="height: 80px; width: 80px;
                                             margin-left:10px;" id="imgClickAndChange_adult" onclick="changeImage_adult()"/>
                                         
-                                        <img src="/images/old_ungefuellt.png" style="height: 80px; width: 80px;
+                                        <img src="/images/senior.png" style="height: 80px; width: 80px;
                                             margin-left:10px;" id="imgClickAndChange_senior" onclick="changeImage_senior()"/>
 
                                             <!--<p style="margin-left: 23px; color: white;">
@@ -117,33 +121,40 @@
                                     </div>
                                 </div>
                                     <p>
-                                         <div style="margin:10px 10px; border-bottom:1px solid white;"/> 
+                                         <div style="margin:10px 10px; border-bottom:1px solid white; width: 290px;"/> 
                                     </p>
                             </td>
                         </tr>
 
 
-                        <!-- Hund kastriert JA/NEN -->
+                        <!-- Hund kastriert JA/NEIN -->
                         <input type="hidden" id="castrated" value="" name="castrated"/>
                         <tr>
                             <td width="105px">
                                  <div class="castrated">Kastriert</div>
                                     <div class="castrated_icons">
 
-    
-                                        <img src="/images/castrated_ungefuellt.png" style="height: 100px; width: 100px;
+                                        <img src="/images/castrated.png" style="height: 100px; width: 100px;
                                             margin-left:80px;" id="imgClickAndChange_castrated" onclick="changeImage_castrated()"/>
                                              
                                     </div>
                                 </div>
-                                    <p>
-                                         <div style="margin:10px 10px; border-bottom:1px solid white;"/> 
-                                    </p>
+                                    <!--<p>
+                                         <div style="margin:10px 10px; border-bottom:1px solid white; width: 290px;"/> 
+                                    </p>-->
                             </td>
                         </tr>
+                    </tbody>
+                </table>
+                </div>
 
 
 
+
+                <div class="suche_rechts">
+                <!--rechte Seite des Formulars-->
+                <table cellspacing="0" cellpadding="0" width="100%" class="tabelle_rechts">
+                     <tbody>
                         <!-- Eigenschaften des Hundes -->
                         <input type="hidden" id="traits" value="" name="traits"/>
                         <tr>
@@ -151,10 +162,10 @@
                                  <div class="traits">Eigenschaften</div>
                                     <div class="traits_icons">
                                             <img src="/images/likes_male.png" id="imgClickAndChange_likes_male"
-                                            onClick="changeImage_likes_male()" style="height: 80px; width: 80px; margin-left:10px;"/>
+                                            onClick="changeImage_likes_male()" style="height: 90px; width: 90px; margin-left:10px;"/>
                                             
                                             <img src="/images/likes_female.png" id="imgClickAndChange_likes_female"
-                                            onClick="changeImage_likes_female()" style="height: 80px; width: 80px; margin-left:10px;"/>
+                                            onClick="changeImage_likes_female()" style="height: 90px; width: 90px; margin-left:10px;"/>
                                            
                                             <img src="/images/likes_male_and_female.png" id="imgClickAndChange_both_genders"
                                             onClick="changeImage_both_genders()" style="height: 80px; width: 80px; margin-left:10px;"/>
@@ -173,10 +184,6 @@
                                            
                                             <img src="/images/likes_bunny.png" id="imgClickAndChange_likes_bunny"
                                             onClick="changeImage_likes_bunny()"  style="height: 80px; width: 80px; margin-left:10px;"/>
-
-                                            <img src="/images/likes_water.png" id="imgClickAndChange_likes_water"
-                                            onClick="changeImage_likes_water()"  style="height: 80px; width: 80px; margin-left:10px;"/>
-
                                             <img src="/images/solo.png" id="imgClickAndChange_solo"
                                             onClick="changeImage_solo()"  style="height: 80px; width: 80px; margin-left:10px;"/>
                                         
@@ -195,19 +202,18 @@
                                             <!--<img src="/images/speziell_ungefuellt.png" id="imgClickAndChange_experienced"
                                             onClick="changeImage_experienced()" style="height: 80px; width: 80px; margin-left:10px;"/>-->
 
-                                            <img src="/images/sick.png" id="imgClickAndChange_sick"
-                                            onClick="changeImage_sick()"  style="height: 80px; width: 80px; margin-left:10px;"/>
+                                            <img src="/images/likes_water_new.png" id="imgClickAndChange_likes_water"
+                                            onClick="changeImage_likes_water()"  style="height: 80px; width: 80px; margin-left:10px;"/>
 
                                             <img src="/images/poo.png" id="imgClickAndChange_poo"
                                             onClick="changeImage_poo()"  style="height: 80px; width: 80px; margin-left:10px;"/>
 
+                                            <img src="/images/sick.png" id="imgClickAndChange_sick"
+                                            onClick="changeImage_sick()"  style="height: 80px; width: 80px; margin-left:10px;"/> 
+
                                             <img src="/images/warning.png" id="imgClickAndChange_warning"
                                             onClick="changeImage_warning()"  style="height: 80px; width: 80px; margin-left:10px;"/>
 
-                                            <!--                                       
-                                            <img src="/images/wachhund.png" style="height: 70px; width: 70px; 
-                                            margin-left:10px;"/> 
-                                            -->
                                     </div>
                                 </div>
                                     <p>
@@ -218,15 +224,16 @@
 
                         <tr>
                             <td>
-                                <button type="submit" name="send" value="yes" method="get">Suchen</button>
-                            </td>
+                                <button type="submit" name="send" value="send" method="get">Suchen</button>
+                                </td>
                         </tr>
                     </tbody>
                 </table>
-                </form>
-            
             </div>
-           
+
+        </form>
+
+        </div>
 
 
             <!-- Formular
