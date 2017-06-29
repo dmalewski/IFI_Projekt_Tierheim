@@ -17,12 +17,11 @@
     </head>
 
     <body>
-        <h1>Ich suche einen Hund...</h1>
+        <!--<h1>Ich suche einen Hund...</h1>-->
             
             <div class="feld">
 
-            <form action="/search">
-
+            <form action="/search"> 
 
             <div class="suche_links">
                 <table cellspacing="0" cellpadding="0" width="50%" name="tabelle_links">
@@ -49,8 +48,8 @@
                                         
                                     </div>
                                 
-                                     <p>
-                                         <div style="margin:10px 10px; border-bottom:1px solid white; width: 290px;"/> 
+                                    <p>
+                                        <div class="white_line"/> 
                                     </p>
                             </td>
                         </tr>   
@@ -76,8 +75,9 @@
                                             });
                                         </script>
                                  </div>
+
                                     <p>
-                                         <div style="margin:10px 10px; border-bottom:1px solid white; width: 290px;"/> 
+                                        <div class="white_line"/> 
                                     </p>
                             </td>
                         </tr>
@@ -94,8 +94,9 @@
                                           id="imgClickAndChange_female" onclick="changeImage_female()"/>
                                     </div>     
                                 </div>
+
                                     <p>
-                                        <div style="margin:10px 10px; border-bottom:1px solid white; width: 290px;"/> 
+                                        <div class="white_line"/> 
                                     </p>
                             </td>
                         </tr>
@@ -120,30 +121,33 @@
                                             </p>-->
                                     </div>
                                 </div>
+
                                     <p>
-                                         <div style="margin:10px 10px; border-bottom:1px solid white; width: 290px;"/> 
+                                        <div class="white_line"/> 
                                     </p>
                             </td>
                         </tr>
 
-
+                        
                         <!-- Hund kastriert JA/NEIN -->
                         <input type="hidden" id="castrated" value="" name="castrated"/>
                         <tr>
                             <td width="105px">
                                  <div class="castrated">Kastriert</div>
-                                    <div class="castrated_icons">
+                                    <div class="castrated_icon">
 
-                                        <img src="/images/castrated.png" style="height: 100px; width: 100px;
-                                            margin-left:80px;" id="imgClickAndChange_castrated" onclick="changeImage_castrated()"/>
+                                        <img class="castrated_img" src="/images/castrated.png" 
+                                        id="imgClickAndChange_castrated" onclick="changeImage_castrated()"/>
                                              
                                     </div>
                                 </div>
                                     <!--<p>
-                                         <div style="margin:10px 10px; border-bottom:1px solid white; width: 290px;"/> 
+                                        <div class="white_line"/> 
                                     </p>-->
                             </td>
                         </tr>
+
+
                     </tbody>
                 </table>
                 </div>
@@ -154,47 +158,49 @@
                 <div class="suche_rechts">
                 <!--rechte Seite des Formulars-->
                 <table cellspacing="0" cellpadding="0" width="100%" class="tabelle_rechts">
-                     <tbody>
+                     <tbody>  
+
                         <!-- Eigenschaften des Hundes -->
                         <input type="hidden" id="traits" value="" name="traits"/>
                         <tr>
                             <td width="105px">
                                  <div class="traits">Eigenschaften</div>
                                     <div class="traits_icons">
-                                            <img src="/images/likes_male.png" id="imgClickAndChange_likes_male"
-                                            onClick="changeImage_likes_male()" style="height: 90px; width: 90px; margin-left:10px;"/>
+                                            <img class="trait_img" src="/images/likes_male.png" id="imgClickAndChange_likes_male"
+                                            onClick="changeImage_likes_male()"/>
                                             
-                                            <img src="/images/likes_female.png" id="imgClickAndChange_likes_female"
-                                            onClick="changeImage_likes_female()" style="height: 90px; width: 90px; margin-left:10px;"/>
+                                            <img class="trait_img" src="/images/likes_female.png" id="imgClickAndChange_likes_female"
+                                            onClick="changeImage_likes_female()"/>
                                            
-                                            <img src="/images/likes_male_and_female.png" id="imgClickAndChange_both_genders"
-                                            onClick="changeImage_both_genders()" style="height: 80px; width: 80px; margin-left:10px;"/>
+                                            <img class="trait_img" src="/images/likes_male_and_female.png" id="imgClickAndChange_both_genders"
+                                            onClick="changeImage_both_genders()"/>
                                            
                                             <!--<img src="/images/kastriert_ungefuellt.png" id="imgClickAndChange_castrated"
                                             onClick="changeImage_castrated()" style="height: 70px; width: 70px; margin-left:10px;"/>-->
                                           
-                                            <img src="/images/likes_cat.png" id="imgClickAndChange_likes_cat"
-                                            onClick="changeImage_likes_cat()" style="height: 80px; width: 80px; margin-left:10px;"/>
+                                            <img class="trait_img" src="/images/likes_cat.png" id="imgClickAndChange_likes_cat"
+                                            onClick="changeImage_likes_cat()"/>
                                           
-                                            <img src="/images/likes_child.png" id="imgClickAndChange_likes_child"
-                                            onClick="changeImage_likes_child()" style="height: 80px; width: 80px; margin-left:10px;"/>
+                                            <img class="trait_img" src="/images/likes_child.png" id="imgClickAndChange_likes_child"
+                                            onClick="changeImage_likes_child()"/>
                                           
-                                            <img src="/images/likes_senior.png" id="imgClickAndChange_likes_senior"
-                                            onClick="changeImage_likes_senior()" style="height: 80px; width: 80px; margin-left:10px;"/>
+                                            <img class="trait_img" src="/images/likes_senior.png" id="imgClickAndChange_likes_senior"
+                                            onClick="changeImage_likes_senior()"/>
                                            
-                                            <img src="/images/likes_bunny.png" id="imgClickAndChange_likes_bunny"
-                                            onClick="changeImage_likes_bunny()"  style="height: 80px; width: 80px; margin-left:10px;"/>
-                                            <img src="/images/solo.png" id="imgClickAndChange_solo"
-                                            onClick="changeImage_solo()"  style="height: 80px; width: 80px; margin-left:10px;"/>
+                                            <img class="trait_img" src="/images/likes_bunny.png" id="imgClickAndChange_likes_bunny"
+                                            onClick="changeImage_likes_bunny()"/>
+
+                                            <img class="trait_img" src="/images/solo.png" id="imgClickAndChange_solo"
+                                            onClick="changeImage_solo()"/>
                                         
-                                            <img src="/images/group.png" id="imgClickAndChange_group"
-                                            onClick="changeImage_group()"  style="height: 80px; width: 80px; margin-left:10px;"/>
+                                            <img class="trait_img" src="/images/group.png" id="imgClickAndChange_group"
+                                            onClick="changeImage_group()"/>
 
-                                            <img src="/images/hunt.png" id="imgClickAndChange_hunt"
-                                            onClick="changeImage_hunt()"  style="height: 80px; width: 80px; margin-left:10px;"/>
+                                            <img class="trait_img" src="/images/hunt.png" id="imgClickAndChange_hunt"
+                                            onClick="changeImage_hunt()"/>
 
-                                            <img src="/images/guard.png" id="imgClickAndChange_guard"
-                                            onClick="changeImage_guard()"  style="height: 80px; width: 80px; margin-left:10px;"/>
+                                            <img class="trait_img" src="/images/guard.png" id="imgClickAndChange_guard"
+                                            onClick="changeImage_guard()"/>
 
                                             <!--<img src="/images/anfaenger_ungefuellt.png" id="imgClickAndChange_beginner"
                                             onClick="changeImage_beginner()" style="height: 70px; width: 70px; margin-left:10px;"/>-->
@@ -202,33 +208,33 @@
                                             <!--<img src="/images/speziell_ungefuellt.png" id="imgClickAndChange_experienced"
                                             onClick="changeImage_experienced()" style="height: 80px; width: 80px; margin-left:10px;"/>-->
 
-                                            <img src="/images/likes_water_new.png" id="imgClickAndChange_likes_water"
-                                            onClick="changeImage_likes_water()"  style="height: 80px; width: 80px; margin-left:10px;"/>
+                                            <img class="trait_img" src="/images/likes_water_new.png" id="imgClickAndChange_likes_water"
+                                            onClick="changeImage_likes_water()"/>
 
-                                            <img src="/images/poo.png" id="imgClickAndChange_poo"
-                                            onClick="changeImage_poo()"  style="height: 80px; width: 80px; margin-left:10px;"/>
+                                            <img class="trait_img" src="/images/poo.png" id="imgClickAndChange_poo"
+                                            onClick="changeImage_poo()"/>
 
-                                            <img src="/images/sick.png" id="imgClickAndChange_sick"
-                                            onClick="changeImage_sick()"  style="height: 80px; width: 80px; margin-left:10px;"/> 
+                                            <img class="trait_img" src="/images/sick.png" id="imgClickAndChange_sick"
+                                            onClick="changeImage_sick()"/> 
 
-                                            <img src="/images/warning.png" id="imgClickAndChange_warning"
-                                            onClick="changeImage_warning()"  style="height: 80px; width: 80px; margin-left:10px;"/>
+                                            <img class="trait_img" src="/images/warning.png" id="imgClickAndChange_warning"
+                                            onClick="changeImage_warning()"/>
 
                                     </div>
                                 </div>
+
                                     <p>
-                                         <div style="margin:10px 10px; border-bottom:1px solid white;"/> 
+                                        <div class="white_line"/> 
                                     </p>
                             </td>
                         </tr>
 
-                        <tr>
-                            <td>
-                                <button type="submit" name="send" value="send" method="get">Suchen</button>
-                                </td>
-                        </tr>
+                        
                     </tbody>
                 </table>
+
+
+                <button type="submit" name="submit" value="send" method="get">Suchen</button>
             </div>
 
         </form>

@@ -13,9 +13,15 @@ body {
     font-family: FagonRegular;
 }
 
+.white_line {
+    margin:10px 10px; 
+    border-bottom:1px solid white; 
+    width: 300px;
+}
+
 .feld {
-    width: 950px;
-    height: 800px;
+    width: 754px;
+    height: 835px;
     background-color: #737682;  
     margin-left:25%;
     position: absolute;
@@ -24,26 +30,28 @@ body {
 }
 
 .suche_links {
-     background-color: blue;
+     width: 315px;
+     height: 775px;
+     /*background-color: blue;*/
      position: flex;
      display:inline-block;
-     width: 400px;
      /*vertical-align: top;*/
     /*position:absolute;*/
     /*left:50%;*/
     /*margin-left:25%;*/
     /*margin-top: 80px;*/
     /*padding: 20px 30px;*/
-        padding-top: 20px;
+        padding-top: 30px;
         padding-right: 30px;
-        padding-bottom: 20px;
+        padding-bottom: 30px;
         padding-left: 30px;
 }
 
 .suche_rechts {
-    width: 400px;
+    width:315px;
+    height: 775px;
+    /*background-color: red;*/
     position: flex;
-    background-color: red;
     display: inline-block;
     vertical-align: top;
     /*position:absolute;*/
@@ -51,15 +59,13 @@ body {
     /*margin-left:50%;*/
     /*margin-top: 80px;*/
     /*padding: 20px 30px;*/
-        padding-top: 20px;
+        padding-top: 30px;
         padding-right: 30px;
-        padding-bottom: 20px;
+        padding-bottom: 30px;
         padding-left: 30px;
    /*margin-top: 100px;*/
 }
 
-
-     
 
 .size {
     font-size: 20px;
@@ -67,7 +73,7 @@ body {
     margin-top:10px;
     margin-bottom:10px;
     padding-right: 20px; 
-    margin-left: 15px;
+    margin-left:10px;
 }   
 
 .breed {
@@ -84,7 +90,7 @@ body {
 }
 
 .breed_select {
-    margin-left: 120px;
+    margin-left: 200px;
 }
 
 .gender {
@@ -123,14 +129,28 @@ body {
     margin-left: 10px;
 }
 
+.castrated_img {
+    height: 90px; 
+    width: 90px;
+    margin-left: 100px;
+}
+
+.trait_img {
+    height: 90px; 
+    width: 90px; 
+    margin-left:10px;
+}
+
 button {
-    font-size: 20px;
-    position: central;
-    color: white;
+    width: 107px;
+    font-size: 30px;
+    /*position: central;*/
+    color: black;
     margin-top:10px;
     margin-bottom:10px;
     padding-right: 20px; 
-    margin-left: 80px;
+    margin-left: 100px;
+    /*display: inline-block;*/
 }
 
 
