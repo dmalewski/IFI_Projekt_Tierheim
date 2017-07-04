@@ -12,7 +12,11 @@
         "age": "senior",
         "height": "Mittel",
         "since_when": "im Tierheim Bremen",
-        "traits": "verträglich mit Weibchen,mag Wasser,Einzeltier"
+        "traits": [
+                    "verträglich mit Weibchen",
+                    "mag Wasser",
+                    "Einzeltier"
+                  ]
     },
 
     {
@@ -28,6 +32,9 @@
         "age": "erwachsen",
         "height": "Mittel",
         "since_when": "im Tierheim Bremen",
-        "traits": "kinderfreundlich,katzenfreundlich"
+        "traits": [
+                   "kinderfreundlich",
+                    "katzenfreundlich"
+                  ]
     }
 ]

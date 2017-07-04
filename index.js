@@ -25,7 +25,7 @@ app.get("/search",(req, res) => {
 
     //Größen
     let sizes = "";
-    console.log("size.length: " + req.query.size.length);
+    // console.log("size.length: " + req.query.size.length);
     if(req.query.size.length) {
         sizes = req.query.size.split(',');
     }
@@ -43,7 +43,7 @@ app.get("/search",(req, res) => {
     }
 
     //Alter
-    console.log("age.length: " + req.query.age.length);
+    // console.log("age.length: " + req.query.age.length);
     let ages ="";
     if(req.query.age.length) {
         ages = req.query.age.split(',');
@@ -56,19 +56,19 @@ app.get("/search",(req, res) => {
     }
 
     //Eigenschaften
-    let trait ="";
+    let traits ="";
     if(req.query.traits.length) {
-        trait = req.query.traits.split(',');
+        traits = req.query.traits.split(',');
     }
 
     // console.log(sizes);
     // console.log(genders);
     // console.log(breed);
-    console.log("Alter:" +  ages);
-    console.log("Eigenschaften:" + trait);
+    // console.log("Alter:" +  ages);
+    // console.log("Eigenschaften:" + traits);
 
-    filter(sizes,genders,breed,ages,castrated,trait).then((results) => {
-        console.log(results);
+    filter(sizes,genders,breed,ages,castrated,traits).then((results) => {
+        // console.log(results);
         res.render("search",{
             dogs: results,
             message: ""
