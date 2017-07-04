@@ -1,20 +1,19 @@
 {
-  "name": "database_reader",
+  "name": "dog-importer",
   "version": "1.0.0",
-  "dependencies": {
-    "ejs": "^2.5.6",
-    "express": "^4.15.2",
-    "lodash": "^4.17.4",
-    "moment": "^2.18.1",
-    "mongodb": "^2.2.28",
-    "object-hash": "^1.1.8",
-    "x-ray": "^2.3.2"
-  },
   "scripts": {
-    "import": "seed"
+    "start": "micro index"
   },
-  "devDependencies": {
-    "nodemon": "^1.11.0",
-    "node-mongo-seeds": "^2.3.1"
+  "dependencies": {
+    "moment": "^2.18.1",
+    "mongodb": "^2.2.26",
+    "object-hash": "^1.1.8",
+    "shortid": "^2.2.8",
+    "x-ray": "^2.3.2",
+    "express": "^4.15.3",
+    "micro": "latest"
   }
+
+
+
 }
