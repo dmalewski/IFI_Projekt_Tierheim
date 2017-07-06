@@ -1,0 +1,84 @@
+/**
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    stylesheet for navigation container
+    fixed to the top
+    responsive 
+    we use javascript for the menu icon
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+*/
+
+/* ----------------------------- container and header section ------------------------ */
+
+.topnav {
+  z-index: 3;
+  width: 100%;
+  overflow: hidden;
+  background-color: rosybrown;
+  position: fixed;
+  }
+.topnav a {
+  float: left;
+  display: block;
+  color: ghostwhite;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  line-height: 20px;
+  border-top: 1px solid #a68383;
+  font-size: 19px;
+}
+.topnav a:hover {
+  color: darkslategray;
+}
+.topnav .icon {
+  display: none;
+}
+.bigger{
+  color:white;
+  background-color: rosybrown;
+  text-transform: uppercase;
+  font-size: 1.4em;
+  padding:12px;
+  position: absolute;
+  cursor: default;
+}
+.nav{
+  margin-left: 150px;
+}
+.anmelden{
+  background-color: sandybrown;
+}
+
+/* ----------------------------- mobile version -------------------------  */
+/* -------- hier wird die Navigationsleiste responsive angepasst --------- */
+
+@media screen and (max-width: 913px) {
+  .nav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    display: block;
+  }
+}
+@media screen and (max-width: 913px) {
+  .topnav.responsive .icon {
+    position: fixed;
+    color:darkslategray;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive a#top {
+    margin-top:50px;
+  }
+  .nav{
+    margin:0;
+  }
+  .icon {
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+}

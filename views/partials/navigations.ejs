@@ -1,0 +1,28 @@
+<!--
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    Template für die Navigation der Webseite
+    responsives Menü mittels Javascript realisiert und in Desktopversion unsichtbar 
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-->
+
+<div class="headcontainer">
+    <div class="topnav" id="myTopnav">
+            
+            <span class="bigger">
+                <%= title %>
+            </span>
+            <div class="nav">
+                <a id="top" href="/hunde">Hunde</a>
+                <a href="/katzen">Katzen</a>
+                <a href="/kleintiere">Kleintiere</a>
+                <a href="/voegel">Vögel</a>
+                <a href="/exoten">Exoten</a>
+                <a href="/anmelden" class="anmelden" title="als Tierheim anmelden">als Tierheim Anmelden</a>
+            </div>
+            <div class="bar">
+                <a href="javascript:void(0);" style="font-size:20px;" class="icon" onclick="myFunction()">&#9776;</a>
+            </div>
+    </div>
+</div>
+
+<script src="js/styling.js" ></script>

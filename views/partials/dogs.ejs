@@ -1,0 +1,69 @@
+<% dogs.forEach(function (dog) { %>
+<div class="elementgrid">
+ 
+  <a href="details" >
+    <p class="center figcap"><%= dog.name %> </p>
+    <hr />
+    <figure class="image-wrapper">
+      <img src="<%= dog.img %>"></img>
+    </figure> 
+    <figcaption>
+        <P class="center figbread"><%= dog.bread %></P>
+    </figcaption>
+  </a>
+  <div id="attribute">
+
+    <% if (dog.height.match(/Klein/ig)) { %>
+      <img id="icon" src="/images/small_s.png" title="height"/>
+    <% } %>
+
+    <% if (dog.height.match(/Mittel/ig)) { %>
+      <img id="icon" src="/images/middle_m.png" title="height"/>
+    <% } %>
+
+    <% if (dog.height.match(/Groß/ig)) { %>
+      <img id="icon" src="/images/big_l.png" title="height"/>
+    <% } %>
+
+    <% if (dog.age.match(/jung/ig)) { %>
+      <img id="icon" src="/images/baby.png" title="age"/>
+    <% } %>
+
+     <% if (dog.age.match(/erwachsen/ig)) { %>
+      <img id="icon" src="/images/adult.png" title="age"/>
+    <% } %>
+
+    <% if (dog.age.match(/senior/ig)) { %>
+      <img id="icon" src="/images/senior.png" title="age"/>
+    <% } %>
+
+    <% if (dog.gender.match(/männlich/ig)) { %>
+      <img id="icon" src="/images/male_legend.png" title="gender"/>
+    <% } %>
+
+    <% if (dog.gender.match(/weiblich/ig)) { %>
+      <img id="icon" src="/images/female_legend.png" title="gender"/>
+    <% } %>
+
+    <% if (dog.castrated.match(/Ja/ig)) { %>
+        <img id="icon" src="/images/castrated_unfilled.png" title="castrated"/>
+    <% } %>
+
+  
+    <% const trait = dog.traits %>
+    <%= trait %>
+  
+  
+    <!--<img id="icon" src="/images/likes_cat.png" title="traits"/>-->
+   
+ 
+
+
+ 
+
+  
+    
+ </div>
+ 
+</div>
+<% }) %>

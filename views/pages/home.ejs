@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <% include ../partials/header %>
+    </head>
+
+    <body>
+        <!-- navigation with navheader -->
+        <% include ../partials/navigations %>
+        <div class="maincontainer">
+            <div class="container">
+                <h1><%= headline %></h1>
+                <p><%= text %></p>
+            </div>
+        </div>
+        
+        <!-- content -->
+        <div class="contentcontainer" role="main">
+            <div class="flexcontainer">
+
+                 <section class="gradient">
+                    
+                    <a href="/suche.ejs"><i class="fa fa-search color1"></i>Tier suchen</a>
+                    <a href="/anmelden.ejs"><i class="fa fa-pencil color2"></i>Tier eintragen</a>
+                    <a href="/links.ejs"><i class="fa fa-info-circle color3"></i>über die Tiervermittlung</a>
+
+                </section>
+
+            </div> 
+        </div>
+        <!-- footer -->
+        <% include ../partials/footer.ejs %>
+          
+    </body>
+</html>

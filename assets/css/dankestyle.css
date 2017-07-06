@@ -1,0 +1,67 @@
+
+.text{
+   margin: 30;
+   padding: 50;
+
+}
+
+.text animation {
+     margin: 0;
+     padding: 0;
+     position: relative;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+
+}
+
+.animation span {
+   color: #262626;
+   background: #fff;
+   padding: 10px 20px;
+   font-family: arial;
+   display: table-cell;
+   box-shadow: inset 0 0 5px rgba(0,0,0,3), 0 5px 0 #ccc;
+   animation: animate .7s infinite;
+}
+
+@keyframes animate {
+  0%{
+    transform: translateY(0px);
+    box-shadow: inset 0 0 5px rgba(0,0,0,3), 0 5px 0 #ccc , 0 15px 5px rgba(0,0,0,0);
+
+  }
+
+  5%{
+    transform: translateY(-20px);
+        box-shadow: inset 0 0 5px rgba(0,0,0,3), 0 5px 0 #ccc , 0 15px 5px rgba(0,0,0,.6);
+  }
+
+  100%{
+    transform: translateY(0px);
+        box-shadow: inset 0 0 5px rgba(0,0,0,3), 0 5px 0 #ccc , 0 15px 5px rgba(0,0,0,0);
+  }
+}
+
+.animation span:nth-child(1){
+    animation-delay: .2s;
+}
+
+.animation span:nth-child(2){
+    animation-delay: .4s;
+}
+.animation span:nth-child(3){
+    animation-delay: .6s;
+}
+.animation span:nth-child(4){
+    animation-delay: .8s;
+}
+.animation span:nth-child(5){
+    animation-delay: 1.2s;
+}
+.animation span:nth-child(6){
+    animation-delay: 1.4s;
+}
+.animation span:nth-child(7){
+    animation-delay: 1.6s;
+}

@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <% include ../partials/header %>
+    </head>
+
+    <body>
+        <!-- navigation with navheader -->
+        <% include ../partials/navigations %>
+        <div class="maincontainer">
+            <div class="container">
+                <h1><%= headline %></h1>
+                <p><%= text %></p>
+            </div>
+        </div>
+        <!-- content -->
+        <div class="contentcontainer" role="main">
+            <div class="inner">
+                <% include ../partials/loginRegistration.ejs %>
+            </div>
+        </div>
+        <!-- footer -->
+        <% include ../partials/footer.ejs %>
+          
+    </body>
+</html>

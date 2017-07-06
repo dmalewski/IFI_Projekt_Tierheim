@@ -1,0 +1,21 @@
+.paginationContainer{
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.paginationContainer a {
+     color: black;
+     padding: 8px 16px;
+     text-decoration: none;
+     transition: background-color .3s;
+     border: 2px solid #EBCFC3;
+     margin: 0 4px;
+}
+.paginationContainer a.active {
+     background-color: #EBCFC3;
+     color: white;
+     border: 1px solid #EBCFC3;
+}
+.paginationContainer a:hover:not(.active) {
+   background-color: #EBCFC3;
+}

@@ -1,0 +1,14 @@
+<!--
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    Template für die Ausgabe der Tierobjekte nach eingeschränkter Anzahl und 
+    Angabe einer angepassten Seitenzahlnavigation 
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-->
+
+<% if (pagesCount) { %>
+      <div class="paginationContainer">
+            <% for (let i = 0; i < pagesCount; i++) { %>
+              <a href="/hunde/<%= i %>"><%= i %></a>
+            <% } %>
+      </div>
+<% } %>

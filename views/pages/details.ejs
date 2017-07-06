@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <% include ../partials/header %>
+    </head>
+    <body>
+        <!-- navigation with navheader -->
+        <% include ../partials/navigations %>
+        <div class="maincontainer">
+            <div class="container">
+                <h1><%= headline %></h1>
+            </div>
+        </div>
+        <!-- content -->
+        <div class="contentcontainer">
+            <div class="flexcontainer" id="backgroundcolor">
+                <div class="image" style= background-image:url(../images/titel3.jpg); >
+                    <p class="durchsichtig">Name</p>
+                </div> 
+                <div class="description">
+                    
+                    <div>
+                        <img id="icon" src="/images/klein.png" title="" />
+                        <img id="icon" src="/images/jung.png" title="" />
+                        <img id="icon" src="/images/weiblich.png" title="" />    
+                    </div>
+                               
+                    <p>Rasse: </p>
+                    <P>Alter: </P>
+                    <P>Größe: </P>
+                    <br />
+                    <a href="" class="navbtn">zum Tierheim</a>
+                </div>
+                <div class="block" id="details">
+                    <h3>einige Informationen mehr über #Name Hund:</h3>
+                    <p>
+                        hier könnte eigentlich der Text des Tierheims hin 
+                        sajkfjksafkjkajsfkjaskjfkasjkfjkasjfkjsfkjka sjfksajjasfkjaksjfk
+                        sajkfjksafkjka jsfkjaskjfkasjk fjkasjfkjsfkjkasj fksajjasfkjaksjfk
+                        sajkfjksaf kjkajsfkj askjfkasjkfjkasjfkjsfkjkasjfksajj
+                        kadgjö kdjfkajedgjskglkja eoirtoaerjo a ljgdkljkl thnfkjbkldjoadj
+                        akldggkgjashggg fasggg dga ggffggsdfaghgggggöj oeakjdg bngm,bjad lk
+                        faelmitnigrvkjämeo
+                        sajkfjksafkjkajsf kjaskjfkasjkfjkasjfkjsfkjkasjfksajjasfkjaksjfk
+                        sajkfjksafkjkajsfkjaskjfkasjkfjkasjfkjsfkjkasjfksajjasfkjaksjfkald
+                        sajkfjksafkjkajsfkjaskjfkasjkfjkasjfkjsfkjkasjfksajjasfkjaks
+                    </p>
+                </div>
+            </div>
+            <div class="flexcontainer">
+                <a class="navbtn" role="button" href="/hunde">&laquo; zurück zur Übersicht</a>
+            </div>
+        </div>
+        <!-- footer -->
+        <% include ../partials/footer.ejs %>
+
+    </body>
+</html>

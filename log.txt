@@ -1,2 +1,0 @@
-collection -dogs- flushed
-Written into database for "München"

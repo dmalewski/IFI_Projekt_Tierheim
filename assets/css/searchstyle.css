@@ -1,0 +1,134 @@
+* {
+    font-family: 'Josefin Sans';
+}
+
+h1 {
+    
+    /*left:50%;*/
+    margin-left: 40%;
+    /*margin-bottom: 20px;*/
+}
+
+body {
+    font-family: FagonRegular;
+}
+
+.feld {
+    width: 950px;
+    height: 800px;
+    background-color: #737682;  
+    margin-left:25%;
+    position: absolute;
+        box-sizing: border-box;
+        /*width: 100%;*/
+}
+
+.suche_links {
+     background-color: blue;
+     position: flex;
+     display:inline-block;
+     width: 400px;
+     /*vertical-align: top;*/
+    /*position:absolute;*/
+    /*left:50%;*/
+    /*margin-left:25%;*/
+    /*margin-top: 80px;*/
+    /*padding: 20px 30px;*/
+        padding-top: 20px;
+        padding-right: 30px;
+        padding-bottom: 20px;
+        padding-left: 30px;
+}
+
+.suche_rechts {
+    width: 400px;
+    position: flex;
+    background-color: red;
+    display: inline-block;
+    vertical-align: top;
+    /*position:absolute;*/
+    /*left:50%;*/
+    /*margin-left:50%;*/
+    /*margin-top: 80px;*/
+    /*padding: 20px 30px;*/
+        padding-top: 20px;
+        padding-right: 30px;
+        padding-bottom: 20px;
+        padding-left: 30px;
+   /*margin-top: 100px;*/
+}
+
+
+     
+
+.size {
+    font-size: 20px;
+    color: white;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-right: 20px; 
+    margin-left: 15px;
+}   
+
+.breed {
+    font-size: 20px;
+    color: white;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-right: 20px;
+    margin-left: 10px; 
+}
+
+.breed_input {
+    margin-top: 10px;
+}
+
+.breed_select {
+    margin-left: 120px;
+}
+
+.gender {
+    font-size: 20px;
+    color: white;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-right: 20px; 
+    margin-left: 10px;
+}
+
+.age {
+    font-size: 20px;
+    color: white;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-right: 20px; 
+    margin-left: 10px;
+}
+
+.castrated {
+    font-size: 20px;
+    color: white;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-right: 20px; 
+    margin-left: 10px;
+}
+
+.traits {
+    font-size: 20px;
+    color: white;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-right: 20px; 
+    margin-left: 10px;
+}
+
+button {
+    font-size: 20px;
+    position: central;
+    color: white;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-right: 20px; 
+    margin-left: 80px;
+}

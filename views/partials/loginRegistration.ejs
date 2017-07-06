@@ -1,0 +1,38 @@
+<!--
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    Template für die Registrierung und Anmeldung als Tierheim
+    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-->
+
+<div class="form innercontainer">
+	
+  <form method="post" action="/registriert">
+   
+    <div class="form-item">
+      <label>Name: </label>
+      <input type="text" placeholder="Bitte Namen angeben" name="name" required />
+    </div>
+    <div class="form-item">
+      <label>Benutzername: </label>
+      <input type="text" placeholder="Bitte Nutzernamen angeben" name="username" required />
+    </div>
+    <div class="form-item">
+      <label for="aMail" title="E-Mail">E-Mail: </label>
+      <input id="aMail" name="aMail" type="text" tabindex="91" placeholder="Bitte E-Mailadresse angeben" required />
+    </div>
+    <div class="form-item">
+      <label>Passwort: </label>
+      <input type="password" placeholder="Bitte Passwort angeben" name="password" required />
+    </div>
+    <div class="form-item">
+      <label>Bestätigung Passwort: </label>
+      <input type="password" tabindex="91" placeholder="Passwort wiederholen" name="password2" required />
+    </div>
+
+    <div class="form-button">
+        <input class="button-align" type="submit" value="Registrieren" tabindex="94" />
+        <input class="button-align" type="reset" value="Abbrechen" tabindex="95" />
+    </div>
+
+  </form>
+</div><!-- container -->
