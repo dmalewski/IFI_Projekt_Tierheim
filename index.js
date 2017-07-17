@@ -87,6 +87,7 @@ app.get('/', async (req, res)=>{
          });
     });
 });
+
 // Hunde
 app.get('/hunde/:pages?', async (req, res)=>{
     const page = req.params.pages || 0;
@@ -106,6 +107,7 @@ app.get('/hunde/:pages?', async (req, res)=>{
         pagesCount: results.pagesCount
     });
 });
+
 app.get('/details',(req, res)=>{
     res.render('pages/details',{
         title: 'Hunde',
@@ -120,6 +122,81 @@ app.get('/hunde/:id?', (req, res)=>{
         //Daten aus Datenbank einbinden
     });
 });*/
+
+
+app.get('/suche', async (req, res)=>{
+    findBreeds().then((breeds) => {
+        res.render('pages/suche',{
+            title: 'Suche',
+            headline: 'Suche',
+            breeds: breeds
+        });
+    });
+ });
+
+
+
+app.get("/search",(req, res) => {
+
+    //Größen
+    let sizes = "";
+    // console.log("size.length: " + req.query.size.length);
+    if(req.query.size.length) {
+        sizes = req.query.size.split(',');
+    }
+
+    //Geschlecht
+    let genders = "";
+    if(req.query.gender.length) {
+        genders = req.query.gender.split(',');
+    }
+
+    //Rasse
+    let breed ="";
+    if(req.query.breed_select.length) {
+        breed = req.query.breed_select;
+    }
+
+    //Alter
+    // console.log("age.length: " + req.query.age.length);
+    let ages ="";
+    if(req.query.age.length) {
+        ages = req.query.age.split(',');
+    }
+
+    //Kastriert
+    let castrated ="";
+    if(req.query.castrated.length) {
+        castrated = req.query.castrated;
+    }
+
+    //Eigenschaften
+    let traits ="";
+    if(req.query.traits.length) {
+        traits = req.query.traits.split(',');
+    }
+
+    // console.log(sizes);
+    // console.log(genders);
+    // console.log(breed);
+    // console.log("Alter:" +  ages);
+    // console.log("Eigenschaften:" + traits);
+
+    filter(sizes,genders,breed,ages,castrated,traits).then((results) => {
+        // console.log(results);
+        res.render("pages/search_results",{
+            dogs: results,
+            message: ""
+        });
+    }).catch(() => {
+        res.render("pages/search_error", {
+            dogs: [],
+            message: "Es wurde nichts ausgewählt!"
+        })
+    })
+})
+
+
 // Katzen
 app.get('/katzen',(req, res)=>{
     res.render('pages/comingSoon',{

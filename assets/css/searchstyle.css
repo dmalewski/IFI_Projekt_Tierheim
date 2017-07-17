@@ -1,5 +1,5 @@
 * {
-    font-family: 'Josefin Sans';
+     font-family: 'Josefin Sans'; 
 }
 
 h1 {
@@ -10,13 +10,29 @@ h1 {
 }
 
 body {
-    font-family: FagonRegular;
+     font-family: FagonRegular; 
+}
+
+.search_container {
+    margin-top: 20px;   
+    /* background-color: red;  */
+    width: 100%; height: 850px;
+    margin-bottom: 20px;
+}
+
+
+
+.white_line {
+    margin:10px 10px; 
+    border-bottom:1px solid white; 
+    width: 300px;
 }
 
 .feld {
-    width: 950px;
-    height: 800px;
-    background-color: #737682;  
+    width: 710px;
+    height: 850px;
+    background-image: url(../images/grey.jpg);
+    background-size: 100% 100%;  
     margin-left:25%;
     position: absolute;
         box-sizing: border-box;
@@ -24,26 +40,28 @@ body {
 }
 
 .suche_links {
-     background-color: blue;
+     width: 325px;
+     height: 775px;
+     /*background-color: blue;*/
      position: flex;
      display:inline-block;
-     width: 400px;
      /*vertical-align: top;*/
     /*position:absolute;*/
     /*left:50%;*/
     /*margin-left:25%;*/
     /*margin-top: 80px;*/
     /*padding: 20px 30px;*/
-        padding-top: 20px;
+        padding-top: 30px;
         padding-right: 30px;
-        padding-bottom: 20px;
+        padding-bottom: 30px;
         padding-left: 30px;
 }
 
 .suche_rechts {
-    width: 400px;
+    width:320px;
+    height: 775px;
+    /*background-color: red;*/
     position: flex;
-    background-color: red;
     display: inline-block;
     vertical-align: top;
     /*position:absolute;*/
@@ -51,15 +69,13 @@ body {
     /*margin-left:50%;*/
     /*margin-top: 80px;*/
     /*padding: 20px 30px;*/
-        padding-top: 20px;
+        padding-top: 30px;
         padding-right: 30px;
-        padding-bottom: 20px;
+        padding-bottom: 30px;
         padding-left: 30px;
    /*margin-top: 100px;*/
 }
 
-
-     
 
 .size {
     font-size: 20px;
@@ -67,31 +83,33 @@ body {
     margin-top:10px;
     margin-bottom:10px;
     padding-right: 20px; 
-    margin-left: 15px;
+    margin-left:10px;
 }   
 
 .breed {
     font-size: 20px;
     color: white;
     margin-top:10px;
-    margin-bottom:10px;
+    margin-bottom:20px;
     padding-right: 20px;
     margin-left: 10px; 
 }
 
 .breed_input {
     margin-top: 10px;
+    
 }
 
 .breed_select {
-    margin-left: 120px;
+    /*margin-left: 200px;*/
+    
 }
 
 .gender {
     font-size: 20px;
     color: white;
     margin-top:10px;
-    margin-bottom:10px;
+    margin-bottom:20px;
     padding-right: 20px; 
     margin-left: 10px;
 }
@@ -118,17 +136,31 @@ body {
     font-size: 20px;
     color: white;
     margin-top:10px;
-    margin-bottom:10px;
+    margin-bottom:20px;
     padding-right: 20px; 
     margin-left: 10px;
 }
 
+.castrated_img {
+    height: 90px; 
+    width: 90px;
+    margin-left: 100px;
+}
+
+.trait_img {
+    height: 90px; 
+    width: 90px; 
+    margin-left:10px;
+}
+
 button {
-    font-size: 20px;
-    position: central;
-    color: white;
+    width: 120px;
+    font-size: 30px;
+    /*position: central;*/
+    color: black;
     margin-top:10px;
     margin-bottom:10px;
     padding-right: 20px; 
-    margin-left: 80px;
+    margin-left: 107px;
+    /*display: inline-block;*/
 }
