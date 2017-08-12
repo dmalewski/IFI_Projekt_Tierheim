@@ -30,7 +30,7 @@ body {
 
 .feld {
     width: 710px;
-    height: 850px;
+    height: 800px;
     background-image: url(../images/grey.jpg);
     background-size: 100% 100%;  
     margin-left:25%;
@@ -41,7 +41,7 @@ body {
 
 .suche_links {
      width: 325px;
-     height: 775px;
+     height: 735px;
      /*background-color: blue;*/
      position: flex;
      display:inline-block;

@@ -49,10 +49,74 @@
         <img id="icon" src="/images/castrated_unfilled.png" title="Kastriert"/>
     <% } %>
 
-  
-    <% const trait = dog.traits %>
+    <% if(dog.traits) { %>
+      <% dog.traits.forEach(function (trait) { %>
+        <% if(trait.match(/verträglich mit Männchen/ig)) { %>
+          <img id="icon" src="/images/likes_male.png" title="verträglich mit Männchen"/>
+        <% } %>
+
+        <% if(trait.match(/verträglich mit Weibchen/ig)) { %>
+          <img id="icon" src="/images/likes_female.png" title="verträglich mit Weibchen"/>
+        <% } %>
+
+        <% if(trait.match(/verträglich mit beiden Geschlechtern/ig)) { %>
+          <img id="icon" src="/images/likes_male_and_female.png" title="verträglich mit beiden Geschlechtern"/>
+        <% } %>
+
+        <% if(trait.match(/katzenfreundlich/ig)) { %>
+          <img id="icon" src="/images/likes_cat.png" title="katzenfreundlich"/>
+        <% } %>
+
+        <% if(trait.match(/kinderfreundlich/ig)) { %>
+          <img id="icon" src="/images/likes_child.png" title="kinderfreundlich"/>
+        <% } %>
+
+        <% if(trait.match(/seniorengeeignet/ig)) { %>
+          <img id="icon" src="/images/likes_senior.png" title="seniorengeeignet"/>
+        <% } %>
+
+        <% if(trait.match(/kleintierfreundlich/ig)) { %>
+          <img id="icon" src="/images/likes_bunny.png" title="kleintierfreundlich"/>
+        <% } %>
+
+        <% if(trait.match(/Einzeltier/ig)) { %>
+          <img id="icon" src="/images/solo.png" title="Einzeltier"/>
+        <% } %>
+
+        <% if(trait.match(/Gruppentier/ig)) { %>
+          <img id="icon" src="/images/group.png" title="Gruppentier"/>
+        <% } %>
+
+        <% if(trait.match(/Jadhund/ig)) { %>
+          <img id="icon" src="/images/hunt.png" title="Jadhund"/>
+        <% } %>
+
+        <% if(trait.match(/Wachhund/ig)) { %>
+          <img id="icon" src="/images/guard.png" title="Wachhund"/>
+        <% } %>
+
+        <% if(trait.match(/mag Wasser/ig)) { %>
+          <img id="icon" src="/images/solo.png" title="mag Wasser"/>
+        <% } %>
+
+        <% if(trait.match(/stubenrein/ig)) { %>
+          <img id="icon" src="/images/poo.png" title="stubenrein"/>
+        <% } %>
+
+        <% if(trait.match(/Krankheit/ig)) { %>
+          <img id="icon" src="/images/sick.png" title="Krankheit"/>
+        <% } %>
+
+        <% if(trait.match(/Achtung/ig)) { %>
+          <img id="icon" src="/images/warning.png" title="Achtung"/>
+        <% } %>
+
+      <% }) %>
+    <% } %> 
+
+    <!-- <% const trait = dog.traits %>
     <%= trait %>
-  
+   -->
   
     <!--<img id="icon" src="/images/likes_cat.png" title="traits"/>-->
    

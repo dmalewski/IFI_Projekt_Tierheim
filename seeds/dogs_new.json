@@ -12,7 +12,12 @@
         "age": "9",
         "height": "Mittel",
         "since_when": "im Tierheim Bremen",
-        "traits": "verträglich mit Männchen, verträglich mit Weibchen, Einzeltier"
+        "traits": [
+            "verträglich mit Männchen", 
+            "verträglich mit Weibchen", 
+            "Einzeltier",
+            "Mag Wasser"
+        ]
     },
 
     {
@@ -28,6 +33,9 @@
         "age": "4",
         "height": "Mittel",
         "since_when": "im Tierheim Bremen",
-        "traits": "verträglich mit Kindern, verträglich mit Katzen"
+        "traits": [
+            "verträglich mit Kindern", 
+            "verträglich mit Katzen"
+        ]
     }
 ]

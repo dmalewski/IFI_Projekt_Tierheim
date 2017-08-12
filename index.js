@@ -10,6 +10,7 @@ const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const mongo = require('mongodb');
+const multer = require('multer');
 
 
 /* Deployment auf: https://ifi-tierheim.now.sh/ */
@@ -19,7 +20,21 @@ const {read, findBreeds} = require("./lib/services/reader");
 
 const {filter} = require("./lib/services/filter");
 
+const { findPhoto } = require('./lib/services/findPhotos');
+
+const { persistPhoto } = require("./lib/services/persistPhoto");
+
+const {getHunde} = require('./lib/services/pagination');
+
+const {persistMail} = require('./lib/services/persistMail');
+
+const {insertDog} = require('./lib/services/insert_dog');
+
 const {startSchedule} = require("./lib/services/schedule");
+
+const upload = multer({
+    dest: `./uploads`
+});
 
 //          const mongoose = require('mongoose');
 
@@ -55,12 +70,6 @@ const bodyparser = require('body-parser');
 
 const app = express();
 
-const {getHunde} = require('./lib/services/pagination');
-
-const {persistMail} = require('./lib/services/persister');
-
-const {insertDog} = require('./lib/services/insert_dog');
-
 
 app.use(express.static('./assets'));
 //app.use(bodyparser.urlencoded({extended: true}));
@@ -76,6 +85,8 @@ app.use(bodyparser.urlencoded({ extended: true }));
 //                app.engine('handlebars', exphbs({defaultLayout:'layout'}));*/
 app.set('view engine', 'ejs');
 /*app.set('view engine', 'handlebars');*/
+
+app.use('/uploads', express.static('./uploads'));
 
 //Startseite Home
 app.get('/', async (req, res)=>{
@@ -399,7 +410,7 @@ app.set("view engine","ejs");
 
 app.get("result",(req, res) => {
     let sizes = "";
-    console.log("size.length: " + req.query.size.length);
+    // console.log("size.length: " + req.query.size.length);
     if(req.query.size.length) {
         sizes = req.query.size.split(',');
     }
@@ -414,7 +425,7 @@ app.get("result",(req, res) => {
         breed = req.query.breed_select;
     }
 
-     console.log("age.length: " + req.query.age.length);
+    // console.log("age.length: " + req.query.age.length);
     let ages ="";
     if(req.query.age.length) {
         ages = req.query.age.split(',');
@@ -425,11 +436,11 @@ app.get("result",(req, res) => {
         traits = req.query.traits.split(',');
     }
 
-    console.log(sizes);
-    console.log(genders);
-    console.log(breed);
-    console.log(ages);
-    console.log(traits);
+    // console.log(sizes);
+    // console.log(genders);
+    // console.log(breed);
+    // console.log(ages);
+    // console.log(traits);
 
     filter(sizes,genders,breed,ages,traits).then((results) => {
         //console.log(results);
@@ -450,44 +461,49 @@ app.get('/hund_eintragen',(req, res)=> {
     res.render('pages/insertDog',{
         title: 'Eintragen',
         headline: 'Hund eintragen',
-        text: `Tregen Sie einen Hund ein!`
+        text: `Tragen Sie einen Hund ein!`
     });
 });
+
 
 //Hunde eintragen POST
-app.post('/hund_eintragen', (req, res)=> {
+app.post('/foto_hochladen', upload.single('photo'), (req, res)=> {
 
-  const name =req.body.name;
-//   const foto =req.body.inp;
-  const age = req.body.age;
-  const size =req.body.size;
-  const breed =req.body.breed;
-  const gender =req.body.gender;
-//   const eigenschaft = req.body.eigenschaft;
-  const castrated = req.body.castrated;
+    const name =req.body.name;
+    const { filename, mimetype: type, size } = req.file;
+    const age = req.body.age;
+    const height =req.body.height;
+    const bread =req.body.breed;
+    const gender =req.body.gender;
+    const traits = req.body.traits;
+    const castrated = req.body.castrated;
 
-console.log(name,size,age,breed,gender,castrated);
+    console.log(name,filename, size, age, bread, gender, traits, castrated);
 
-  insertDog(name,size,age,breed,gender,castrated)
-    .then(() => {
-            res.render('pages/hund_gespeichert',{
-                title: `erfolg`,
-                headline: `Ihr Hund wurde erfolgreich gespeichert!!`,
-            });
-    })
-    .catch((err) => {
-          res.send('hat nicht geklappt');
-    });
+    // persistPhoto(filename, type, size)
+        // .then(() =>
+              insertDog(name,size,age,bread,gender,traits,castrated)
+                .then((name) => {
+                    res.render('pages/hund_gespeichert',{
+                        title: "Erfolg",
+                        headline: `Ihr Hund ${name} wurde erfolgreich gespeichert!!`,
+                    });
+                })        
+        // )
+        .catch((err) => {
+            res.send('hat nicht geklappt');
+        });
+        
 });
 
 
-app.get('/speichern',(req, res)=>{
-    res.render('pages/speichern',{
-        title: 'speichern',
-        headline: 'Ihren Hund ist schon eingetragt ',
-        text: ``
-    });
-});
+// app.get('/speichern',(req, res)=>{
+//     res.render('pages/speichern',{
+//         title: 'speichern',
+//         headline: 'Ihren Hund ist schon eingetragt ',
+//         text: ``
+//     });
+// });
 
 
 

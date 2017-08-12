@@ -68,6 +68,10 @@ label {
 	width: 150px;
 }
 
+#aGender {
+	
+}
+
 /* --- buttons --- */
 .form-button {
 	width: 100%;
@@ -140,6 +144,21 @@ textarea {
 	padding:6px .9%;
 	width:100%;
 }
+
+/* textarea */
+input[type="number"],
+textarea {
+	border:1px solid #e4e4e6;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	display:block;
+	font:normal normal normal 14px/14px Arial,Helvetica,sans-serif;
+	margin:0 0 .4em;
+	padding:6px .9%;
+	width:100%;
+}
+
 textarea {
 	min-height:98px;
 	resize:vertical;
