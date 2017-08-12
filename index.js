@@ -51,19 +51,24 @@ function ensureAuthenticated(req, res, next){
 
 // Init App
 const express = require('express');
-//
 const bodyparser = require('body-parser');
+
 const app = express();
 
-const {getHunde} = require('./lib/services/pagination1');
+const {getHunde} = require('./lib/services/pagination');
 
-const {persistMail} = require('./lib/persister');
+const {persistMail} = require('./lib/services/persister');
+
+const {insertDog} = require('./lib/services/insert_dog');
 
 
 app.use(express.static('./assets'));
 //app.use(bodyparser.urlencoded({extended: true}));
 // BodyParser Middleware
-app.use(bodyParser.json());
+app.use(bodyparser.urlencoded({ extended: true }));
+
+// app.use(bodyParser.json());
+
 /*app.use(bodyParser.urlencoded({ extended: false }));*/
 //               app.use(cookieParser());
 // View Engine
@@ -92,7 +97,7 @@ app.get('/', async (req, res)=>{
 app.get('/hunde/:pages?', async (req, res)=>{
     const page = req.params.pages || 0;
     const results = await getHunde(page);
-    console.log (results);
+    console.log (results.pagesCount);
 
     res.render('pages/hunde',{
         title: 'Hunde',
@@ -104,9 +109,11 @@ app.get('/hunde/:pages?', async (req, res)=>{
         Beratung zum richtigen Umgang für Eltern und Kind in den meisten Fällen eventuell vorhandene Zweifel zerstreuen.
         Gute Hundeschulen bieten oft auch in diesen Fällen eine Hilfestellung. `,
         dogs: results.hunde,
-        pagesCount: results.pagesCount
+        pagesCount: results.pagesCount,
+        currentPage: page
     });
 });
+
 
 app.get('/details',(req, res)=>{
     res.render('pages/details',{
@@ -136,11 +143,10 @@ app.get('/suche', async (req, res)=>{
 
 
 
-app.get("/search",(req, res) => {
+app.get("/suche_erg",(req, res) => {
 
     //Größen
     let sizes = "";
-    // console.log("size.length: " + req.query.size.length);
     if(req.query.size.length) {
         sizes = req.query.size.split(',');
     }
@@ -158,7 +164,6 @@ app.get("/search",(req, res) => {
     }
 
     //Alter
-    // console.log("age.length: " + req.query.age.length);
     let ages ="";
     if(req.query.age.length) {
         ages = req.query.age.split(',');
@@ -176,26 +181,30 @@ app.get("/search",(req, res) => {
         traits = req.query.traits.split(',');
     }
 
-    // console.log(sizes);
-    // console.log(genders);
-    // console.log(breed);
-    // console.log("Alter:" +  ages);
-    // console.log("Eigenschaften:" + traits);
-
     filter(sizes,genders,breed,ages,castrated,traits).then((results) => {
-        // console.log(results);
-        res.render("pages/search_results",{
-            dogs: results,
-            message: ""
+        res.render("pages/suche_ergebnis",{
+            title: "Ergebnis",  
+            headline: "Passend zu Ihren Suchkriterien wurden folgende Hunde gefunden:",
+            dogs: results
         });
-    }).catch(() => {
-        res.render("pages/search_error", {
-            dogs: [],
-            message: "Es wurde nichts ausgewählt!"
-        })
     })
-})
-
+    .catch(() => {
+        if(sizes =="" && genders =="" && breed =="" && ages =="" && castrated =="" && traits =="") {
+            res.render("pages/suche_error", {
+                title: "Fehler",
+                headline: "Es wurde nichts ausgewählt!",
+                dogs: []
+            })
+        }
+        else {
+            res.render("pages/suche_no_dog", {
+                title: ":(",
+                headline: "Es wurde leider kein passender Hund gefunden!",
+                dogs: []
+            })
+        }
+    })
+});
 
 // Katzen
 app.get('/katzen',(req, res)=>{
@@ -209,6 +218,7 @@ app.get('/katzen',(req, res)=>{
         signature: `Bis Bald euer Team4!`,
     });
 });
+
 // Kleintiere
 app.get('/kleintiere',(req, res)=>{
     res.render('pages/comingSoon',{
@@ -221,6 +231,7 @@ app.get('/kleintiere',(req, res)=>{
         signature: `Bis Bald euer Team4!`,
     });
 });
+
 // Vögel
 app.get('/voegel',(req, res)=>{
     res.render('pages/comingSoon',{
@@ -233,6 +244,7 @@ app.get('/voegel',(req, res)=>{
         signature: `Bis Bald euer Team4!`,
     });
 });
+
 // Exoten
 app.get('/exoten',(req, res)=>{
     res.render('pages/comingSoon',{
@@ -242,9 +254,10 @@ app.get('/exoten',(req, res)=>{
         text: `Diese Seite befindet sich noch im Aufbau. Wir hoffen, dass Ihnen unsere
         Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das
         ein oder andere Tier aus dem Tierheim zu adoptieren und ihm ein tolles neues Zuhause zu bieten.`,
-        signature: `Bis Bald euer Team4!`,
+        signature: `Bis Bald euer team4!`,
     });
 });
+
 // Login- und Registrierung
 app.get('/anmelden',(req, res)=>{
     res.render('pages/anmelden',{
@@ -255,7 +268,8 @@ app.get('/anmelden',(req, res)=>{
                  Das Einstellen ist intuitiv und schnell zu erledigen`
               });
 });
-//
+
+//Registrierung
 app.get('/registriert',(req, res)=>{
     res.render('pages/registriert',{
         title: 'Anmelden',
@@ -263,6 +277,7 @@ app.get('/registriert',(req, res)=>{
         text: `Sie haben sich erfolgreich registriert!`
     });
 });
+
 // Impressum
 app.get('/impressum',(req, res)=>{
     res.render('pages/impressum',{
@@ -282,32 +297,33 @@ app.get('/impressum',(req, res)=>{
                 erfolgt keine Weitergabe der Daten an Dritte.`
     });
 });
+
 // Kontakt
-app.get('/kontakt',(req, res)=>{
+app.get('/kontakt', (req, res)=>{
     res.render('pages/kontakt',{
         title: 'Kontakt',
         headline: 'Kontakt',
         text: `Haben Sie Fragen, Anregungen, Tipps oder Interesse an unserer Seite, füllen Sie doch einfach
                 das unten stehende Kontaktformular aus und senden Sie es ab. Wir freuen uns auf Ihre Nachricht!
                 
-                Ihr Team4`
+                Euer team4`
     });
 });
 
-app.post('/kontakt',(req, res)=>{
+app.post('/kontakt', (req, res) => {
 
-  const name =req.body.aName;
-  const vorname =req.body.aFirstname;
-  const telefon =req.body.aPhone;
-  const email =req.body.aemail;
-  const betreff =req.body.aSubject;
-  const nachricht = req.body.aText;
+  const name = req.body.surname;
+  const vorname = req.body.firstname;
+  const telefon = req.body.phone;
+  const email = req.body.email;
+  const betreff = req.body.subject;
+  const nachricht = req.body.message;
 
-  persistMail(name, name)
-    .then(() => {
+  persistMail(name,vorname,telefon,email,betreff,nachricht)
+    .then((vorname) => {
             res.render('pages/danke',{
-                title: `Kontakt`,
-                headline: `Dankeschön ${name}!`,
+                title: `Danke`,
+                headline: `Danke, ${vorname}!`, 
                 text:'Ihre Nachricht wurde erfolgreich gesendet!',
             });
     })
@@ -315,6 +331,8 @@ app.post('/kontakt',(req, res)=>{
           res.send('hat nicht geklappt');
     });
 });
+
+
 // Links
 app.get('/links',(req, res)=>{
     res.render('pages/links',{
@@ -323,6 +341,8 @@ app.get('/links',(req, res)=>{
         text: `Auf den Nachfolgenden Links können Sie sich über uns, die Tiere und die mit uns kooperierenden Tierheime informieren.`
     });
 });
+
+
 // ComingSoonPage
 app.get('/comingSoon',(req, res)=>{
     res.render('pages/comingSoon',{
@@ -423,7 +443,53 @@ app.get("result",(req, res) => {
             message: "Es wurde nichts ausgewählt!"
         })
     })
-})
+});
+
+//Hunde eintragen
+app.get('/hund_eintragen',(req, res)=> {
+    res.render('pages/insertDog',{
+        title: 'Eintragen',
+        headline: 'Hund eintragen',
+        text: `Tregen Sie einen Hund ein!`
+    });
+});
+
+//Hunde eintragen POST
+app.post('/hund_eintragen', (req, res)=> {
+
+  const name =req.body.name;
+//   const foto =req.body.inp;
+  const age = req.body.age;
+  const size =req.body.size;
+  const breed =req.body.breed;
+  const gender =req.body.gender;
+//   const eigenschaft = req.body.eigenschaft;
+  const castrated = req.body.castrated;
+
+console.log(name,size,age,breed,gender,castrated);
+
+  insertDog(name,size,age,breed,gender,castrated)
+    .then(() => {
+            res.render('pages/hund_gespeichert',{
+                title: `erfolg`,
+                headline: `Ihr Hund wurde erfolgreich gespeichert!!`,
+            });
+    })
+    .catch((err) => {
+          res.send('hat nicht geklappt');
+    });
+});
+
+
+app.get('/speichern',(req, res)=>{
+    res.render('pages/speichern',{
+        title: 'speichern',
+        headline: 'Ihren Hund ist schon eingetragt ',
+        text: ``
+    });
+});
+
+
 
 
 // Set Port & listen Port

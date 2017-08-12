@@ -135,16 +135,21 @@ hr {
     -webkit-transition: all 0.7s ease;
     transition: all 0.7s ease;
 }
+
 a:hover img {
     /*transform: scale(1.15);*/
     -webkit-transform:scale(1);
     transform:scale(1);
 }
+
 #attribute {
     min-width: 25%;
+    align: center;
     padding-left: 10px;
     padding-right: 10px;
+    padding-bottom: 8px;
 }
+
 img#icon {
     width: 60px;
     height: 60px;

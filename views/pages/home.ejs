@@ -14,21 +14,31 @@
                 <p><%= text %></p>
             </div>
         </div>
-        
+    
         <!-- content -->
-        <div class="contentcontainer" role="main">
-            <div class="flexcontainer">
+          <!-- <div class="contentcontainer" role="main"> -->
+            <div class="flexcontainer" style="margin-bottom: 70px;">  
+                
+                <section class="gradient">
 
-                 <section class="gradient">
+                    <div id="div_suche">
+                        <img src="/images/lupe.png" id="lupe"/><a href="/suche" class="a_suchen">Tier suchen</a>
+                        <br/>
+                    </div>
+
+                    <div id="div_eintragen">
+                        <img src="/images/pencil.png" id="pencil"/><a href="/hund_eintragen" class="a_eintragen">Tier eintragen</a>
+                        <br/>
+                    </div>
+
+                    <div id="div_info">
+                        <img src="/images/info.png" id="info"/><a href="/links" class="a_info">über die Tiervermittlung</a>
+                    </div>
                     
-                    <a href="/suche"><i class="fa fa-search color1"></i>Tier suchen</a>
-                    <a href="/anmelden"><i class="fa fa-pencil color2"></i>Tier eintragen</a>
-                    <a href="/links"><i class="fa fa-info-circle color3"></i>über die Tiervermittlung</a>
-
                 </section>
 
             </div> 
-        </div>
+         <!-- </div>  -->
         <!-- footer -->
         <% include ../partials/footer.ejs %>
           

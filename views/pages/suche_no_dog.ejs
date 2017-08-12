@@ -1,24 +1,26 @@
+<!DOCTYPE html>
+
 <html>
     <head>
         <% include ../partials/header %>
-    </head>
 
+    <title>Fehler</title>
+
+</head>
     <body>
         <!-- navigation with navheader -->
         <% include ../partials/navigations %>
         <div class="maincontainer" >
             <div class="container">
-                <h1><%= headline %></h1>
-                <p><%= text %></p>
-
-                    
-                <% include ../partials/links_partial.ejs %>
-                    
+                 <h1><%= headline %></h1> 
             </div>
+        </div> 
+
+        <div style="width: 800px; height: 250px; margin-top: 30px; margin-bottom: 30px; margin-left: 300px;">
+            <img src="/images/schade.png" style="float: left;"/>
         </div>
-     
+
         <!-- footer -->
         <% include ../partials/footer.ejs %>
-          
     </body>
-</html>
+</html>    

@@ -9,14 +9,58 @@
 
 /* ----------------------------- container and header section ------------------------ */
 
+.home_logo {
+  width:3.5%; 
+  float: right;
+  margin-right: 10px;
+  margin-top: 5px;
+   margin-bottom: 5px;
+}
+
 .topnav {
   z-index: 3;
   width: 100%;
+  /* height:60px; */
   overflow: hidden;
   background-color: rosybrown;
   position: fixed;
-  }
-.topnav a {
+}
+
+.links {
+  float: left;
+  display: block;
+  color: ghostwhite;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  line-height: 20px;
+  /* border-top: 1px solid #a68383; */
+  font-size: 19px;
+  margin-top: 8px;
+}
+.topnav a:hover {
+  color: darkslategray;
+}
+.topnav .icon {
+  display: none;
+}
+
+.bigger {
+  color:white;
+  background-color: rosybrown;
+  text-transform: uppercase;
+  font-size: 1.4em;
+  padding:12px;
+  position: absolute;
+  cursor: default;
+  margin-top: 6px;
+}
+
+.nav {
+  margin-left: 150px;
+}
+
+.anmelden {
   float: left;
   display: block;
   color: ghostwhite;
@@ -26,28 +70,11 @@
   line-height: 20px;
   border-top: 1px solid #a68383;
   font-size: 19px;
-}
-.topnav a:hover {
-  color: darkslategray;
-}
-.topnav .icon {
-  display: none;
-}
-.bigger{
-  color:white;
-  background-color: rosybrown;
-  text-transform: uppercase;
-  font-size: 1.4em;
-  padding:12px;
-  position: absolute;
-  cursor: default;
-}
-.nav{
-  margin-left: 150px;
-}
-.anmelden{
   background-color: sandybrown;
+  margin-top: 6px;
+  /* margin-left: 45%; */
 }
+
 
 /* ----------------------------- mobile version -------------------------  */
 /* -------- hier wird die Navigationsleiste responsive angepasst --------- */

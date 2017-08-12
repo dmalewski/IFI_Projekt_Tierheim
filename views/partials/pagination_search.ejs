@@ -7,18 +7,18 @@
 
 <% if (pagesCount) { %>
       <div class="paginationContainer">
-            <% let j = currentPage; %>
+            <% let k = currentPage; %>
             <% if(currentPage > 0) { %>
-                  <a href="/hunde/<%= j - 1 %>">&laquo;</a> 
+                  <a href="/sucher_erg/<%= k - 1 %>">&laquo;</a> 
             <% } %>  
 
             <% for (let i = 0; i < pagesCount; i++) { %>
-              <a href="/hunde/<%= i %>"><%= i + 1 %></a>
+              <a href="/suche_erg/<%= i %>"><%= i + 1 %></a>
             <% } %>
             
             <% if(currentPage < pagesCount-1) { %>
                   <% j++; %>
-                  <a href="/hunde/<%= j %>">&raquo;</a> 
+                  <a href="/suche_erg/<%= k %>">&raquo;</a> 
             <% } %>          
       </div>
 <% } %>

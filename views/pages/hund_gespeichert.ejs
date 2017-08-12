@@ -6,19 +6,21 @@
     <body>
         <!-- navigation with navheader -->
         <% include ../partials/navigations %>
-        <div class="maincontainer" >
+        <div class="maincontainer" style="height: 45%;">
             <div class="container">
                 <h1><%= headline %></h1>
-                <p><%= text %></p>
 
-                    
-                <% include ../partials/links_partial.ejs %>
-                    
             </div>
         </div>
-     
+        
+        <!-- content -->
+        <div class="contentcontainer" role="main">
+            <div class="inner">
+                
+            </div>
+        </div>
         <!-- footer -->
         <% include ../partials/footer.ejs %>
-          
+
     </body>
 </html>

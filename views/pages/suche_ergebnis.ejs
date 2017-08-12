@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <% include ../partials/header %>
+
+    <title><%= title %></title>
+
+</head>
+    <body>
+        <!-- navigation with navheader -->
+        <% include ../partials/navigations %>
+        <!-- <div class="maincontainer">
+            <div class="container">
+                <h1><%= headline %></h1>
+            </div>
+        </div>  -->
+
+       <div class="contentcontainer" role="main">
+              <% include ../partials/legend %>
+              <h1 style="color: #D59C71; text-shadow: 1px 1px 1px black; margin-left: 15%; margin-top: 50px; margin-bottom:0px;">
+                    <%= headline %>
+                </h1>
+            <div class="flexcontainer">
+                
+                <% include ../partials/dogs %>
+            </div
+        </div>
+
+        <!-- footer -->
+        <% include ../partials/footer.ejs %>
+    </body>
+</html>

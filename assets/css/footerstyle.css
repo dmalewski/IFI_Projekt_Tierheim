@@ -48,7 +48,9 @@
 }
 .footer-distributed .footer-links a{
 	display:inline-block;
-	margin: 8px;
+	margin-top: 15px;
+	margin-right: 25px;
+	margin-bottom: 20px;
 	line-height: 2.0;
 	font-size: 18px;
 	text-decoration: none;

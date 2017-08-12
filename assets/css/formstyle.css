@@ -8,7 +8,7 @@
 .form {
 	padding-top: 50px;
 	margin: 2em;
-	width: 80%;
+	width: 50%;
 	background: #dddddd;
 }
 .form-action {
@@ -20,7 +20,7 @@
 	padding: 7px;
 }
 label {
-	width: 55%;
+	width: 50%;
 	padding: 8px;
 	margin-bottom: 5px;
     font-weight: bold;
@@ -29,6 +29,45 @@ label {
 	cursor:pointer;
 	display:block;
 }
+
+@font-face { 
+	font-family: 'PuppyBellies';
+	src: url('/font/PuppyBellies.ttf') format('truetype'); 
+}
+
+#div_text {
+	height: 70px; 
+	width: 680px;
+}
+
+#div_schreib_uns {
+	float: left;   
+	height: 70px;
+	width: 480px;
+}
+
+#div_schreib_uns p {
+	font-size: 28px; 
+	text-shadow: 1px 1px #ffffff; 
+	margin-left: 10px; 
+	font-family: PuppyBellies;
+}
+
+#div_dog_letter {
+	display:block;
+	position: flex;
+	float: left; 
+	height: 150px; 
+	width: 150px; 
+	margin-left: 50px;
+}
+
+#div_dog_letter img {
+	display:block;
+	height: 150px; 
+	width: 150px;
+}
+
 /* --- buttons --- */
 .form-button {
 	width: 100%;
@@ -42,8 +81,8 @@ label {
 .button-align {
 	width: 48%;
 }
-input[type="submit"],
-input[type="reset"],
+button[type="submit"],
+button[type="reset"],
 .btn {
 	border:0;
 	-moz-border-radius:4px;
@@ -56,33 +95,33 @@ input[type="reset"],
 	margin: 10px;
 	visibility:visible;
 }
-input[type="submit"] {
+button[type="submit"] {
 	background: green;
 	color: white;
 }
-input[type="reset"] {
+button[type="reset"] {
 	background: indianred;
 	color: white;
 }
 /* submit button - hover */
-input[type="submit"]:hover,
-input[type="submit"]:focus {
+button[type="submit"]:hover,
+button[type="submit"]:focus {
 	background: limegreen;
 }
-input[type="submit"]:hover,
-input[type="submit"]:focus,
+button[type="submit"]:hover,
+button[type="submit"]:focus,
 .btn:hover,
 .btn:focus {
 	cursor:pointer;
 	text-decoration:none;
 }
 /* reset button - hover */
-input[type="reset"]:hover,
-input[type="reset"]:focus {
+button[type="reset"]:hover,
+button[type="reset"]:focus {
 	background: red;
 }
-input[type="reset"]:hover,
-input[type="reset"]:focus,
+button[type="reset"]:hover,
+button[type="reset"]:focus,
 .btn:hover,
 .btn:focus {
 	cursor:pointer;

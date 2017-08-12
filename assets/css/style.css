@@ -85,8 +85,7 @@ div {
 }
 .opacity {
     background: white;
-    opacity: 0.5;       /* modern browser */  
-    -moz-opacity: 0.5;  /* older Mozilla browser */  
+    background:rgba(255,255,255,0.5);
 }
 .hidden {
     display: none;
@@ -125,6 +124,108 @@ figure img {
 	display: block;
 }
 
+.links_left {
+    width: 40%;
+    /* position: relative; */
+	display: inline-block;
+    background: white;
+    background:rgba(255,255,255,0.5);
+    margin-right: 20px;
+}
+
+.links_left p {
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.links_right {
+    width: 40%;
+    /* position: relative; */
+	display: inline-block;
+    background: white;
+    background:rgba(255,255,255,0.5);
+}
+
+.links_right p {
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#lupe {
+    width:  50px; 
+    height: 50px; 
+    margin-right: 10px; 
+    /* display: inline-block; */
+}
+
+#pencil {
+    width: 50px; 
+    height: 50px; 
+    margin-right: 10px; 
+    /* display: inline-block; */
+}
+
+#info {
+    width: 50px; 
+    height: 50px; 
+    margin-right: 10px; 
+    /* display: inline-block; */
+}
+
+#div_suche {
+    float: left;
+     /* background-color: blue;   */
+    height: 80px; 
+    width: 300px;
+    /* position: flex;
+    display:inline-block; */
+}
+
+#div_eintragen {
+    float: left;
+     /* background-color: orange;  */
+    height: 80px; 
+    width: 300px;
+    /* position: flex;
+    display:inline-block; */
+}
+
+#div_info {
+    float: left;
+     /* background-color: violet;   */
+    height: 80px;
+    width: 300px;
+    /* position: flex;
+    display:inline-block; */
+}
+
+.a_suchen {
+    /* background: url("/images/rosybrown.jpg"); */
+    background-color: sandybrown; 
+    height: 60px; 
+    width: 300px; 
+    font-size: 20px;
+}
+
+.a_eintragen {
+    /* background: url("/images/braun.jpg"); */
+    background-color: sandybrown; 
+    height: 60px; 
+    width: 300px; 
+    font-size: 20px;
+}
+
+.a_info {
+    /* background: url("/images/orange.jpg"); */
+    background-color: sandybrown; 
+    height: 60px; 
+    width: 300px; 
+    font-size: 20px;
+}
+
+
 /* ----------------------------- button in head container & home.ejs & details.ejs ----------------------------*/
 .navbtn {
     margin-bottom: 0;
@@ -159,7 +260,7 @@ figure img {
 }
 
 section.gradient a {
-    display: inline-block;
+    /* display: inline-block; */
     color: #fff;
     font-style: bold;
     margin-top: 0px;
@@ -170,6 +271,7 @@ section.gradient a {
     box-shadow: inset 0 0 0 1px #27496d;
     border: none;
 }
+
 section.gradient a:hover,
 section.gradient a.hover {
     box-shadow: inset 0 0 0 1px #27496d,0 5px 15px #193047;
@@ -184,11 +286,18 @@ colr1 {
 /* ----------------------------- textdecoration ----------------------------*/
 .block {
     text-align: justify;
-    padding: 40px 10px;
+    /* padding: 40px 10px; */
     margin-left: auto;
     margin-right: auto;
-        
+    width: 90%;    
 }
+
+.block p{
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-top: 35px;  
+}
+
 .center {
     text-align: center;
     padding: 10px 0px;

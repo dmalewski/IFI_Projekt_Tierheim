@@ -2,13 +2,8 @@
 
 <html>
     <head>
-        <link rel='stylesheet' href='/css/searchstyle.css'>
         <% include ../partials/header %>
-
-	    <link rel="stylesheet" href="/selectize/dist/css/selectize.css">
-	
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="/selectize/dist/js/standalone/selectize.js"></script>   
+        <link rel='stylesheet' href='/css/insertDogStyle.css'> 
     </head>
 
     <body>
@@ -19,16 +14,55 @@
         <div class="contentcontainer" role="main">
             <% include ../partials/legend %>    
         </div>
-
+        <h1><%= text %></h1>
 
         <div class="search_container">
-            <div class="feld">
 
-            <form action="/suche_erg"> 
+         <div class="feld">
 
-            <div class="suche_links">
+            <form action="/hund_eintragen" method="POST">
+
+                <div class="eintragen_links">
                 <table cellspacing="0" cellpadding="0" width="50%" name="tabelle_links">
                     <tbody>
+                       <!--Name des Hundes-->
+                       <tr>
+                           <td width="105px">
+                                <div class="dog_name">Name</div>
+                                   <div class="form-item">
+                                          <input id="aName" name="name" type="text" tabindex="300px" placeholder="Bitte Namen angeben" required />
+                                      </div>
+
+                                  <p>
+                                      <div class="white_line"/>
+                                  </p>
+
+                           </td>
+                       </tr>
+
+                      <!--Foto hochladen-->
+                      <!-- <tr>
+                          <td width="105px">
+                               <div class="dog_foto">Foto</div>
+                                     <div class="durchsuchen" >
+                                       <input type="file" id="inp"/>
+                                            <span class="btn"></span>
+
+                                            <script src="jquery.min.js"></script>
+
+                                            <script>
+                                              $(".btn").bind("click" , function(){
+                                                  $("#inp").click();
+                                              });
+                                            </script>
+                                    </div>
+                              </div>
+                               <p>
+                                   <div class="white_line"/>
+                               </p>
+
+                          </td>
+                      </tr> -->
 
                         <!-- Größe des Hundes -->
                         <input type="hidden" id="size" value="" name="size"/>
@@ -37,52 +71,38 @@
 
                                 <div class="size">Größe</div>
                                     <div class="size_icons">
-        
+
                                         <!-- klein -->
-                                        <img src="/images/small.png" id="small_dog" 
+                                        <img src="/images/small.png" id="small_dog"
                                         onclick="changeImage_smallDog()" style="margin-left: 10px;" title="Klein"/>
-                                         
+
                                         <!-- mittel -->
-                                        <img src="/images/middle.png" id="middle_dog" 
+                                        <img src="/images/middle.png" id="middle_dog"
                                         onclick="changeImage_middleDog()" style="margin-left: 10px;" title="Mittel"/>
 
                                         <!-- groß -->
-                                        <img src="/images/big.png" id="big_dog" 
+                                        <img src="/images/big.png" id="big_dog"
                                         onclick="changeImage_bigDog()" style="margin-left: 10px;" title="Groß"/>
-                                        
+
                                     </div>
-                                
+
                                     <p>
-                                        <div class="white_line"/> 
+                                        <div class="white_line"/>
                                     </p>
                             </td>
-                        </tr>   
+                        </tr>
 
 
                         <!-- Rasse des Hundes -->
                         <tr>
                             <td width="105px">
                                  <div class="breed">Rasse</div>
-                                    <div class="breed_selectize" style="margin-left:10px;">
-                                        <select id="rasseblock" name="breed_select" style="width: 300px;" select="selected">
-                                            <option selected="selected"/>
-                                            <% breeds.forEach(function (breed) { %>
-                                                <option value="<%= breed %>"><%= breed %></option>  
-                                            <% }) %>  
-                                        </select>
-                                        <script>
-                                            $('#rasseblock').selectize({
-                                                sortField: {
-                                                    field: 'text',
-                                                    direction: 'asc'
-                                                },
-                                                dropdownParent: 'body'
-                                            });
-                                        </script>
-                                 </div>
-
+                                    <div class="form-item">
+                                          <input id="aName" name="breed" type="text" tabindex="300px" placeholder="Bitte Namen angeben" required />
+                                    </div>
+                               
                                     <p>
-                                        <div class="white_line"/> 
+                                        <div class="white_line"/>
                                     </p>
                             </td>
                         </tr>
@@ -94,15 +114,15 @@
                             <td width="105px">
                                  <div class="gender">Geschlecht</div>
                                     <div class="gender_icons">
-                                        <img src="/images/male.png" style="margin-left: 50px; height: 70px; width: 70px;" 
+                                        <img src="/images/male.png" style="margin-left: 50px; height: 70px; width: 70px;"
                                          id="imgClickAndChange_male" onclick="changeImage_male()" title="männlich"/>
                                          <img src="/images/female.png" style="margin-left: 20px; height: 70px; width: 70px;"
                                           id="imgClickAndChange_female" onclick="changeImage_female()" title="weiblich"/>
-                                    </div>     
+                                    </div>
                                 </div>
 
                                     <p>
-                                        <div class="white_line"/> 
+                                        <div class="white_line"/>
                                     </p>
                             </td>
                         </tr>
@@ -116,54 +136,26 @@
                                     <div class="age_icons">
                                         <img src="/images/baby.png" style="height: 80px; width: 80px;
                                             margin-left:10px;" id="imgClickAndChange_young" onclick="changeImage_young()" title="jung"/>
-                                        
+
                                         <img src="/images/adult.png" style="height: 80px; width: 80px;
                                             margin-left:10px;" id="imgClickAndChange_adult" onclick="changeImage_adult()" title="erwachsen"/>
-                                        
+
                                         <img src="/images/senior.png" style="height: 80px; width: 80px;
                                             margin-left:10px;" id="imgClickAndChange_senior" onclick="changeImage_senior()" title="senior"/>
 
-                                            <!--<p style="margin-left: 23px; color: white;">
-                                                jung &emsp;&emsp;&ensp; erwachsen &emsp;&emsp;&ensp; senior
-                                            </p>-->
                                     </div>
                                 </div>
-
-                                    <p>
-                                        <div class="white_line"/> 
-                                    </p>
                             </td>
                         </tr>
 
-                        
-                        <!-- Hund kastriert JA/NEIN -->
-                        <input type="hidden" id="castrated" value="" name="castrated"/>
-                        <tr>
-                            <td width="105px">
-                                 <div class="castrated">Kastriert</div>
-                                    <div class="castrated_icon">
-
-                                        <img class="castrated_img" src="/images/castrated.png" 
-                                        id="imgClickAndChange_castrated" onclick="changeImage_castrated()" title="Kastriert"/>
-                                             
-                                    </div>
-                                </div>
-                                    <!--<p>
-                                        <div class="white_line"/> 
-                                    </p>-->
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
                 </div>
 
-
-
-
-                <div class="suche_rechts">
-                <!--rechte Seite des Formulars-->
-                <table cellspacing="0" cellpadding="0" width="100%" class="tabelle_rechts">
-                     <tbody>  
+                <div class="eintragen_rechts">
+                   <!--rechte Seite des Formulars-->
+                   <table cellspacing="0" cellpadding="0" width="100%" class="tabelle_rechts">
+                     <tbody>
 
                         <!-- Eigenschaften des Hundes -->
                         <input type="hidden" id="traits" value="" name="traits"/>
@@ -173,28 +165,28 @@
                                     <div class="traits_icons">
                                             <img class="trait_img" src="/images/likes_male.png" id="imgClickAndChange_likes_male"
                                             onClick="changeImage_likes_male()" title="verträglich mit Männchen"/>
-                                            
+
                                             <img class="trait_img" src="/images/likes_female.png" id="imgClickAndChange_likes_female"
                                             onClick="changeImage_likes_female()" title="verträglich mit Weibchen"/>
-                                           
+
                                             <img class="trait_img" src="/images/likes_male_and_female.png" id="imgClickAndChange_both_genders"
                                             onClick="changeImage_both_genders()" title="verträglich mit beiden Geschlechtern"/>
-                                          
+
                                             <img class="trait_img" src="/images/likes_cat.png" id="imgClickAndChange_likes_cat"
                                             onClick="changeImage_likes_cat()" title="katzenfreundlich"/>
-                                          
+
                                             <img class="trait_img" src="/images/likes_child.png" id="imgClickAndChange_likes_child"
                                             onClick="changeImage_likes_child()" title="kinderfreundlich"/>
-                                          
+
                                             <img class="trait_img" src="/images/likes_senior.png" id="imgClickAndChange_likes_senior"
                                             onClick="changeImage_likes_senior()" title="seniorengeeignet"/>
-                                           
+
                                             <img class="trait_img" src="/images/likes_bunny.png" id="imgClickAndChange_likes_bunny"
                                             onClick="changeImage_likes_bunny()" title="kleintierfreundlich"/>
 
                                             <img class="trait_img" src="/images/solo.png" id="imgClickAndChange_solo"
                                             onClick="changeImage_solo()" title="Einzeltier"/>
-                                        
+
                                             <img class="trait_img" src="/images/group.png" id="imgClickAndChange_group"
                                             onClick="changeImage_group()" title="Gruppentier"/>
 
@@ -202,7 +194,7 @@
                                             onClick="changeImage_hunt()" title="Jadhund"/>
 
                                             <img class="trait_img" src="/images/guard.png" id="imgClickAndChange_guard"
-                                            onClick="changeImage_guard()" title="Wachhund"/> 
+                                            onClick="changeImage_guard()" title="Wachhund"/>
 
                                             <img class="trait_img" src="/images/likes_water_new.png" id="imgClickAndChange_likes_water"
                                             onClick="changeImage_likes_water()" title="mag Wasser"/>
@@ -211,7 +203,7 @@
                                             onClick="changeImage_poo()" title="stubenrein">
 
                                             <img class="trait_img" src="/images/sick.png" id="imgClickAndChange_sick"
-                                            onClick="changeImage_sick()" title="Krankheit"/> 
+                                            onClick="changeImage_sick()" title="Krankheit"/>
 
                                             <img class="trait_img" src="/images/warning.png" id="imgClickAndChange_warning"
                                             onClick="changeImage_warning()" title="Achtung"/>
@@ -220,26 +212,46 @@
                                 </div>
 
                                     <p>
-                                        <div class="white_line"/> 
+                                        <div class="white_line"/>
                                     </p>
                             </td>
                         </tr>
 
-                        
+
+                        <!-- Hund kastriert JA/NEIN -->
+                        <input type="hidden" id="castrated" value="" name="castrated"/>
+                        <tr>
+                            <td width="105px">
+                                 <div class="castrated">Kastriert</div>
+                                    <div class="castrated_icon">
+
+                                        <img class="castrated_img" src="/images/castrated.png"
+                                        id="imgClickAndChange_castrated" onclick="changeImage_castrated()" title="Kastriert"/>
+
+                                    </div>
+                                 </div>
+                                    <p>
+                                        <div class="white_line"/>
+                                    </p>
+                            </td>
+                        </tr>
+
                     </tbody>
                 </table>
-                <button id="search_button" type="submit" name="submit" value="send" method="get">Suche starten!</button>
-            </div>
-
-        </form>
-
+                    <div class="speichern">
+                      <button type="submit" value="speichern" tabindex="90">Speichern</button>
+                    </div>
+               </div>
+           </form>
         </div>
 
-        <script src="js/index.js"> </script> 
-        
-    </div>
+        <script src="js/index.js"> </script>
+
+         </div>
+
         <!-- footer -->
         <% include ../partials/footer.ejs %>
 
+    
     </body>
 </html>
