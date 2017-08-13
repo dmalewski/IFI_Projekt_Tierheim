@@ -1,8 +1,7 @@
+/* Deployment auf: https://ifi-tierheim.now.sh/ */
 
-/*var express = require('express');*/
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
@@ -12,31 +11,18 @@ const LocalStrategy = require('passport-local').Strategy;
 const mongo = require('mongodb');
 const multer = require('multer');
 
-
-/* Deployment auf: https://ifi-tierheim.now.sh/ */
-
-
 const {read, findBreeds} = require("./lib/services/reader");
-
 const {filter} = require("./lib/services/filter");
-
-const { findPhoto } = require('./lib/services/findPhotos');
-
-const { persistPhoto } = require("./lib/services/persistPhoto");
-
+const {findPhoto} = require('./lib/services/findPhotos');
+const {persistPhoto} = require("./lib/services/persistPhoto");
 const {getHunde} = require('./lib/services/pagination');
-
 const {persistMail} = require('./lib/services/persistMail');
-
 const {insertDog} = require('./lib/services/insert_dog');
-
 const {startSchedule} = require("./lib/services/schedule");
 
 const upload = multer({
     dest: `./uploads`
 });
-
-//          const mongoose = require('mongoose');
 
 //          mongoose.connect('mongodb://cchriss:Plantier89%@ds129352.mlab.com:29352/christiane');
 //          const db = mongoose.connection;
@@ -51,25 +37,23 @@ const users = require('/route/users');*/
 router.get('/', ensureAuthenticated, function(req, res){
 	res.render('index');
 });*/
-function ensureAuthenticated(req, res, next){
-	if(req.isAuthenticated()){
-		return next();
-	} else {
-		//req.flash('error_msg','You are not logged in');
-		res.redirect('/users/login');
-	}
-}
+// function ensureAuthenticated(req, res, next){
+// 	if(req.isAuthenticated()){
+// 		return next();
+// 	} else {
+// 		//req.flash('error_msg','You are not logged in');
+// 		res.redirect('/users/login');
+// 	}
+// }
 
 /*module.exports = router;*/
 //-----------------------------------------------------------------------
-
 
 // Init App
 const express = require('express');
 const bodyparser = require('body-parser');
 
 const app = express();
-
 
 app.use(express.static('./assets'));
 //app.use(bodyparser.urlencoded({extended: true}));
@@ -87,6 +71,44 @@ app.set('view engine', 'ejs');
 /*app.set('view engine', 'handlebars');*/
 
 app.use('/uploads', express.static('./uploads'));
+
+
+//--------------------------------------------------------------------------------AUTHENTIFICATION---------------------------------------------------------------------
+const morgan = require('morgan');
+const mongoose = require('mongoose');
+
+const configDB = require('./config/database.js');
+
+// configuration ===============================================================
+mongoose.connect(configDB.url); // connect to our database
+
+require('./config/passport')(passport); // pass passport for configuration
+
+// set up our express application
+app.use(morgan('dev')); // log every request to the console
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyparser.json()); // get information from html forms
+app.use(bodyparser.urlencoded({ extended: true }));
+
+app.set('view engine', 'ejs'); // set up ejs for templating
+
+// required for passport
+app.use(session({
+    secret: 'ilovescotchscotchyscotchscotch', // session secret
+    resave: true,
+    saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+// routes ======================================================================
+require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 //Startseite Home
 app.get('/', async (req, res)=>{
@@ -193,8 +215,9 @@ app.get("/suche_erg",(req, res) => {
     }
 
     filter(sizes,genders,breed,ages,castrated,traits).then((results) => {
+        console.log(results);
         res.render("pages/suche_ergebnis",{
-            title: "Ergebnis",  
+            title: "Suchergebnis",  
             headline: "Passend zu Ihren Suchkriterien wurden folgende Hunde gefunden:",
             dogs: results
         });
@@ -207,7 +230,7 @@ app.get("/suche_erg",(req, res) => {
                 dogs: []
             })
         }
-        else {
+        else if(dogs == []){
             res.render("pages/suche_no_dog", {
                 title: ":(",
                 headline: "Es wurde leider kein passender Hund gefunden!",
@@ -270,7 +293,7 @@ app.get('/exoten',(req, res)=>{
 });
 
 // Login- und Registrierung
-app.get('/anmelden',(req, res)=>{
+app.get('/registrierung',(req, res)=>{
     res.render('pages/anmelden',{
         title: 'Anmelden',
         headline: `Melden Sie sich jetzt an!`,
@@ -281,7 +304,7 @@ app.get('/anmelden',(req, res)=>{
 });
 
 //Registrierung
-app.get('/registriert',(req, res)=>{
+app.post('/registrierung',(req, res)=>{
     res.render('pages/registriert',{
         title: 'Anmelden',
         headline: 'Herzlich Willkommen!',

@@ -69,6 +69,8 @@ h2{
     margin-left: auto;
     text-align: left;
 }
+
+
 .maincontainer .container > p{
     /* text decoration */
     color: ghostwhite;
@@ -125,7 +127,8 @@ figure img {
 }
 
 .links_left {
-    width: 40%;
+    width: 30%;
+    height: 33%;
     /* position: relative; */
 	display: inline-block;
     background: white;
@@ -139,8 +142,26 @@ figure img {
     margin-bottom: 10px;
 }
 
+.links_mitte {
+    width: 30%;
+    height: 33%;
+    /* position: relative; */
+	display: inline-block;
+    background: white;
+    background:rgba(255,255,255,0.5);
+    margin-right: 20px;
+}
+
+.links_mitte p {
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .links_right {
-    width: 40%;
+    margin-top: 30px;
+    width: 65%;
+    height: 33%;
     /* position: relative; */
 	display: inline-block;
     background: white;

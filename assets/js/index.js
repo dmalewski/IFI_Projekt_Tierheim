@@ -407,8 +407,8 @@ function changeImage_likes_bunny() {
 function changeImage_likes_water() {
     const sizesField = document.getElementById("traits");
     console.log("likes_water");
-    if (document.getElementById("imgClickAndChange_likes_water").src.indexOf("/images/likes_water_new.png")!= -1) {
-        document.getElementById("imgClickAndChange_likes_water").src = "/images/likes_water_new_filled.png";
+    if (document.getElementById("imgClickAndChange_likes_water").src.indexOf("/images/likes_water.png")!= -1) {
+        document.getElementById("imgClickAndChange_likes_water").src = "/images/likes_water_filled.png";
 
         if(sizesField.getAttribute('value')) {
             const newValue = sizesField.getAttribute('value') + "," + "mag Wasser";
@@ -418,8 +418,8 @@ function changeImage_likes_water() {
             sizesField.setAttribute('value',"mag Wasser");
         }
     }
-    else if(document.getElementById("imgClickAndChange_likes_water").src.indexOf("/images/likes_water_new.png")== -1){
-        document.getElementById("imgClickAndChange_likes_water").src = "/images/likes_water_new.png";
+    else if(document.getElementById("imgClickAndChange_likes_water").src.indexOf("/images/likes_water.png")== -1){
+        document.getElementById("imgClickAndChange_likes_water").src = "/images/likes_water.png";
 
         sizesField.setAttribute('value',"");
     }          

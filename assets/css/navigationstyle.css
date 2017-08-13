@@ -10,11 +10,12 @@
 /* ----------------------------- container and header section ------------------------ */
 
 .home_logo {
-  width:3.5%; 
+  width:2.5%;
+  height: 2.5%; 
   float: right;
   margin-right: 10px;
   margin-top: 5px;
-   margin-bottom: 5px;
+   margin-bottom: 1px;
 }
 
 .topnav {
@@ -57,7 +58,7 @@
 }
 
 .nav {
-  margin-left: 150px;
+  margin-left: 200px;
 }
 
 .anmelden {
@@ -72,6 +73,7 @@
   font-size: 19px;
   background-color: sandybrown;
   margin-top: 6px;
+  margin-bottom: 6px;
   /* margin-left: 45%; */
 }
 

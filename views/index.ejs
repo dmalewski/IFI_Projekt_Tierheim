@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Anmelden</title>
+         <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> -->
+        <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> -->
+        <% include ./partials/header %>
+
+    </head>
+
+    <body>
+        <!-- navigation with navheader -->
+        <% include ./partials/navigations %>
+
+        <div class="maincontainer">
+            <div class="container" >
+                <h1><%= headline %></h1>
+                <p><%= text %></p>
+
+                <div class="auth">
+                    <h2><span class="fa fa-lock" style="margin-top: 30px;"></span> Authentifizierung</h2>
+                    <hr/>
+                    <!-- <p class="login">Einloggen oder registrieren:</p> -->
+                    <br/>
+                    <a href="/anmelden/login" class="log"><img class="img" src="/images/login.png"/>
+                        Login
+                    </a>
+                    <a href="/anmelden/signup" class="reg"><img class="img" src="/images/register.png"/>
+                        Registrierung
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <% include ./partials/footer.ejs %>
+    </body>
+</html>
