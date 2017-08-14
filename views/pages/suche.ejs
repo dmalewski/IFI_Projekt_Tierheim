@@ -20,11 +20,14 @@
             <% include ../partials/legend %>    
         </div>
 
+        <p style="color: black;  margin-left: 25%; margin-top: 50px; margin-bottom:0px; font-size: 20px; font-weight: bold;">
+            <%= text %>
+        </p>
 
         <div class="search_container">
             <div class="feld">
 
-            <form action="/suche_erg"> 
+            <form action="/suche_ergebnis"> 
 
             <div class="suche_links">
                 <table cellspacing="0" cellpadding="0" width="50%" name="tabelle_links">
@@ -138,6 +141,10 @@
                         
                         <!-- Hund kastriert JA/NEIN -->
                         <input type="hidden" id="castrated" value="" name="castrated"/>
+                        <!-- Als Default Wert wird Kastriert = Nein gesetzt -->
+                        <!--<script> 
+                            document.getElementById("castrated").defaultValue = "Nein"; 
+                        </script>-->
                         <tr>
                             <td width="105px">
                                  <div class="castrated">Kastriert</div>

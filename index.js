@@ -12,13 +12,14 @@ const mongo = require('mongodb');
 const multer = require('multer');
 
 const {read, findBreeds} = require("./lib/services/reader");
+const {read_one} = require("./lib/services/read_one_dog");
 const {filter} = require("./lib/services/filter");
 const {findPhoto} = require('./lib/services/findPhotos');
 const {persistPhoto} = require("./lib/services/persistPhoto");
 const {getHunde} = require('./lib/services/pagination');
 const {persistMail} = require('./lib/services/persistMail');
 const {insertDog} = require('./lib/services/insert_dog');
-const {startSchedule} = require("./lib/services/schedule");
+
 
 const upload = multer({
     dest: `./uploads`
@@ -56,7 +57,7 @@ const bodyparser = require('body-parser');
 const app = express();
 
 app.use(express.static('./assets'));
-//app.use(bodyparser.urlencoded({extended: true}));
+
 // BodyParser Middleware
 app.use(bodyparser.urlencoded({ extended: true }));
 
@@ -148,10 +149,20 @@ app.get('/hunde/:pages?', async (req, res)=>{
 });
 
 
-app.get('/details',(req, res)=>{
-    res.render('pages/details',{
-        title: 'Hunde',
-        headline: 'Name Hund!',
+app.get('/hunde/details/:id?', (req, res)=>{
+    const id = req.params.id;
+
+    read_one(id).then((result) => {
+        console.log("name: " +  result.name)
+        res.render('pages/details',{
+            dog: result,
+            title: 'Details',
+            headline: result.name,
+            text: "Hier finden Sie detailliertere Informationen zum Hund " + result.name + 
+            `. Wenn Sie mehr über den Hund erfahren wollen oder Kontaktdaten haben möchten, 
+            klicken Sie bitte auf den Link 'zur Tierheim-Profilseite des Hundes'.`
+                   
+        });
     });
 });
 /*
@@ -169,6 +180,7 @@ app.get('/suche', async (req, res)=>{
         res.render('pages/suche',{
             title: 'Suche',
             headline: 'Suche',
+            text: "Bitte wählen Sie Kriterien aus, die Ihnen bei einem Hund wichtig sind!",
             breeds: breeds
         });
     });
@@ -176,7 +188,7 @@ app.get('/suche', async (req, res)=>{
 
 
 
-app.get("/suche_erg",(req, res) => {
+app.get("/suche_ergebnis",(req, res) => {
 
     //Größen
     let sizes = "";
@@ -215,30 +227,34 @@ app.get("/suche_erg",(req, res) => {
     }
 
     filter(sizes,genders,breed,ages,castrated,traits).then((results) => {
-        console.log(results);
-        res.render("pages/suche_ergebnis",{
-            title: "Suchergebnis",  
-            headline: "Passend zu Ihren Suchkriterien wurden folgende Hunde gefunden:",
-            dogs: results
-        });
+        if(results.length != 0) {
+            res.render("pages/suche_ergebnis",{
+                title: "Suchergebnis",  
+                headline: "Passend zu Ihren Suchkriterien wurden folgende Hunde gefunden:",
+                dogs: results
+            });
+        }
+        else if(sizes !="" || genders !="" || breed !="" || ages !="" || castrated !="" || traits !="") {
+            res.render("pages/suche_no_dog", {
+                title: ":(",
+                headline: "Es wurde leider kein passender Hund gefunden!",
+                text: "Versuchen Sie es doch noch einmal mit anderen Suchkriterien!",
+                dogs: []
+            })
+        }
     })
     .catch(() => {
         if(sizes =="" && genders =="" && breed =="" && ages =="" && castrated =="" && traits =="") {
             res.render("pages/suche_error", {
                 title: "Fehler",
                 headline: "Es wurde nichts ausgewählt!",
-                dogs: []
-            })
-        }
-        else if(dogs == []){
-            res.render("pages/suche_no_dog", {
-                title: ":(",
-                headline: "Es wurde leider kein passender Hund gefunden!",
+                text: "Bitte versuchen Sie es doch nochmal!",
                 dogs: []
             })
         }
     })
 });
+
 
 // Katzen
 app.get('/katzen',(req, res)=>{
@@ -253,6 +269,7 @@ app.get('/katzen',(req, res)=>{
     });
 });
 
+
 // Kleintiere
 app.get('/kleintiere',(req, res)=>{
     res.render('pages/comingSoon',{
@@ -265,6 +282,7 @@ app.get('/kleintiere',(req, res)=>{
         signature: `Bis Bald euer Team4!`,
     });
 });
+
 
 // Vögel
 app.get('/voegel',(req, res)=>{
@@ -279,6 +297,7 @@ app.get('/voegel',(req, res)=>{
     });
 });
 
+
 // Exoten
 app.get('/exoten',(req, res)=>{
     res.render('pages/comingSoon',{
@@ -292,6 +311,7 @@ app.get('/exoten',(req, res)=>{
     });
 });
 
+
 // Login- und Registrierung
 app.get('/registrierung',(req, res)=>{
     res.render('pages/anmelden',{
@@ -303,6 +323,7 @@ app.get('/registrierung',(req, res)=>{
               });
 });
 
+
 //Registrierung
 app.post('/registrierung',(req, res)=>{
     res.render('pages/registriert',{
@@ -311,6 +332,7 @@ app.post('/registrierung',(req, res)=>{
         text: `Sie haben sich erfolgreich registriert!`
     });
 });
+
 
 // Impressum
 app.get('/impressum',(req, res)=>{
@@ -332,7 +354,8 @@ app.get('/impressum',(req, res)=>{
     });
 });
 
-// Kontakt
+ 
+// Kontakt GET
 app.get('/kontakt', (req, res)=>{
     res.render('pages/kontakt',{
         title: 'Kontakt',
@@ -344,6 +367,7 @@ app.get('/kontakt', (req, res)=>{
     });
 });
 
+//Kontakt POST
 app.post('/kontakt', (req, res) => {
 
   const name = req.body.surname;
@@ -431,53 +455,6 @@ app.use(function (req, res, next) {
 
 app.set("view engine","ejs");
 
-app.get("result",(req, res) => {
-    let sizes = "";
-    // console.log("size.length: " + req.query.size.length);
-    if(req.query.size.length) {
-        sizes = req.query.size.split(',');
-    }
-
-    let genders = "";
-    if(req.query.gender.length) {
-        genders = req.query.gender.split(',');
-    }
-
-    let breed ="";
-    if(req.query.breed_select.length) {
-        breed = req.query.breed_select;
-    }
-
-    // console.log("age.length: " + req.query.age.length);
-    let ages ="";
-    if(req.query.age.length) {
-        ages = req.query.age.split(',');
-    }
-
-    let traits ="";
-    if(req.query.traits.length) {
-        traits = req.query.traits.split(',');
-    }
-
-    // console.log(sizes);
-    // console.log(genders);
-    // console.log(breed);
-    // console.log(ages);
-    // console.log(traits);
-
-    filter(sizes,genders,breed,ages,traits).then((results) => {
-        //console.log(results);
-        res.render("pages/result",{
-            dogs: results,
-            message: ""
-        });
-    }).catch(() => {
-        res.render("pages/result", {
-            dogs: [],
-            message: "Es wurde nichts ausgewählt!"
-        })
-    })
-});
 
 //Hunde eintragen
 app.get('/hund_eintragen',(req, res)=> {
@@ -485,7 +462,7 @@ app.get('/hund_eintragen',(req, res)=> {
         title: 'Eintragen',
         headline: 'Hund eintragen',
         text: `Tragen Sie einen Hund ein!`
-    });
+    });s
 });
 
 

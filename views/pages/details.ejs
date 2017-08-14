@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <% include ../partials/header %>
@@ -10,46 +9,73 @@
         <div class="maincontainer">
             <div class="container">
                 <h1><%= headline %></h1>
+                <p><%= text %></p>
             </div>
         </div>
         <!-- content -->
-        <div class="contentcontainer">
-            <div class="flexcontainer" id="backgroundcolor">
-                <div class="image" style= background-image:url(../images/titel3.jpg); >
-                    <p class="durchsichtig">Name</p>
-                </div> 
-                <div class="description">
-                    
-                    <div>
-                        <img id="icon" src="/images/klein.png" title="" />
-                        <img id="icon" src="/images/jung.png" title="" />
-                        <img id="icon" src="/images/weiblich.png" title="" />    
+        <div class="contentcontainer" id="backgroundcolor">
+
+            <div class="detail_div">
+                <p class="desc_name"><%= dog.name %></p>
+                <% if(dog.institution.match(/muenchen/ig)) { %>
+                    <% if(!dog.img_big) { %>
+                        <div class="detail_img_div">
+                            <img id="detail_img" src="/images/default_dog.png" border="2px"/>  
+                        </div>
+                    <% } %>
+                    <div class="detail_img_div">
+                        <img id="detail_img" src="<%= dog.img_big %>" border="2px"/>  
                     </div>
-                               
-                    <p>Rasse: </p>
-                    <P>Alter: </P>
-                    <P>Größe: </P>
-                    <br />
-                    <a href="" class="navbtn">zum Tierheim</a>
+                <% } %>
+                <% if(dog.institution.match(/oldenburg/ig)) { %>
+                    <div class="detail_img_div">
+                        <img id="detail_img_small" src="<%= dog.img %>" border="2px"/>  
+                    </div>
+                <% } %>
+                <% if(!dog.institution.match(/oldenburg/ig) && !dog.institution.match(/muenchen/ig)) { %>
+                    <div class="detail_img_div">
+                        <img id="detail_img" src="<%= dog.img %>" border="2px"/>  
+                    </div>
+                <% } %>
+
+               
+
+                <div class="description">      
+                    <p><span class="hdl">Rasse: </span><%= dog.bread %> </p>
+                    <P><span class="hdl">Fellfarbe: </span><%= dog.colour %> </P>
+                    <P><span class="hdl">Geschlecht: </span><%= dog.gender %> </P>
+                    <P><span class="hdl">Kastriert: </span><%= dog.castrated %> </P>
+                    <P><span class="hdl">Alter: </span><%= dog.age %> </P>
+                    <p><span class="hdl">Geburtsdatum: </span><%= dog.birthdate %> </p>
+                    <P><span class="hdl">Größe: </span><%= dog.height %> </P>
+                    <P><span class="hdl">Tierheim: </span><%= dog.since_when %> </P>
+                    <% if(dog.traits) { %>
+                    <p><span class="hdl">Charaktereigenschaften: </span>
+                        <% dog.traits.forEach(function (trait) { %>
+                            <%= trait %>,  
+                        <% }) %>
+                    <% } %> </p>
+
+                    <% if(dog.link) { %>
+                        <div class="tierheim_link">
+                            <a href="<%= dog.link %>" class="navbtn_2">zur Tierheim-Profilseite des Hundes &raquo;</a>
+                        </div>
+                    <% } %>
                 </div>
-                <div class="block" id="details">
-                    <h3>einige Informationen mehr über #Name Hund:</h3>
-                    <p>
-                        hier könnte eigentlich der Text des Tierheims hin 
-                        sajkfjksafkjkajsfkjaskjfkasjkfjkasjfkjsfkjka sjfksajjasfkjaksjfk
-                        sajkfjksafkjka jsfkjaskjfkasjk fjkasjfkjsfkjkasj fksajjasfkjaksjfk
-                        sajkfjksaf kjkajsfkj askjfkasjkfjkasjfkjsfkjkasjfksajj
-                        kadgjö kdjfkajedgjskglkja eoirtoaerjo a ljgdkljkl thnfkjbkldjoadj
-                        akldggkgjashggg fasggg dga ggffggsdfaghgggggöj oeakjdg bngm,bjad lk
-                        faelmitnigrvkjämeo
-                        sajkfjksafkjkajsf kjaskjfkasjkfjkasjfkjsfkjkasjfksajjasfkjaksjfk
-                        sajkfjksafkjkajsfkjaskjfkasjkfjkasjfkjsfkjkasjfksajjasfkjaksjfkald
-                        sajkfjksafkjkajsfkjaskjfkasjkfjkasjfkjsfkjkasjfksajjasfkjaks
-                    </p>
+
+
+                <div class="description_text">
+                      <% if(dog.text) { %>
+                    <p><span class="hdl">Beschreibungstext: </span>
+                    <br/>
+                        <%= dog.text %> 
+                    <% } %> </p>
                 </div>
-            </div>
-            <div class="flexcontainer">
-                <a class="navbtn" role="button" href="/hunde">&laquo; zurück zur Übersicht</a>
+
+                <div class="back_cont">
+                    <a class="navbtn" role="button" href="/hunde">&laquo; zurück zur Übersicht</a>
+                </div>
+
             </div>
         </div>
         <!-- footer -->

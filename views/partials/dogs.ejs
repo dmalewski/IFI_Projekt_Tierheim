@@ -1,7 +1,7 @@
 <% dogs.forEach(function (dog) { %>
 <div class="elementgrid">
  
-  <a href="details" >
+  <a href="/hunde/details/<%= dog.id %>" >
     <p class="center figcap"><%= dog.name %> </p>
     <hr />
     <figure class="image-wrapper">

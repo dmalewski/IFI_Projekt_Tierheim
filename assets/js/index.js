@@ -3,7 +3,6 @@
 function changeImage_smallDog() {
     const sizesField = document.getElementById("size");
 
-    console.log("small_dog");
     if(document.getElementById("small_dog").src.indexOf("/images/small.png")!= -1) {
         document.getElementById("small_dog").src = "/images/small_filled.png";
         //Client -> bei mehreren Größen ausgewählt
@@ -28,7 +27,6 @@ function changeImage_smallDog() {
 function changeImage_middleDog() {
     const sizesField = document.getElementById("size");
 
-    console.log("middle_dog");
     if (document.getElementById("middle_dog").src.indexOf("/images/middle.png")!= -1) {
         document.getElementById("middle_dog").src = "/images/middle_filled.png";
 
@@ -52,7 +50,6 @@ function changeImage_middleDog() {
 function changeImage_bigDog() {
     const sizesField = document.getElementById("size");
 
-    console.log("big_dog");
     if(document.getElementById("big_dog").src.indexOf("/images/big.png")!= -1) {
         document.getElementById("big_dog").src = "/images/big_filled.png";
 
@@ -76,7 +73,6 @@ function changeImage_bigDog() {
 function changeImage_male() {
     const sizesField = document.getElementById("gender");
 
-    console.log("Male");
     if(document.getElementById("imgClickAndChange_male").src.indexOf("/images/male.png")!= -1) {
         //document.getElementById("gender").setAttribute("value","männlich");
         document.getElementById("imgClickAndChange_male").src = "/images/male_filled.png";
@@ -102,7 +98,6 @@ function changeImage_male() {
 function changeImage_female() {
     const sizesField = document.getElementById("gender");
 
-    console.log("Female");
     if(document.getElementById("imgClickAndChange_female").src.indexOf("/images/female.png")!= -1) {
         //document.getElementById("gender").setAttribute("value","weiblich");
         document.getElementById("imgClickAndChange_female").src = "/images/female_filled.png";
@@ -128,7 +123,6 @@ function changeImage_female() {
 function changeImage_young() {
     const sizesField = document.getElementById("age");
 
-    console.log("Young");
     if(document.getElementById("imgClickAndChange_young").src.indexOf("/images/baby.png")!= -1) {
         document.getElementById("imgClickAndChange_young").src = "/images/baby_filled.png";
 
@@ -151,7 +145,6 @@ function changeImage_young() {
 function changeImage_adult() {
     const sizesField = document.getElementById("age");
 
-    console.log("Adult");
     if(document.getElementById("imgClickAndChange_adult").src.indexOf("/images/adult.png")!= -1) {
         document.getElementById("imgClickAndChange_adult").src = "/images/adult_filled.png";
 
@@ -175,7 +168,6 @@ function changeImage_adult() {
 function changeImage_senior() {
     const sizesField = document.getElementById("age");
 
-    console.log("Senior");
     if(document.getElementById("imgClickAndChange_senior").src.indexOf("/images/senior.png")!= -1) {
         document.getElementById("imgClickAndChange_senior").src = "/images/senior_filled.png";
 
@@ -197,12 +189,10 @@ function changeImage_senior() {
 
 //Funktion für "Kastriert"
 function changeImage_castrated() {
-    console.log("castrated");
     if (document.getElementById("imgClickAndChange_castrated").src.indexOf("/images/castrated.png")!= -1) {
         document.getElementById("imgClickAndChange_castrated").src = "/images/castrated_filled.png";
 
         document.getElementById("castrated").setAttribute("value","Ja");
-        //document.getElementById("castrated").setAttribute("value","Ja");
     }
     else if(document.getElementById("imgClickAndChange_castrated").src.indexOf("/images/castrated.png")== -1){
         document.getElementById("imgClickAndChange_castrated").src = "/images/castrated.png";
@@ -216,7 +206,6 @@ function changeImage_castrated() {
 function changeImage_likes_male() {
     const sizesField = document.getElementById("traits");
 
-    console.log("likes_male");
     if (document.getElementById("imgClickAndChange_likes_male").src.indexOf("/images/likes_male.png")!= -1) {
         document.getElementById("imgClickAndChange_likes_male").src = "/images/likes_male_filled.png";
         
