@@ -9,14 +9,12 @@ h1 {
     /*margin-bottom: 20px;*/
 }
 
-body {
-     /*font-family: FagonRegular;  */
-}
 
 .search_container {
     margin-top: 20px;   
     /* background-color: red;  */
-    width: 100%; height: 1100px;
+    width: 100%; 
+    height: 1200px;
     margin-bottom: 20px;
 }
 
@@ -30,10 +28,10 @@ body {
 
 .feld {
     width: 735px;
-    height: 1010px;
+    height: 1200px;
     background-image: url(../images/grey.jpg);
     background-size: 100% 100%;  
-    margin-left:25%;
+    margin-left:33.3%;
     position: absolute;
         box-sizing: border-box;
         /*width: 100%;*/

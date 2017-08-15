@@ -14,13 +14,15 @@
         <div class="contentcontainer" role="main">
             <% include ../partials/legend %>    
         </div>
-        <h1><%= text %></h1>
+        <p style="color: black;  margin-left: 42.3%; margin-top: 30px; margin-bottom:0px; font-size: 20px; font-weight: bold;">
+            <%= text %>
+        </p>
 
         <div class="search_container">
 
          <div class="feld">
 
-            <form class="pure-form pure-form-stacked" action="/foto_hochladen" method="GET" enctype="multipart/form-data">
+            <form action="/hund_eintragen" method="POST" enctype="multipart/form-data">
 
                 <div class="eintragen_links">
                 <table cellspacing="0" cellpadding="0" width="50%" name="tabelle_links">
@@ -28,11 +30,11 @@
                        <!--Name des Hundes-->
                        <tr>
                            <td width="105px">
-                                <div class="textfeld">Name</div>
+                                <div class="textfeld" >Name</div>
                                    <div class="form-item">
-                                          <input id="aName" name="name" type="text" tabindex="300px" placeholder="Bitte Namen angeben" required />
+                                          <input name="name" pattern="[A-Z][a-z]+" type="text" placeholder="Bitte Namen angeben (A-Z)(a-z)" required />
                                       </div>
-
+                        
                                   <p>
                                       <div class="white_line"/>
                                   </p>
@@ -45,7 +47,7 @@
                            <td width="105px">
                                 <div class="textfeld">Tierheim</div>
                                     <div class="form-item">
-                                        <input id="aShelter" name="institution" type="text" tabindex="300px" placeholder="Bitte Tierheim angeben" required />
+                                        <input name="institution" type="text" pattern="[A-Z][a-z]+[ ][A-Z][a-z]+" tabindex="300px" placeholder="Für den Hund zuständiges Tierheim angeben" required />
                                     </div>
 
                                   <p>
@@ -55,15 +57,29 @@
                            </td>
                        </tr>
 
+                       <!--seit wann im Tierheim -->
+                       <tr>
+                           <td width="105px">
+                                <div class="textfeld" >seit wann im Tierheim?</div>
+                                   <div class="form-item">
+                                          <input name="since_when" type="text" placeholder="seit wann ist der Hund im Tierheim?" required />
+                                      </div>
+                        
+                                  <p>
+                                      <div class="white_line"/>
+                                  </p>
+
+                           </td>
+                       </tr>
 
                         <!-- Größe des Hundes -->
-                        <input type="hidden" id="size" value="" name="size"/>
+                        <!--<input type="hidden" id="size" value="" name="size"/> -->
                         <tr>
                             <td width="105px">
 
-                                <div class="textfeld">Größe</div>
+                                <div class="textfeld">Schulterhöhe in cm</div>
                                     <div class="form-item">
-                                        <input id="aHeight" name="height" type="number" tabindex="300px" placeholder="Bitte Schulterhöhe in cm angeben" required />
+                                        <input name="height" type="number" min="0" max ="100" tabindex="300px" placeholder="Bitte Schulterhöhe in cm angeben (0-100)" required /> 
                                     </div>
 
                                     <p>
@@ -78,7 +94,7 @@
                             <td width="105px">
                                  <div class="textfeld">Rasse</div>
                                     <div class="form-item">
-                                          <input id="aBreed" name="bread" type="text" tabindex="300px" placeholder="Bitte Rasse angeben" required />
+                                          <input name="breed" type="text" tabindex="300px" placeholder="Bitte Rasse angeben" required />
                                     </div>
                                
                                     <p>
@@ -90,9 +106,9 @@
                         <!--Fellfarbe des Hundes-->
                        <tr>
                            <td width="105px">
-                                <div class="textfeld">Name</div>
+                                <div class="textfeld">Fellfarbe(n)</div>
                                    <div class="form-item">
-                                          <input id="aColour" name="colour" type="text" tabindex="300px" placeholder="Bitte Fellfarbe(n) angeben" required/>
+                                          <input name="colour" type="text" tabindex="300px" placeholder="Bitte Fellfarbe(n) angeben (Farbe1,Farbe2,...)" required/>
                                       </div>
 
                                   <p>
@@ -104,20 +120,28 @@
 
 
                          <!-- Geschlecht des Hundes -->
-                         <input type="hidden" id="gender" value="" name="gender"/>
+                         <!--<input type="hidden" id="gender" value="" name="gender"/>-->
                         <tr>
                             <td width="105px">
                                  <div class="textfeld">Geschlecht</div>
                                     <div class="form-item">
 
-                                        <img src="/images/male.png" style="margin-left: 50px; height: 70px; width: 70px;" title="männlich"/>
-                                        <input id="aGender" name="gender" type="radio" tabindex="300px" value="männlich" required>männlich</input>
-                                       
-                                        <img src="/images/female.png" style="margin-left: 20px; height: 70px; width: 70px;" title="weiblich"/>
-                                        <input id="aGender" name="gender" type="radio" tabindex="300px" value="weiblich" required>weiblich</input>
-                                    
+                                        <div style="float:left;">
+                                            <img src="/images/male_legend.png" style="margin-left: 35px; height: 70px; width: 70px; float:left;" title="männlich"/>
+                                            <input name="gender" type="radio" tabindex="300px" value="männlich" style="margin-top: 30px;" required></input>
+                                        </div>
+
+                                        <div style=" margin-left: 40px; float:left;">
+                                            <img src="/images/female_legend.png" style="height: 70px; width: 70px; float:left;" title="weiblich"/>
+                                            <input name="gender" type="radio" tabindex="300px" value="weiblich" style="margin-top: 30px;" required> </input>
+                                        </div>
                                     </div>
                                 </div>
+                                    <br/><br/><br/>
+                                    <p>
+                                        <div class="white_line"/>
+                                    </p>
+
                             </td>
                         </tr>
 
@@ -131,11 +155,13 @@
                      <tbody>
 
                         <!-- Alter des Hundes -->
-                        <input type="hidden" id="age" value="" name="age"/>
+                        <!--<input type="hidden" id="age" value="" name="age"/>
                         <tr>
                             <td width="105px">
                                  <div class="textfeld">Alter</div>
                                     <div class="form-item">
+
+                                        
                                         <input id="aAge" name="age" type="radio" tabindex="300px" value="jung" required>jung</input>
                                         <input id="aAge" name="age" type="radio" tabindex="300px" value="erwachsen" required>erwachsen</input>
                                         <input id="aAge" name="age" type="radio" tabindex="300px" value="senior" required>senior</input>
@@ -145,14 +171,14 @@
                                     <div class="white_line"/>
                                 </p>
                             </td>
-                        </tr>
+                        </tr>-->
 
                         <!--Geburtsdatum des Hundes-->
                        <tr>
                            <td width="105px">
                                 <div class="textfeld">Geburtsdatum</div>
                                    <div class="form-item">
-                                          <input id="aBirthdate" name="birthdate" type="date" tabindex="300px" placeholder="Bitte Geburtsdatum angeben" required />
+                                          <input id="aBirthdate" name="birthdate" type="date" tabindex="300px" placeholder="DD.MM.YY" required />
                                       </div>
 
                                   <p>
@@ -163,12 +189,14 @@
                        </tr>
 
 
+
                         <!-- Eigenschaften des Hundes -->
                         <input type="hidden" id="traits" value="" name="traits"/>
                         <tr>
                             <td width="105px">
                                  <div class="textfeld">Eigenschaften</div>
                                     <div class="traits_icons">
+                                        
                                             <img class="trait_img" src="/images/likes_male.png" id="imgClickAndChange_likes_male"
                                             onClick="changeImage_likes_male()" title="verträglich mit Männchen"/>
 
@@ -202,7 +230,7 @@
                                             <img class="trait_img" src="/images/guard.png" id="imgClickAndChange_guard"
                                             onClick="changeImage_guard()" title="Wachhund"/>
 
-                                            <img class="trait_img" src="/images/likes_water_new.png" id="imgClickAndChange_likes_water"
+                                            <img class="trait_img" src="/images/likes_water.png" id="imgClickAndChange_likes_water"
                                             onClick="changeImage_likes_water()" title="mag Wasser"/>
 
                                             <img class="trait_img" src="/images/poo.png" id="imgClickAndChange_poo"
@@ -225,7 +253,7 @@
 
 
                         <!-- Hund kastriert JA/NEIN -->
-                        <input type="hidden" id="castrated" value="" name="castrated"/>
+                        <input type="hidden" id="castrated" value="" name="castrated" required/>
                         <tr>
                             <td width="105px">
                                  <div class="textfeld">Kastriert</div>
@@ -236,16 +264,64 @@
 
                                     </div>
                                  </div>
-                                    <p>
-                                        <div class="white_line"/>
-                                    </p>
+                                <p>
+                                    <div class="white_line"/>
+                                </p>
                             </td>
                         </tr>
+
+                        <!--Link zum Profil-->
+                        <tr>
+                           <td width="105px">
+                                <div class="textfeld">Link zum Profil</div>
+                                    <div class="form-item">
+                                        <input name="link" type="url" tabindex="300px" placeholder="Profil des Hundes auf der Tierheimseite angeben" />
+                                    </div>
+
+                                  <p>
+                                      <div class="white_line"/>
+                                  </p>
+                           </td>
+                        </tr>
+
+                        <!--Beschreibungstext-->
+                        <tr>
+                           <td width="105px">
+                                <div class="textfeld">Beschreibungstext</div>
+                                    <div class="form-item">
+                                        <textarea name="text" cols="40" rows="3" tabindex="93" maxlength="600" placeholder="Beschreibungstext des Hundes"></textarea>
+                                    </div>
+
+                                  <p>
+                                      <div class="white_line"/>
+                                  </p>
+                           </td>
+                        </tr>
+
+
+    
+
+                        <!--Foto hochladen-->   
+                        <tr>
+                            <td width="105px">         
+                                <div class="textfeld">Foto</div>
+                                    <div class="durchsuchen">
+                                        <input name="photo" type="file">
+                                        <!--<button type="submit" class="pure-button pure-button-primary">Upload</button>-->
+
+                                        <!--<input type="file" name="avatar">
+                                        <input type="submit" value="submit" id="upload" style="margin-bottom: 10px;">-->
+                                    </div>
+                                </div>
+                                
+                            </td>
+                        </tr>
+
 
                     </tbody>
                 </table>
                     <div class="speichern">
-                      <button id="save" type="submit" value="speichern" tabindex="90">Speichern</button>
+                      <button type="submit" value="speichern" class="pure-button pure-button-primary">Speichern</button>
                     </div>
                </div>
            </form>

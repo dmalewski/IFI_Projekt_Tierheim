@@ -17,31 +17,32 @@
 
             <div class="detail_div">
                 <p class="desc_name"><%= dog.name %></p>
-                <% if(dog.institution.match(/muenchen/ig)) { %>
+                <% if(dog.institution.match(/Muenchen/ig)) { %>
                     <% if(!dog.img_big) { %>
                         <div class="detail_img_div">
                             <img id="detail_img" src="/images/default_dog.png" border="2px"/>  
                         </div>
                     <% } %>
-                    <div class="detail_img_div">
-                        <img id="detail_img" src="<%= dog.img_big %>" border="2px"/>  
-                    </div>
+                   
+                        <div class="detail_img_div">
+                            <img id="detail_img" src="<%= dog.img_big %>" border="2px"/>  
+                        </div>
+                  
                 <% } %>
-                <% if(dog.institution.match(/oldenburg/ig)) { %>
+                <% if(dog.institution.match(/Oldenburg/ig)) { %>
                     <div class="detail_img_div">
                         <img id="detail_img_small" src="<%= dog.img %>" border="2px"/>  
                     </div>
                 <% } %>
-                <% if(!dog.institution.match(/oldenburg/ig) && !dog.institution.match(/muenchen/ig)) { %>
+                <% if(!dog.institution.match(/Oldenburg/ig) && !dog.institution.match(/Muenchen/ig)) { %>
                     <div class="detail_img_div">
                         <img id="detail_img" src="<%= dog.img %>" border="2px"/>  
                     </div>
                 <% } %>
 
-               
 
                 <div class="description">      
-                    <p><span class="hdl">Rasse: </span><%= dog.bread %> </p>
+                    <p><span class="hdl">Rasse: </span><%= dog.breed %> </p>
                     <P><span class="hdl">Fellfarbe: </span><%= dog.colour %> </P>
                     <P><span class="hdl">Geschlecht: </span><%= dog.gender %> </P>
                     <P><span class="hdl">Kastriert: </span><%= dog.castrated %> </P>
@@ -65,15 +66,21 @@
 
 
                 <div class="description_text">
-                      <% if(dog.text) { %>
+                    <% if(dog.text) { %>
                     <p><span class="hdl">Beschreibungstext: </span>
                     <br/>
                         <%= dog.text %> 
                     <% } %> </p>
                 </div>
 
+                
                 <div class="back_cont">
-                    <a class="navbtn" role="button" href="/hunde">&laquo; zurück zur Übersicht</a>
+                    <a class="navbtn" role="button" onclick="goBack()">&laquo; zurück zur Übersicht</a>
+                    <script>
+                        function goBack() {
+                            window.history.back();
+                        }
+                    </script>
                 </div>
 
             </div>

@@ -10,20 +10,28 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const mongo = require('mongodb');
 const multer = require('multer');
+const objecthash = require('object-hash');
 
 const {read, findBreeds} = require("./lib/services/reader");
 const {read_one} = require("./lib/services/read_one_dog");
 const {filter} = require("./lib/services/filter");
-const {findPhoto} = require('./lib/services/findPhotos');
-const {persistPhoto} = require("./lib/services/persistPhoto");
+const {findPhoto} = require('./lib/services/findPhoto');
+const {persistPhoto} = require("./lib/services/insert_dog");
 const {getHunde} = require('./lib/services/pagination');
 const {persistMail} = require('./lib/services/persistMail');
 const {insertDog} = require('./lib/services/insert_dog');
+
+//BILD HOCHLADEN
+const fs = require("fs");
+const mongoose = require('mongoose');
+mongoose.connect("mongodb://dmalewski:1234@ds163711.mlab.com:63711/ifi_tierheim");
+var conn = mongoose.connection;
 
 
 const upload = multer({
     dest: `./uploads`
 });
+
 
 //          mongoose.connect('mongodb://cchriss:Plantier89%@ds129352.mlab.com:29352/christiane');
 //          const db = mongoose.connection;
@@ -58,13 +66,11 @@ const app = express();
 
 app.use(express.static('./assets'));
 
-// BodyParser Middleware
-app.use(bodyparser.urlencoded({ extended: true }));
 
-// app.use(bodyParser.json());
-
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended: true}));
 /*app.use(bodyParser.urlencoded({ extended: false }));*/
-//               app.use(cookieParser());
+              app.use(cookieParser());
 // View Engine
 //                app.set('views', path.join(__dirname, 'views'));/*
 //                app.engine('handlebars', exphbs({defaultLayout:'layout'}));*/
@@ -76,7 +82,6 @@ app.use('/uploads', express.static('./uploads'));
 
 //--------------------------------------------------------------------------------AUTHENTIFICATION---------------------------------------------------------------------
 const morgan = require('morgan');
-const mongoose = require('mongoose');
 
 const configDB = require('./config/database.js');
 
@@ -95,7 +100,7 @@ app.set('view engine', 'ejs'); // set up ejs for templating
 
 // required for passport
 app.use(session({
-    secret: 'ilovescotchscotchyscotchscotch', // session secret
+    secret: 'doggo', // session secret
     resave: true,
     saveUninitialized: true
 }));
@@ -112,18 +117,15 @@ require('./app/routes.js')(app, passport); // load our routes and pass in our ap
 
 
 //Startseite Home
-app.get('/', async (req, res)=>{
-     findBreeds().then((breeds) => {
-        res.render('pages/home',{
-            title: 'Home',
-            headline: 'Home',
-            text: `Wir Menschen tragen eine große Verantwortung den Tieren gegenüber. Wir haben sie gerne um
-            uns herum, um uns nicht einsam zu fühlen und entledigen uns ihrer, sobald wir sie nicht mehr brauchen.
-            Dabei empfinden Tiere wie der Mensch Freude und Schmerz, Glück und Unglück. Auf den folgenden Seiten
-            finden Sie bei uns Hunde, Katzen, Kleintiere, Vögel und sogar Exoten, die darauf warten ein neues
-            Zuhause zu finden.`,
-            breeds: breeds
-         });
+app.get('/', async (req, res)=>{ 
+    res.render('pages/home',{
+        title: 'Home',
+        headline: 'Home',
+        text: `Wir Menschen tragen eine große Verantwortung den Tieren gegenüber. Wir haben sie gerne um
+        uns herum, um uns nicht einsam zu fühlen und entledigen uns ihrer, sobald wir sie nicht mehr brauchen.
+        Dabei empfinden Tiere wie der Mensch Freude und Schmerz, Glück und Unglück. Auf den folgenden Seiten
+        finden Sie bei uns Hunde, Katzen, Kleintiere, Vögel und sogar Exoten, die darauf warten ein neues
+        Zuhause zu finden.`,
     });
 });
 
@@ -131,7 +133,7 @@ app.get('/', async (req, res)=>{
 app.get('/hunde/:pages?', async (req, res)=>{
     const page = req.params.pages || 0;
     const results = await getHunde(page);
-    console.log (results.pagesCount);
+    // console.log (results.pagesCount);
 
     res.render('pages/hunde',{
         title: 'Hunde',
@@ -165,16 +167,8 @@ app.get('/hunde/details/:id?', (req, res)=>{
         });
     });
 });
-/*
-app.get('/hunde/:id?', (req, res)=>{
-    const id = req.params.id;
-    // daten 
-    res.render('pages/details',{
-        //Daten aus Datenbank einbinden
-    });
-});*/
 
-
+//Suche
 app.get('/suche', async (req, res)=>{
     findBreeds().then((breeds) => {
         res.render('pages/suche',{
@@ -187,7 +181,7 @@ app.get('/suche', async (req, res)=>{
  });
 
 
-
+//Suchergebnis
 app.get("/suche_ergebnis",(req, res) => {
 
     //Größen
@@ -400,6 +394,20 @@ app.get('/links',(req, res)=>{
     });
 });
 
+// Spenden
+app.get('/spenden',(req, res)=>{
+    res.render('pages/comingSoon',{
+        title: 'Spenden',
+        headline: 'In Bearbeitung!',
+        headlineText: 'Es tut uns leid!',
+        text: `Diese Seite befindet sich noch im Aufbau. Wir hoffen, dass Ihnen unsere
+        Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das
+        ein oder andere Tier aus dem Tierheim zu adoptieren und ihm ein tolles neues Zuhause zu bieten.`,
+        signature: `Bis Bald euer Team4!`,
+    });
+});
+
+
 
 // ComingSoonPage
 app.get('/comingSoon',(req, res)=>{
@@ -407,6 +415,7 @@ app.get('/comingSoon',(req, res)=>{
         title: 'Error',
         });
 });
+
 
 // Set Static Folder
 //app.use(express.static(path.join(__dirname, 'assets/js')));
@@ -462,39 +471,102 @@ app.get('/hund_eintragen',(req, res)=> {
         title: 'Eintragen',
         headline: 'Hund eintragen',
         text: `Tragen Sie einen Hund ein!`
-    });s
+    });
 });
 
+
+// app.get('/photos', (req, res) => {
+//     findAllPhotos()
+//         .then((photos) =>
+//             res.render('pages/photos', {
+//                 title: `Photowall`,
+//                 description: `Let's make an awesome photowall. Feel free to upload a photo.`,
+//                 photos,
+//             })
+//         );
+// });
+
+// app.post('/photos', upload.single('photo'), (req, res) => {
+//     const { filename, mimetype, size } = req.file;
+
+//     persistPhoto(filename, size, mimetype)
+//         .then(() =>
+//             res.redirect('/photos')
+//         );
+// });
 
 //Hunde eintragen POST
-app.post('/foto_hochladen', upload.single('photo'), (req, res)=> {
-
-    const name =req.body.name;
-    const { filename, mimetype: type, size } = req.file;
-    const age = req.body.age;
-    const height =req.body.height;
-    const bread =req.body.breed;
-    const gender =req.body.gender;
-    const traits = req.body.traits;
+// app.post('/hund_eintragen', upload.single('photo'), (req, res)=> {
+app.post('/hund_eintragen',  upload.single('photo'), (req, res) => {
+    const { filename, mimetype, size } = req.file;
+    
+    const institution =  req.body.institution;
+    const name = req.body.name;
+    // const { filename, mimetype: type, size } = req.file;
+    const colour =  req.body.colour;
+    const birthdate = req.body.birthdate;
+    const height = req.body.height;
+    const since_when = req.body.since_when;
+    const breed = req.body.breed;
+    const gender = req.body.gender;
     const castrated = req.body.castrated;
 
-    console.log(name,filename, size, age, bread, gender, traits, castrated);
+    //Wenn es einen Link gibt, wird dieser aus req.body rausgezogen
+    const link = req.body.link;
+   
 
-    // persistPhoto(filename, type, size)
-        // .then(() =>
-              insertDog(name,size,age,bread,gender,traits,castrated)
-                .then((name) => {
-                    res.render('pages/hund_gespeichert',{
-                        title: "Erfolg",
-                        headline: `Ihr Hund ${name} wurde erfolgreich gespeichert!!`,
-                    });
-                })        
-        // )
-        .catch((err) => {
-            res.send('hat nicht geklappt');
-        });
-        
+    console.log("link: "+ link);
+      console.log("birthdate: "+ birthdate);
+
+
+    //Wenn es einen Text gibt, wird dieser aus req.body rausgezogen
+    const text = req.body.text;
+
+
+    //Eigenschaften splitten für Array
+    let traits ="";
+    if(req.body.traits.length) {
+        traits = req.body.traits.split(',');
+    };
+
+    //ID erstellen -> Hashen des Hundeobjektes  
+    const id = objecthash(institution+name+height+birthdate+since_when+breed+colour+gender+traits+castrated+link+text);
+
+    persistPhoto(filename, size, mimetype, id)
+            .then(() => {
+                const img = filename;
+                console.log(img);
+                insertDog(id, institution, name, img, height, birthdate, since_when, breed,colour, gender, traits, castrated, link, text)
+                    .then((name) => {
+                        read_one(id)
+                            .then((result) => {
+                                findPhoto(id)
+                                    .then((photo) => {
+                                        res.render('pages/hund_gespeichert',{
+                                            title: "Erfolg",
+                                            headline: `Ihr Hund ${name} wurde erfolgreich gespeichert!!`,
+                                            dog: result,
+                                            photo
+                                        });
+                                    })
+                
+                            })
+                    })
+            })      
+            .catch((err) => {
+                console.log(err);
+                res.render("pages/insert_error", {
+                    title: "Fehler",
+                    headline: "Das hat nicht geklappt.",
+                    text: "Bitte versuchen Sie es doch nochmal!",
+                    dogs: []
+                })
+            })   
 });
+
+
+
+
 
 
 // app.get('/speichern',(req, res)=>{
@@ -505,6 +577,64 @@ app.post('/foto_hochladen', upload.single('photo'), (req, res)=> {
 //     });
 // });
 
+
+var gfs;
+
+var Grid = require("gridfs-stream");
+Grid.mongo = mongoose.mongo;
+
+conn.once("open", function(){
+  gfs = Grid(conn.db);
+  app.get("/upload", function(req,res){
+    //renders a multipart/form-data form
+        res.render("pages/upload.ejs", {
+            title: "Upload",
+            headline: "Das hat nicht geklappt.",
+            text: "Bitte versuchen Sie es doch nochmal!"
+        })
+  });
+
+  //second parameter is multer middleware.
+  app.post("/upload", upload.single("avatar"), function(req, res, next){
+    //create a gridfs-stream into which we pipe multer's temporary file saved in uploads. After which we delete multer's temp file.
+    var writestream = gfs.createWriteStream({
+      filename: req.file.originalname
+    });
+    //
+    // //pipe multer's temp file /uploads/filename into the stream we created above. On end deletes the temporary file.
+    fs.createReadStream("./uploads/" + req.file.filename)
+      .on("end", function(){fs.unlink("./uploads/"+ req.file.filename, function(err){
+          res.send("success")
+        })
+    })
+        .on("err", function(){res.send("Error uploading image")})
+          .pipe(writestream);
+  });
+
+//   // sends the image we saved by filename.
+//   app.get("/upload:filename", function(req, res){
+//       var readstream = gfs.createReadStream({filename: req.params.filename});
+//       readstream.on("error", function(err){
+//         res.send("No image found with that title");
+//       });
+//       readstream.pipe(res);
+//   });
+
+//   //delete the image
+//   app.get("/upload/delete/:filename", function(req, res){
+//     gfs.exist({filename: req.params.filename}, function(err, found){
+//       if(err) return res.send("Error occured");
+//       if(found){
+//         gfs.remove({filename: req.params.filename}, function(err){
+//           if(err) return res.send("Error occured");
+//           res.send("Image deleted!");
+//         });
+//       } else{
+//         res.send("No image found with that title");
+//       }
+//     });
+//   });
+});
 
 
 

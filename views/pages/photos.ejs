@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+   
+    </head>
+    <body>
+        
+
+        <div class="content">
+            <form class="pure-form pure-form-stacked" action="/photos" method="POST" enctype="multipart/form-data">
+                <fieldset>
+                    <input name="photo" type="file">
+
+                    <button type="submit" class="pure-button pure-button-primary">Upload</button>
+                </fieldset>
+            </form>
+
+            <% if (!photos.length) { %>
+                <p>No photos available</p>
+            <% } else { %>
+                <ul class="photos">
+                    <% photos.forEach(function (photo) { %>
+                        <li class="photos__photo">
+                            <img src="uploads/<%= photo.filename %>">
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } %>
+        </div>
+    </body>
+</html>
