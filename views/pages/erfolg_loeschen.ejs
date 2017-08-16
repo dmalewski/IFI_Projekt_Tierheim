@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <% include ../partials/header %>
+    </head>
+
+    <body>
+        <!-- navigation with navheader -->
+        <% include ../partials/navigations %>
+        <div class="maincontainer" style="height: 300px;">
+            <div class="container">
+                <h1><%= headline %></h1>
+                 <p><%= text %></p>
+            </div>
+        </div>
+    
+        <!-- content -->
+        <!--<div class="contentcontainer" role="main"> -->
+            <div class="flexcontainer">
+                <div class="happy">
+                    <p>
+                        Wir hoffen, der Hund hat ein tolles neues Zuhause gefunden! </br>
+                        Besuchen Sie und gerne wieder und tragen Sie bei uns Hunde ein, damit diese schneller ein Zuhause finden!
+                    </p>
+                </div>
+                
+                <div class="happy_img">
+                    <img src="/images/happy_dog_2.jpg" style="height: 90%; width: 90%;"/> 
+                </div>
+                    
+            </div>
+        <!--</div>  -->
+
+        <!-- footer -->
+        <% include ../partials/footer.ejs %>
+          
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <% include ../partials/header %>
+    </head>
+
+    <body>
+        <!-- navigation with navheader -->
+        <% include ../partials/navigations %>
+        <div class="maincontainer" style="height: 300px;">
+            <div class="container">
+                <h1><%= headline %></h1>
+                <p><%= text %></p>
+            </div>
+        </div>
+    
+        <!-- content -->
+        <!--<div class="contentcontainer" role="main"> -->
+            <div class="flexcontainer">
+                <form action="/hund_loeschen/<%= id %>" method="POST">
+
+                <div> 
+                    <button style="background-color: red; margin-left: 33.3%" type"submit">         
+                        Hund löschen
+                    </button>
+                </div>
+
+                <% include ../partials/dogs_insert %>
+                <br/><br/>
+
+                </form>     
+            </div>
+        <!--</div>  -->
+
+        <!-- footer -->
+        <% include ../partials/footer.ejs %>
+          
+    </body>
+</html>

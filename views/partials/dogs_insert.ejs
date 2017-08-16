@@ -4,9 +4,17 @@
         <p class="center figcap"><%= dog.name %> </p>
         <hr />
 
-        <figure class="image-wrapper">
-            <img src="/uploads/<%= photo.filename %>"></img>
-        </figure> 
+        <% if(dog.how_inserted.match(/handwritten/ig)) { %>
+            <figure class="image-wrapper">
+                <img src="/uploads/<%= dog.img %>"></img>
+            </figure> 
+        <% } %>
+
+        <% if(!dog.how_inserted.match(/handwritten/ig)) { %>
+            <figure class="image-wrapper">
+                <img src="<%= dog.img %>"></img>
+            </figure> 
+        <% } %>
 
         <figcaption>
             <P class="center figbreed"><%= dog.breed %></P>

@@ -18,9 +18,9 @@
             <div class="detail_div">
                 <p class="desc_name"><%= dog.name %></p>
 
-                <% if(dog.how_inserted.match(/hand/ig)) { %>
+                <% if(dog.how_inserted.match(/handwritten/ig)) { %>
                     <div class="detail_img_div">
-                        <img id="detail_img" src="/uploads/<%= photo.filename %>" border="2px"/>  
+                        <img id="detail_img" src="/uploads/<%= dog.img %>" border="2px"/>  
                     </div>
                 <% } %>
 
@@ -38,7 +38,7 @@
                     <% } %>    
                 <% } %>
 
-                <% if(dog.institution.match(/Oldenburg/ig) || !(dog.institution.match(/Muenchen/ig))) { %>
+                <% if(dog.institution.match(/Oldenburg/ig) || dog.how_inserted.match(/seeding/ig)) { %>
                     <div class="detail_img_div">
                         <img id="detail_img_small" src="<%= dog.img %>" border="2px"/>  
                     </div>
@@ -55,14 +55,17 @@
                     <P><span class="hdl">Tierheim: </span><%= dog.since_when %> </P>
                     <% if(dog.traits) { %>
                     <p><span class="hdl">Charaktereigenschaften: </span>
+                        <% let i = dog.traits.length; %>
+
                         <% dog.traits.forEach(function (trait) { %>
-                            <%= trait %>,  
+                            <% i--; %>
+                            <%= trait %><% if(i > 0) { %>,<% } %>
                         <% }) %>
                     <% } %> </p>
 
                     <% if(dog.link) { %>
                         <div class="tierheim_link">
-                            <a href="<%= dog.link %>" class="navbtn_2">zur Tierheim-Profilseite des Hundes &raquo;</a>
+                            <a href="<%= dog.link %>" class="navbtn">zur Tierheim-Profilseite des Hundes &raquo;</a>
                         </div>
                     <% } %>
                 </div>

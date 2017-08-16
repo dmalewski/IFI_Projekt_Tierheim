@@ -256,7 +256,6 @@ figure img {
 }
 
 .a_suchen {
-    /* background: url("/images/rosybrown.jpg"); */
     background-color: sandybrown; 
     height: 60px; 
     width: 300px; 
@@ -264,7 +263,6 @@ figure img {
 }
 
 .a_eintragen {
-    /* background: url("/images/braun.jpg"); */
     background-color: sandybrown; 
     height: 60px; 
     width: 300px; 
@@ -272,7 +270,13 @@ figure img {
 }
 
 .a_info {
-    /* background: url("/images/orange.jpg"); */
+    background-color: sandybrown; 
+    height: 60px; 
+    width: 300px; 
+    font-size: 20px;
+}
+
+.delete {
     background-color: sandybrown; 
     height: 60px; 
     width: 300px; 
@@ -289,7 +293,6 @@ figure img {
     flex-wrap: wrap;
     border: 4px dashed white;
     box-shadow: 0 0 1px rgba(0,0,0, .4);
-    background-image: url(../images/grey_new.png);
     transition: background 1s; 
     border-radius: 10px;
 }
@@ -299,6 +302,36 @@ figure img {
     margin-right: 30px;
     color: ghostwhite;
     font-size: 16px;
+}
+
+.happy {
+    background-color: blue;
+    float: both;
+    margin-right: 50%;
+    margin-left: 50px;
+    width: 100%; 
+    /*margin-bottom: 60px;*/
+    flex-wrap: wrap;
+    border: 4px dashed white;
+    box-shadow: 0 0 1px rgba(0,0,0, .4);
+    background-image: url(../images/grey_new.png); 
+    border-radius: 10px;
+
+}
+
+.happy p {
+    margin-left: 30px;
+    margin-right: 30px;
+    color: ghostwhite;
+    font-size: 30px;
+}
+
+.happy_img {
+    float: both; 
+    margin: 50px;
+    margin-right: 50%;
+    width: 100%;  
+    /*background-color: red;*/
 }
 
 #hundeschule {
@@ -351,7 +384,7 @@ figure img {
     vertical-align: middle;
     cursor: pointer;
     border: 0px solid transparent;
-    background: red;
+    background: #bc8f8f;
     background-image: -webkit-linear-gradient(top, #bc8f8f, #756161);
     background-image: -moz-linear-gradient(top, #bc8f8f, #756161);
     background-image: -ms-linear-gradient(top, #bc8f8f, #756161);

@@ -14,12 +14,12 @@ const objecthash = require('object-hash');
 
 const {read, findBreeds} = require("./lib/services/reader");
 const {filter} = require("./lib/services/filter");
-const {read_one} = require("./lib/services/read_one_dog");
+const {read_one} = require("./lib/services/read_one");
+const {delete_one} = require("./lib/services/delete_one");
 const {findPhoto} = require('./lib/services/findPhoto');
-const {persistPhoto} = require("./lib/services/insert_dog");
 const {getHunde} = require('./lib/services/pagination');
 const {persistMail} = require('./lib/services/persistMail');
-const {insertDog} = require('./lib/services/insert_dog');
+const {insertDog, persistPhoto} = require('./lib/services/insert_dog');
 
 //BILD HOCHLADEN
 const fs = require("fs");
@@ -32,30 +32,6 @@ const upload = multer({
     dest: `./uploads`
 });
 
-
-//          mongoose.connect('mongodb://cchriss:Plantier89%@ds129352.mlab.com:29352/christiane');
-//          const db = mongoose.connection;
-/*
-const routes = require('/route/index');
-const users = require('/route/users');*/
-
-//-------------------------------------------------------
-/*const router = express.Router();*/
-
-/* Get Homepage
-router.get('/', ensureAuthenticated, function(req, res){
-	res.render('index');
-});*/
-// function ensureAuthenticated(req, res, next){
-// 	if(req.isAuthenticated()){
-// 		return next();
-// 	} else {
-// 		//req.flash('error_msg','You are not logged in');
-// 		res.redirect('/users/login');
-// 	}
-// }
-
-/*module.exports = router;*/
 //-----------------------------------------------------------------------
 
 // Init App
@@ -130,91 +106,46 @@ app.get('/', async (req, res)=>{
 });
 
 // Hunde
-app.get('/hunde/:pages?', async (req, res)=>{
+app.get('/hunde/:pages?', async (req, res) => {
     const page = req.params.pages || 0;
     const results = await getHunde(page);
-    // console.log (results.pagesCount);
-
-    // let bla = "";
-    // for(let i = 0; i < results.hunde.length; i++) {
-
-    //     if(results.hunde[i].how_inserted.match(/by hand/ig)) {
-
-    //         console.log(results.hunde[i].name);
-    //         console.log(results.hunde[i].id);
-    //         console.log(results.hunde[i].how_inserted);
-
-    //         findPhoto(results.hunde[i].id)
-    //             .then((photo) => {
-    //                 console.log(photo.filename);
-    //                 bla = photo;
-    //             })      
-    //     }
-    // }
-
+    
     res.render('pages/hunde',{
-            title: 'Hunde',
-            headline: 'Vermittlung von Hunden',
-            text: `Ein Tier kann aus vielfältigen Gründen im Tierheim sitzen. "Scheidungshunde" sind nicht selten
-            und auch jede andere Art von veränderten Lebensumständen gehören zu den häufigen Gründen für eine Abgabe
-            im Heim. Das können z.B. berufliche Veränderungen und damit verbundener Zeitmangel oder auch Allergien des
-            Vorbesitzers sein. Leider gehört dazu auch manchmal menschlicher Familienzuwachs. Dabei könnte die fachliche
-            Beratung zum richtigen Umgang für Eltern und Kind in den meisten Fällen eventuell vorhandene Zweifel zerstreuen.
-            Gute Hundeschulen bieten oft auch in diesen Fällen eine Hilfestellung. `,
-            dogs: results.hunde,
-            // photo: bla,
-            pagesCount: results.pagesCount,
-            currentPage: page
-        });
-
-    
-
-    // console.log(results.hunde);
-
-    // for(let i = 0; i < results.length; i++) {
-    //     if(results.hunde.dog.match(/hand/ig)) {
-    //         console.log("----------------------------------------------");
-    //     }
-    // }
-    
-
+        title: 'Hunde',
+        headline: 'Vermittlung von Hunden',
+        text: `Ein Tier kann aus vielfältigen Gründen im Tierheim sitzen. "Scheidungshunde" sind nicht selten
+        und auch jede andere Art von veränderten Lebensumständen gehören zu den häufigen Gründen für eine Abgabe
+        im Heim. Das können z.B. berufliche Veränderungen und damit verbundener Zeitmangel oder auch Allergien des
+        Vorbesitzers sein. Leider gehört dazu auch manchmal menschlicher Familienzuwachs. Dabei könnte die fachliche
+        Beratung zum richtigen Umgang für Eltern und Kind in den meisten Fällen eventuell vorhandene Zweifel zerstreuen.
+        Gute Hundeschulen bieten oft auch in diesen Fällen eine Hilfestellung. `,
+        dogs: results.hunde,
+        pagesCount: results.pagesCount,
+        currentPage: page
+    });
 });
 
 
-app.get('/hunde/details/:id?', (req, res)=>{
+
+app.get('/hunde/details/:id?', (req, res) => {
     const id = req.params.id;
 
     read_one(id)
-        .then((result) => {
-            if(result.how_inserted.match(/hand/ig)) {
-                 findPhoto(id)
-                 .then((photo) => {        
-                    res.render('pages/details',{
-                        title: 'Details',
-                        headline: result.name,
-                        text: "Hier finden Sie detailliertere Informationen zum Hund " + result.name + 
-                        `. Wenn Sie mehr über den Hund erfahren wollen oder Kontaktdaten haben möchten, 
-                        klicken Sie bitte auf den Link 'zur Tierheim-Profilseite des Hundes'.`,
-                        dog: result,
-                        photo
-                    });
-                }) 
-            }
-            else {
-                res.render('pages/details',{
-                    dog: result,
-                    title: 'Details',
-                    headline: result.name,
-                    text: "Hier finden Sie detailliertere Informationen zum Hund " + result.name + 
-                    `. Wenn Sie mehr über den Hund erfahren wollen oder Kontaktdaten haben möchten, 
-                    klicken Sie bitte auf den Link 'zur Tierheim-Profilseite des Hundes'.`
-                });
-            }         
+        .then((result) => {    
+            res.render('pages/details',{
+                title: 'Details',
+                headline: result.name,
+                text: "Hier finden Sie detailliertere Informationen zum Hund " + result.name + 
+                `. Wenn Sie mehr über den Hund erfahren wollen oder Kontaktdaten haben möchten, 
+                klicken Sie bitte auf den Link 'zur Tierheim-Profilseite des Hundes'.`,
+                dog: result
+            });
+        
         })
         .catch((err) => {
             console.log("Error: " + err);
         });
-    });
+});
 
 //Suche
 app.get('/suche', async (req, res)=>{
@@ -272,21 +203,6 @@ app.get("/suche_ergebnis",(req, res) => {
         if(results.length != 0) {
 
 
-            // results_dogs.find({
-                
-            // }).toArray()
-            //     .then((ergebnis) => {
-            //         const blubb = ergebnis;
-            //     })
-
-            // console.log("LÄNGE UND SOOOOOO:" + ergebnis.length);
-
-            // const names = results.find(
-            //     { name: "Moreno" }
-            // );
-
-            // console.log("namen: " + names);
-            
             res.render("pages/suche_ergebnis",{
                 title: "Suchergebnis",  
                 headline: "Passend zu Ihren Suchkriterien wurden folgende Hunde gefunden:",
@@ -371,26 +287,26 @@ app.get('/exoten',(req, res)=>{
 });
 
 
-// Login- und Registrierung
-app.get('/registrierung',(req, res)=>{
-    res.render('pages/anmelden',{
-        title: 'Anmelden',
-        headline: `Melden Sie sich jetzt an!`,
-        text: `Melden Sie sich jetzt bei Tiervermittlung an und fügen Sie unkompliziert und mit wenigen Klicks Ihre Schützlinge
-                 im gesamten deutschsprachigen Raum ein. Wir helfen Ihnen die passenden Halter schnell und einfach zu ermitteln.
-                 Das Einstellen ist intuitiv und schnell zu erledigen`
-              });
-});
+// // Login- und Registrierung
+// app.get('/registrierung',(req, res)=>{
+//     res.render('pages/anmelden',{
+//         title: 'Anmelden',
+//         headline: `Melden Sie sich jetzt an!`,
+//         text: `Melden Sie sich jetzt bei Tiervermittlung an und fügen Sie unkompliziert und mit wenigen Klicks Ihre Schützlinge
+//                  im gesamten deutschsprachigen Raum ein. Wir helfen Ihnen die passenden Halter schnell und einfach zu ermitteln.
+//                  Das Einstellen ist intuitiv und schnell zu erledigen`
+//               });
+// });
 
 
-//Registrierung
-app.post('/registrierung',(req, res)=>{
-    res.render('pages/registriert',{
-        title: 'Anmelden',
-        headline: 'Herzlich Willkommen!',
-        text: `Sie haben sich erfolgreich registriert!`
-    });
-});
+// //Registrierung
+// app.post('/registrierung',(req, res)=>{
+//     res.render('pages/registriert',{
+//         title: 'Anmelden',
+//         headline: 'Herzlich Willkommen!',
+//         text: `Sie haben sich erfolgreich registriert!`
+//     });
+// });
 
 
 // Impressum
@@ -482,54 +398,6 @@ app.get('/comingSoon',(req, res)=>{
 });
 
 
-// Set Static Folder
-//app.use(express.static(path.join(__dirname, 'assets/js')));
-
-// Express Session
-/*app.use(session({
-    secret: 'secret',
-    saveUninitialized: true,
-    resave: true
-}));
-// Passport init
-app.use(passport.initialize());
-app.use(passport.session());
-*/
-// Express Validator
-/*app.use(expressValidator({
-  errorFormatter: function(param, msg, value) {
-      var namespace = param.split('.')
-      , root    = namespace.shift()
-      , formParam = root;
-
-    while(namespace.length) {
-      formParam += '[' + namespace.shift() + ']';
-    }
-    return {
-      param : formParam,
-      msg   : msg,
-      value : value
-    };
-  }
-}));
-
-// Connect Flash
-app.use(flash());
-
-// Global Vars
-app.use(function (req, res, next) {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
-  res.locals.user = req.user || null;
-  next();
-});*/
-
-
-
-app.set("view engine","ejs");
-
-
 //Hunde eintragen
 app.get('/hund_eintragen',(req, res)=> {
     res.render('pages/insertDog',{
@@ -539,26 +407,6 @@ app.get('/hund_eintragen',(req, res)=> {
     });
 });
 
-
-// app.get('/photos', (req, res) => {
-//     findAllPhotos()
-//         .then((photos) =>
-//             res.render('pages/photos', {
-//                 title: `Photowall`,
-//                 description: `Let's make an awesome photowall. Feel free to upload a photo.`,
-//                 photos,
-//             })
-//         );
-// });
-
-// app.post('/photos', upload.single('photo'), (req, res) => {
-//     const { filename, mimetype, size } = req.file;
-
-//     persistPhoto(filename, size, mimetype)
-//         .then(() =>
-//             res.redirect('/photos')
-//         );
-// });
 
 //Hunde eintragen POST
 // app.post('/hund_eintragen', upload.single('photo'), (req, res)=> {
@@ -595,27 +443,22 @@ app.post('/hund_eintragen',  upload.single('photo'), (req, res) => {
     };
 
     //ID erstellen -> Hashen des Hundeobjektes  
-    const id = objecthash(institution+name+height+birthdate+since_when+breed+colour+gender+traits+castrated+link+text);
+    const id = objecthash(institution+name+filename+height+birthdate+since_when+breed+colour+gender+traits+castrated+link+text);
 
     persistPhoto(filename, size, mimetype, id)
-            .then(() => {
-                const img = filename;
+            .then((filename) => {
+                console.log(filename);
                 // console.log(img);
-                insertDog(id, institution, name, img, height, birthdate, since_when, breed,colour, gender, traits, castrated, link, text)
+                insertDog(id, institution, name, filename, height, birthdate, since_when, breed,colour, gender, traits, castrated, link, text)
                     .then((name) => {
                         read_one(id)
                             .then((result) => {
-                                findPhoto(id)
-                                    .then((photo) => {
-                                        res.render('pages/hund_gespeichert',{
-                                            title: "Erfolg",
-                                            headline: `Ihr Hund ${name} wurde erfolgreich gespeichert!!`,
-                                            dog: result,
-                                            photo
-                                        });
-                                    })
-                
-                            })
+                                res.render('pages/hund_gespeichert',{
+                                    title: "Erfolg",
+                                    headline: `Ihr Hund ${name} wurde erfolgreich gespeichert!!`,
+                                    dog: result
+                            });
+                        })
                     })
             })      
             .catch((err) => {
@@ -630,77 +473,59 @@ app.post('/hund_eintragen',  upload.single('photo'), (req, res) => {
 });
 
 
-
-
-
-
-// app.get('/speichern',(req, res)=>{
-//     res.render('pages/speichern',{
-//         title: 'speichern',
-//         headline: 'Ihren Hund ist schon eingetragt ',
-//         text: ``
-//     });
-// });
-
-
-var gfs;
-
-var Grid = require("gridfs-stream");
-Grid.mongo = mongoose.mongo;
-
-conn.once("open", function(){
-  gfs = Grid(conn.db);
-  app.get("/upload", function(req,res){
-    //renders a multipart/form-data form
-        res.render("pages/upload.ejs", {
-            title: "Upload",
-            headline: "Das hat nicht geklappt.",
-            text: "Bitte versuchen Sie es doch nochmal!"
+//Hunde loeschen
+app.get('/hund_loeschen/:id?',(req, res)=> {
+const id = req.params.id;
+    read_one(id)
+        .then((result) => {
+             res.render('pages/delete_dog',{
+                title: 'Löschen',
+                headline: 'Hund löschen',
+                text: `Mit dem Knopfdruck auf "Hund löschen", löschen Sie ${result.name} aus unserem System komplett raus.`,
+                dog: result,
+                id
+            });
         })
-  });
-
-  //second parameter is multer middleware.
-  app.post("/upload", upload.single("avatar"), function(req, res, next){
-    //create a gridfs-stream into which we pipe multer's temporary file saved in uploads. After which we delete multer's temp file.
-    var writestream = gfs.createWriteStream({
-      filename: req.file.originalname
-    });
-    //
-    // //pipe multer's temp file /uploads/filename into the stream we created above. On end deletes the temporary file.
-    fs.createReadStream("./uploads/" + req.file.filename)
-      .on("end", function(){fs.unlink("./uploads/"+ req.file.filename, function(err){
-          res.send("success")
-        })
-    })
-        .on("err", function(){res.send("Error uploading image")})
-          .pipe(writestream);
-  });
-
-//   // sends the image we saved by filename.
-//   app.get("/upload:filename", function(req, res){
-//       var readstream = gfs.createReadStream({filename: req.params.filename});
-//       readstream.on("error", function(err){
-//         res.send("No image found with that title");
-//       });
-//       readstream.pipe(res);
-//   });
-
-//   //delete the image
-//   app.get("/upload/delete/:filename", function(req, res){
-//     gfs.exist({filename: req.params.filename}, function(err, found){
-//       if(err) return res.send("Error occured");
-//       if(found){
-//         gfs.remove({filename: req.params.filename}, function(err){
-//           if(err) return res.send("Error occured");
-//           res.send("Image deleted!");
-//         });
-//       } else{
-//         res.send("No image found with that title");
-//       }
-//     });
-//   });
+        .catch((err) => {
+            console.log(err);
+            res.render("pages/insert_error", {
+                title: "Fehler",
+                headline: "Das hat nicht geklappt.",
+                text: "Bitte versuchen Sie es doch nochmal!",
+                dogs: []
+            })
+        })   
 });
 
+
+//Hunde loeschen
+app.post('/hund_loeschen/:id?',(req, res)=> {
+const id = req.params.id;
+
+    delete_one(id)
+        .then(() => {
+             res.render('pages/erfolg_loeschen',{
+                title: 'Erfolg',
+                headline: 'Erfolgreich gelöscht',
+                text: `Der Hund wurde erfolgreich gelöscht.`,
+            });
+        });
+});
+
+
+
+//Hunde editieren
+app.get('/hund_bearbeiten',(req, res)=> {
+
+
+    res.render('pages/edit_dog',{
+        title: 'Bearbeiten',
+        headline: 'Hund bearbeiten',
+        text: `Bearbeiten Sie einen Hund!`
+    });
+
+    
+});
 
 
 // Set Port & listen Port
