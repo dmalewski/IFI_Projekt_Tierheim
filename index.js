@@ -13,8 +13,8 @@ const multer = require('multer');
 const objecthash = require('object-hash');
 
 const {read, findBreeds} = require("./lib/services/reader");
-const {read_one} = require("./lib/services/read_one_dog");
 const {filter} = require("./lib/services/filter");
+const {read_one} = require("./lib/services/read_one_dog");
 const {findPhoto} = require('./lib/services/findPhoto');
 const {persistPhoto} = require("./lib/services/insert_dog");
 const {getHunde} = require('./lib/services/pagination');
@@ -135,38 +135,86 @@ app.get('/hunde/:pages?', async (req, res)=>{
     const results = await getHunde(page);
     // console.log (results.pagesCount);
 
+    // let bla = "";
+    // for(let i = 0; i < results.hunde.length; i++) {
+
+    //     if(results.hunde[i].how_inserted.match(/by hand/ig)) {
+
+    //         console.log(results.hunde[i].name);
+    //         console.log(results.hunde[i].id);
+    //         console.log(results.hunde[i].how_inserted);
+
+    //         findPhoto(results.hunde[i].id)
+    //             .then((photo) => {
+    //                 console.log(photo.filename);
+    //                 bla = photo;
+    //             })      
+    //     }
+    // }
+
     res.render('pages/hunde',{
-        title: 'Hunde',
-        headline: 'Vermittlung von Hunden',
-        text: `Ein Tier kann aus vielfältigen Gründen im Tierheim sitzen. "Scheidungshunde" sind nicht selten
-        und auch jede andere Art von veränderten Lebensumständen gehören zu den häufigen Gründen für eine Abgabe
-        im Heim. Das können z.B. berufliche Veränderungen und damit verbundener Zeitmangel oder auch Allergien des
-        Vorbesitzers sein. Leider gehört dazu auch manchmal menschlicher Familienzuwachs. Dabei könnte die fachliche
-        Beratung zum richtigen Umgang für Eltern und Kind in den meisten Fällen eventuell vorhandene Zweifel zerstreuen.
-        Gute Hundeschulen bieten oft auch in diesen Fällen eine Hilfestellung. `,
-        dogs: results.hunde,
-        pagesCount: results.pagesCount,
-        currentPage: page
-    });
+            title: 'Hunde',
+            headline: 'Vermittlung von Hunden',
+            text: `Ein Tier kann aus vielfältigen Gründen im Tierheim sitzen. "Scheidungshunde" sind nicht selten
+            und auch jede andere Art von veränderten Lebensumständen gehören zu den häufigen Gründen für eine Abgabe
+            im Heim. Das können z.B. berufliche Veränderungen und damit verbundener Zeitmangel oder auch Allergien des
+            Vorbesitzers sein. Leider gehört dazu auch manchmal menschlicher Familienzuwachs. Dabei könnte die fachliche
+            Beratung zum richtigen Umgang für Eltern und Kind in den meisten Fällen eventuell vorhandene Zweifel zerstreuen.
+            Gute Hundeschulen bieten oft auch in diesen Fällen eine Hilfestellung. `,
+            dogs: results.hunde,
+            // photo: bla,
+            pagesCount: results.pagesCount,
+            currentPage: page
+        });
+
+    
+
+    // console.log(results.hunde);
+
+    // for(let i = 0; i < results.length; i++) {
+    //     if(results.hunde.dog.match(/hand/ig)) {
+    //         console.log("----------------------------------------------");
+    //     }
+    // }
+    
+
 });
 
 
 app.get('/hunde/details/:id?', (req, res)=>{
     const id = req.params.id;
 
-    read_one(id).then((result) => {
-        console.log("name: " +  result.name)
-        res.render('pages/details',{
-            dog: result,
-            title: 'Details',
-            headline: result.name,
-            text: "Hier finden Sie detailliertere Informationen zum Hund " + result.name + 
-            `. Wenn Sie mehr über den Hund erfahren wollen oder Kontaktdaten haben möchten, 
-            klicken Sie bitte auf den Link 'zur Tierheim-Profilseite des Hundes'.`
-                   
+    read_one(id)
+        .then((result) => {
+            if(result.how_inserted.match(/hand/ig)) {
+                 findPhoto(id)
+                 .then((photo) => {        
+                    res.render('pages/details',{
+                        title: 'Details',
+                        headline: result.name,
+                        text: "Hier finden Sie detailliertere Informationen zum Hund " + result.name + 
+                        `. Wenn Sie mehr über den Hund erfahren wollen oder Kontaktdaten haben möchten, 
+                        klicken Sie bitte auf den Link 'zur Tierheim-Profilseite des Hundes'.`,
+                        dog: result,
+                        photo
+                    });
+                }) 
+            }
+            else {
+                res.render('pages/details',{
+                    dog: result,
+                    title: 'Details',
+                    headline: result.name,
+                    text: "Hier finden Sie detailliertere Informationen zum Hund " + result.name + 
+                    `. Wenn Sie mehr über den Hund erfahren wollen oder Kontaktdaten haben möchten, 
+                    klicken Sie bitte auf den Link 'zur Tierheim-Profilseite des Hundes'.`
+                });
+            }         
+        })
+        .catch((err) => {
+            console.log("Error: " + err);
         });
     });
-});
 
 //Suche
 app.get('/suche', async (req, res)=>{
@@ -222,6 +270,23 @@ app.get("/suche_ergebnis",(req, res) => {
 
     filter(sizes,genders,breed,ages,castrated,traits).then((results) => {
         if(results.length != 0) {
+
+
+            // results_dogs.find({
+                
+            // }).toArray()
+            //     .then((ergebnis) => {
+            //         const blubb = ergebnis;
+            //     })
+
+            // console.log("LÄNGE UND SOOOOOO:" + ergebnis.length);
+
+            // const names = results.find(
+            //     { name: "Moreno" }
+            // );
+
+            // console.log("namen: " + names);
+            
             res.render("pages/suche_ergebnis",{
                 title: "Suchergebnis",  
                 headline: "Passend zu Ihren Suchkriterien wurden folgende Hunde gefunden:",
@@ -515,8 +580,8 @@ app.post('/hund_eintragen',  upload.single('photo'), (req, res) => {
     const link = req.body.link;
    
 
-    console.log("link: "+ link);
-      console.log("birthdate: "+ birthdate);
+    // console.log("link: "+ link);
+    //   console.log("birthdate: "+ birthdate);
 
 
     //Wenn es einen Text gibt, wird dieser aus req.body rausgezogen
@@ -535,7 +600,7 @@ app.post('/hund_eintragen',  upload.single('photo'), (req, res) => {
     persistPhoto(filename, size, mimetype, id)
             .then(() => {
                 const img = filename;
-                console.log(img);
+                // console.log(img);
                 insertDog(id, institution, name, img, height, birthdate, since_when, breed,colour, gender, traits, castrated, link, text)
                     .then((name) => {
                         read_one(id)

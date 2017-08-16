@@ -17,29 +17,32 @@
 
             <div class="detail_div">
                 <p class="desc_name"><%= dog.name %></p>
+
+                <% if(dog.how_inserted.match(/hand/ig)) { %>
+                    <div class="detail_img_div">
+                        <img id="detail_img" src="/uploads/<%= photo.filename %>" border="2px"/>  
+                    </div>
+                <% } %>
+
                 <% if(dog.institution.match(/Muenchen/ig)) { %>
                     <% if(!dog.img_big) { %>
                         <div class="detail_img_div">
                             <img id="detail_img" src="/images/default_dog.png" border="2px"/>  
                         </div>
                     <% } %>
-                   
+                    
+                    <% if(dog.img_big) { %>
                         <div class="detail_img_div">
                             <img id="detail_img" src="<%= dog.img_big %>" border="2px"/>  
                         </div>
-                  
+                    <% } %>    
                 <% } %>
-                <% if(dog.institution.match(/Oldenburg/ig)) { %>
+
+                <% if(dog.institution.match(/Oldenburg/ig) || !(dog.institution.match(/Muenchen/ig))) { %>
                     <div class="detail_img_div">
                         <img id="detail_img_small" src="<%= dog.img %>" border="2px"/>  
                     </div>
                 <% } %>
-                <% if(!dog.institution.match(/Oldenburg/ig) && !dog.institution.match(/Muenchen/ig)) { %>
-                    <div class="detail_img_div">
-                        <img id="detail_img" src="<%= dog.img %>" border="2px"/>  
-                    </div>
-                <% } %>
-
 
                 <div class="description">      
                     <p><span class="hdl">Rasse: </span><%= dog.breed %> </p>

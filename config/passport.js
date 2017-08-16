@@ -5,6 +5,8 @@ var LocalStrategy    = require('passport-local').Strategy;
 // load up the user model
 var User       = require('../app/models/user');
 
+
+
 module.exports = function(passport) {
 
     // =========================================================================
@@ -50,7 +52,7 @@ module.exports = function(passport) {
                     return done(null, false, req.flash('loginMessage', 'Kein Benutzer gefunden.'));
 
                 if (!user.validPassword(password))
-                    return done(null, false, req.flash('loginMessage', 'Ups! Falsches Passwort,'));
+                    return done(null, false, req.flash('loginMessage', 'Ups! Falsches Passwort.'));
 
                 // all is well, return user
                 else
@@ -84,7 +86,7 @@ module.exports = function(passport) {
 
                     // check to see if theres already a user with that email
                     if (user) {
-                        return done(null, false, req.flash('signupMessage', 'Diese Email-Adresse wird schon verwendet.'));
+                        return done(null, false, req.flash('signupMessage', 'Diese Email-Adresse wird leider schon verwendet.'));
                     } else {
 
                         // create the user
@@ -103,7 +105,8 @@ module.exports = function(passport) {
 
                 });
             // if the user is logged in but has no local account...
-            } else if ( !req.user.local.email ) {
+            } 
+            else if ( !req.user.local.email ) {
                 // ...presumably they're trying to connect a local account
                 // BUT let's check if the email used to connect a local account is being used by another user
                 User.findOne({ 'local.email' :  email }, function(err, user) {
@@ -111,7 +114,7 @@ module.exports = function(passport) {
                         return done(err);
                     
                     if (user) {
-                        return done(null, false, req.flash('loginMessage', 'Diese Email-Adresse wird schon verwendet.'));
+                        return done(null, false, req.flash('loginMessage', 'Diese Email-Adresse wird leider schon verwendet.'));
                         // Using 'loginMessage instead of signupMessage because it's used by /connect/local'
                     } else {
                         var user = req.user;

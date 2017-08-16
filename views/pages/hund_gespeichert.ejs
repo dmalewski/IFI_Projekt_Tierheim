@@ -6,25 +6,15 @@
     <body>
         <!-- navigation with navheader -->
         <% include ../partials/navigations %>
-        <div class="maincontainer" style="height: 45%;">
-            <div class="container">
-                <h1><%= headline %></h1>
 
-            </div>
-        </div>
-        
         <!-- content -->
-        <div class="contentcontainer" role="main">
-            <div class="inner">
-            
-                <p class="center figcap"><%= dog.name %> </p>
-        
-                <img src="uploads/<%= photo.filename %>"></img>
-        
-                <P class="center figbreed"><%= dog.breed %></P>
+         <div class="contentcontainer" role="main">
+              <% include ../partials/legend %>
 
- 
+            <div class="flexcontainer">
+                <% include ../partials/dogs_insert %>
             </div>
+           
         </div>
         <!-- footer -->
         <% include ../partials/footer.ejs %>
