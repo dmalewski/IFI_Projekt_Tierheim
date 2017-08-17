@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ../partials/header %>
+    </head>
+    <body>
+        <!-- navigation with navheader -->
+        <% include ../partials/navigations %>
+        <div class="maincontainer">
+            <div class="container">
+                <h1><%= headline %></h1>
+                <p><%= text %></p>
+            </div>
+        </div>
+
+        <!-- content -->
+        <div class="contentcontainer" id="backgroundcolor">
+
+            <div class="detail_div">
+                 <div class="back_cont">
+                    <a class="navbtn" role="button" onclick="goBack()">&laquo; zurück zur Übersicht</a>
+                    <script>
+                        function goBack() {
+                            window.history.back();
+                        }
+                    </script>
+                </div>
+
+                <p class="desc_name"><%= dog.name %></p>
+
+                <% if(dog.how_inserted.match(/handwritten/ig) || dog.how_inserted.match(/edited/ig)) { %>
+                    <div class="detail_img_div">
+                        <img id="detail_img" src="/uploads/<%= dog.img %>" border="2px"/>  
+                    </div>
+                <% } %>
+
+                <% if(dog.institution.match(/Muenchen/ig)) { %>
+                    <% if(!dog.img_big) { %>
+                        <div class="detail_img_div">
+                            <img id="detail_img" src="/images/default_dog.png" border="2px"/>  
+                        </div>
+                    <% } %>
+                    
+                    <% if(dog.img_big) { %>
+                        <div class="detail_img_div">
+                            <img id="detail_img" src="<%= dog.img_big %>" border="2px"/>  
+                        </div>
+                    <% } %>    
+                <% } %>
+
+
+                <% if(dog.institution.match(/Oldenburg/ig) || dog.how_inserted.match(/seeding/ig)) { %>
+                    <div class="detail_img_div">
+                        <img id="detail_img_small" src="<%= dog.img %>" border="2px"/>  
+                    </div>
+                <% } %>
+
+                <div class="description">      
+                    <p><span class="hdl">Rasse: </span><%= dog.breed %> </p>
+                    <P><span class="hdl">Fellfarbe: </span><%= dog.colour %> </P>
+                    <P><span class="hdl">Geschlecht: </span><%= dog.gender %> </P>
+                    <P><span class="hdl">Kastriert: </span><%= dog.castrated %> </P>
+                    <P><span class="hdl">Alter: </span><%= dog.age %> </P>
+                    <p><span class="hdl">Geburtsdatum: </span><%= dog.birthdate %> </p>
+                    <P><span class="hdl">Größe: </span><%= dog.height %> </P>
+                    <P><span class="hdl">Tierheim: </span><%= dog.since_when %> </P>
+                    <% if(dog.traits) { %>
+                    <p><span class="hdl">Charaktereigenschaften: </span>
+                        <% let i = dog.traits.length; %>
+
+                        <% dog.traits.forEach(function (trait) { %>
+                            <% i--; %>
+                            <%= trait %><% if(i > 0) { %>,<% } %>
+                        <% }) %>
+                    <% } %> </p>
+
+                    <% if(dog.link) { %>
+                        <div class="tierheim_link">
+                            <a href="<%= dog.link %>" class="navbtn">zur Tierheim-Profilseite des Hundes &raquo;</a>
+                        </div>
+                    <% } %>
+                </div>
+
+
+                <div class="description_text">
+                    <% if(dog.text) { %>
+                    <p><span class="hdl">Beschreibungstext: </span>
+                    <br/>
+                        <%= dog.text %> 
+                    <% } %> </p>
+                </div>
+
+
+            </div>
+        </div>
+        
+        <!-- footer -->
+        <% include ../partials/footer.ejs %>
+
+    </body>
+</html>

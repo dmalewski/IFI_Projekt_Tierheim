@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <% include ../partials/header %>
+
+    <title><%= title %></title>
+
+</head>
+    <body>
+        <!-- navigation with navheader -->
+        <% include ../partials/navigations %>
+     
+        <!-- content -->
+       <div class="contentcontainer" role="main">
+              <% include ../partials/legend %>
+              <h1 style="color: #D59C71; text-shadow: 1px 1px 1px black; margin-left: 10%; margin-top: 50px; margin-bottom: 0px;">
+                    <%= headline %>
+                </h1>
+            <div class="flexcontainer" style="margin-bottom: 30px;">
+                
+                <% include ../partials/dogs %>
+            </div>
+
+            <div style="width: 180px; margin-left: 45%; margin-top: 50px; margin-bottom: 20px;">
+                <a href="/suche"><img src="/images/back_arrow.png" style="height: 50px; width: 50px;"></a>
+                <p style="float: right;">Zurück zur Suche</p>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <% include ../partials/footer.ejs %>
+    </body>
+</html>

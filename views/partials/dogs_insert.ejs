@@ -1,0 +1,129 @@
+<div class="elementgrid">
+
+    <a href="/hunde/details/<%= dog.id %>" >
+        <p class="center figcap"><%= dog.name %> </p>
+        <hr />
+
+        <% if(dog.how_inserted.match(/handwritten/ig) || dog.how_inserted.match(/edited/ig)) { %>
+            <figure class="image-wrapper">
+                <img src="/uploads/<%= dog.img %>"></img>
+            </figure> 
+        <% } %>
+
+        <% if(!dog.how_inserted.match(/handwritten/ig) && !dog.how_inserted.match(/edited/ig)) { %>
+            <figure class="image-wrapper">
+                <img src="<%= dog.img %>"></img>
+            </figure> 
+        <% } %>
+
+        <figcaption>
+            <P class="center figbreed"><%= dog.breed %></P>
+        </figcaption>
+    </a>
+
+    <div id="attribute_links" style="margin-left: 8px;">
+
+        <% if (dog.height.match(/Klein/ig)) { %>
+            <img id="icon" src="/images/small_s.png" title="Klein"/>
+        <% } %>
+
+        <% if (dog.height.match(/Mittel/ig)) { %>
+            <img id="icon" src="/images/middle_m.png" title="Mittelgroß "/>
+        <% } %>
+
+        <% if (dog.height.match(/Groß/ig)) { %>
+           <img id="icon" src="/images/big_l.png" title="Groß"/>
+        <% } %>
+
+        <% if (dog.age.match(/jung/ig)) { %>
+           <img id="icon" src="/images/baby.png" title="jung"/>
+        <% } %>
+
+        <% if (dog.age.match(/erwachsen/ig)) { %>
+           <img id="icon" src="/images/adult.png" title="erwachsen"/>
+        <% } %>
+
+        <% if (dog.age.match(/senior/ig)) { %>
+           <img id="icon" src="/images/senior.png" title="senior"/>
+        <% } %>
+
+        <% if (dog.gender.match(/männlich/ig)) { %>
+           <img id="icon" src="/images/male_legend.png" title="männlich"/>
+        <% } %>
+
+        <% if (dog.gender.match(/weiblich/ig)) { %>
+           <img id="icon" src="/images/female_legend.png" title="weiblich"/>
+        <% } %>
+
+        <% if (dog.castrated.match(/Ja/ig)) { %>
+           <img id="icon" src="/images/castrated_unfilled.png" title="Kastriert"/>
+        <% } %>
+
+        <% if(dog.traits) { %>
+           <% dog.traits.forEach(function (trait) { %>
+
+                <% if(trait.match(/verträglich mit Männchen/ig)) { %>
+                    <img id="icon" src="/images/likes_male.png" title="verträglich mit Männchen"/>
+                <% } %>
+
+                <% if(trait.match(/verträglich mit Weibchen/ig)) { %>
+                    <img id="icon" src="/images/likes_female.png" title="verträglich mit Weibchen"/>
+                <% } %>
+
+                <% if(trait.match(/verträglich mit beiden Geschlechtern/ig)) { %>
+                    <img id="icon" src="/images/likes_male_and_female.png" title="verträglich mit beiden Geschlechtern"/>
+                <% } %>
+
+                <% if(trait.match(/katzenfreundlich/ig)) { %>
+                    <img id="icon" src="/images/likes_cat.png" title="katzenfreundlich"/>
+                <% } %>
+
+                <% if(trait.match(/kinderfreundlich/ig)) { %>
+                    <img id="icon" src="/images/likes_child.png" title="kinderfreundlich"/>
+                <% } %>
+
+                <% if(trait.match(/seniorengeeignet/ig)) { %>
+                    <img id="icon" src="/images/likes_senior.png" title="seniorengeeignet"/>
+                <% } %>
+
+                <% if(trait.match(/kleintierfreundlich/ig)) { %>
+                    <img id="icon" src="/images/likes_bunny.png" title="kleintierfreundlich"/>
+                <% } %>
+
+                <% if(trait.match(/Einzeltier/ig)) { %>
+                    <img id="icon" src="/images/solo.png" title="Einzeltier"/>
+                <% } %>
+
+                <% if(trait.match(/Gruppentier/ig)) { %>
+                    <img id="icon" src="/images/group.png" title="Gruppentier"/>
+                <% } %>
+
+                <% if(trait.match(/Jadhund/ig)) { %>
+                    <img id="icon" src="/images/hunt.png" title="Jadhund"/>
+                <% } %>
+
+                <% if(trait.match(/Wachhund/ig)) { %>
+                    <img id="icon" src="/images/guard.png" title="Wachhund"/>
+                <% } %>
+
+                <% if(trait.match(/mag Wasser/ig)) { %>
+                    <img id="icon" src="/images/likes_water.png" title="mag Wasser"/>
+                <% } %>
+
+                <% if(trait.match(/stubenrein/ig)) { %>
+                    <img id="icon" src="/images/poo.png" title="stubenrein"/>
+                <% } %>
+
+                <% if(trait.match(/Krankheit/ig)) { %>
+                     <img id="icon" src="/images/sick.png" title="Krankheit"/>
+                <% } %>
+
+                <% if(trait.match(/Achtung/ig)) { %>
+                     <img id="icon" src="/images/warning.png" title="Achtung"/>
+                <% } %>
+
+                <% }) %>
+            <% } %> 
+
+        </div>
+    </div>

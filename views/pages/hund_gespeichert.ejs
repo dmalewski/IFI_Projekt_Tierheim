@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <% include ../partials/header %>
+    </head>
+
+    <body>
+        <!-- navigation with navheader -->
+        <% include ../partials/navigations %>
+
+        <div class="maincontainer" style="height: 30%">
+            <div class="container">
+                 <h1><%= headline %></h1>
+            </div>
+        </div>
+
+
+        <div class="flexcontainer">
+            <% include ../partials/dogs_insert %>
+        </div>
+           
+      
+        <!-- footer -->
+        <% include ../partials/footer.ejs %>
+
+    </body>
+</html> 
