@@ -14,6 +14,7 @@ html{
     -ms-text-size-adjust: 100%;
     word-wrap:break-word;
 }
+
 body {
     width: 100%;
     padding: 0px;
@@ -22,11 +23,12 @@ body {
     font-family: "Helvetica Neu", Arial, Helvetica;
     font-size: 100%;
     font:inherit;
-    /*background-color: #fff;*/
 }
+
 a {
     text-decoration: none; 
 }
+
 h1{
     line-height: 1;
     color: ghostwhite;
@@ -35,9 +37,11 @@ h1{
                  -1px  1px 2px grey,
                  -1px -1px 2px grey;
 }
+
 h2{
     text-align: center;
 }
+
 *, *::before, *::after {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -72,6 +76,7 @@ h4 {
     background-position: center;
     background-size: cover;
 }
+
 .container {
     width: 100%;
     padding-top: 15px;
@@ -91,23 +96,29 @@ h4 {
                  -1px  1px 2px saddlebrown,
                  -1px -1px 2px saddlebrown;
 }
+
 .sorry {
     width: 85%;
 }
+
 div {
     display: block;
 }
-.opacity {
+
+.op
+acity {
     background: white;
     background:rgba(255,255,255,0.5);
 }
+
 .hidden {
     display: none;
     background-color: #dddddd;
 }
+
 .legende {
     position: relative;
-    padding: 0px 10px;
+    padding: 5px 0px;
     background-image: url(../images/grey.jpg);
     color: white;
     display: flex;
@@ -115,14 +126,15 @@ div {
     align-items: center;
     justify-content: center;
 }
+
 .legendicon{
     display: flex;
     margin-top: 20px;
     margin-bottom: 5px;
-    /*margin-right: 5px;  */
     height: 130px;
     width: 120px;
 }
+
 figure#legende {
     margin:0px;
     padding:0px;
@@ -130,6 +142,7 @@ figure#legende {
 	display: inline-block;
 	min-height: 56px;
 }
+
 figure img {
 	height: 55px;
     width: 55px;
@@ -139,9 +152,8 @@ figure img {
 }
 
 .links_left {
-    width: 32%;
-    height: 260px;
-    /* position: relative; */
+    width: 35%;
+    height: 350px;
 	display: inline-block;
     background: white;
     background:rgba(255,255,255,0.5);
@@ -155,9 +167,8 @@ figure img {
 }
 
 .links_mitte {
-    width: 31.7%;
-    height: 260px;
-    /* position: relative; */
+    width: 35%;
+    height: 350px;
 	display: inline-block;
     background: white;
     background:rgba(255,255,255,0.5);
@@ -172,9 +183,8 @@ figure img {
 
 .links_right {
     margin-top: 30px;
-    width: 65%;
-    height: 260px;
-    /* position: relative; */
+    width: 66.6%;
+    height: 300px;
 	display: inline-block;
     background: white;
     background:rgba(255,255,255,0.5);
@@ -190,69 +200,54 @@ figure img {
     width:  50px; 
     height: 50px; 
     margin-right: 10px; 
-    /* display: inline-block; */
 }
 
 #pencil {
     width: 50px; 
     height: 50px; 
-    margin-right: 10px; 
-    /* display: inline-block; */
+    margin-left: 30px;
+    float:left; 
 }
 
 #info {
     width: 50px; 
     height: 50px; 
     margin-right: 10px; 
-    /* display: inline-block; */
 }
 
 #spenden {
     width: 50px; 
     height: 50px; 
     margin-right: 10px; 
-    /* display: inline-block; */
 }
 
 #div_suche {
     float: both;
-    /*background-color: blue; */
     margin-left: 30px;
     margin-top: 30px;  
     height: 80px; 
     width: 300px;
-    /* position: flex;
-    display:inline-block; */
 }
 
 #div_eintragen {
     float: both;
-    /*background-color: orange;  */
     margin-left: 30px;
     height: 80px; 
     width: 300px;
-    /* position: flex;
-    display:inline-block; */
 }
 
 #div_info {
     float: both;
-    /*background-color: violet;*/
     margin-left: 30px;   
     height: 80px;
     width: 300px;
-    /* position: flex;
-    display:inline-block; */
 }
 
 #div_spenden {
     float: both;
-    /*background-color: red;   */
     margin-left: 30px;
     height: 80px; 
     width: 300px;
-    /* position: flex;
-    display:inline-block; */
 }
 
 .a_suchen {
@@ -264,31 +259,30 @@ figure img {
 
 .a_eintragen {
     background-color: sandybrown; 
-    height: 60px; 
-    width: 300px; 
+    height: 10%; 
+    width: 50%; 
     font-size: 20px;
 }
 
 .a_info {
     background-color: sandybrown; 
-    height: 60px; 
-    width: 300px; 
-    font-size: 20px;
+    height: 8%; 
+    width: 40%; 
+    font-size: 5mm;
 }
 
 .delete {
     background-color: sandybrown; 
-    height: 60px; 
-    width: 300px; 
+    height: 10%; 
+    width: 50%; 
     font-size: 20px;
 }
 
 .news_text {
     background-image: url(../images/grey_new.png); 
     float: left;
-    width: 30%; 
-    height: 600px; 
-    /*margin-left: 15%;*/
+    width: 40%; 
+    height: 650px; 
     margin-bottom: 60px;
     flex-wrap: wrap;
     border: 4px dashed white;
@@ -305,12 +299,10 @@ figure img {
 }
 
 .happy {
-    background-color: blue;
     float: both;
     margin-right: 50%;
     margin-left: 50px;
     width: 100%; 
-    /*margin-bottom: 60px;*/
     flex-wrap: wrap;
     border: 4px dashed white;
     box-shadow: 0 0 1px rgba(0,0,0, .4);
@@ -323,7 +315,7 @@ figure img {
     margin-left: 30px;
     margin-right: 30px;
     color: ghostwhite;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .happy_img {
@@ -331,20 +323,16 @@ figure img {
     margin: 50px;
     margin-right: 50%;
     width: 100%;  
-    /*background-color: red;*/
 }
 
 #hundeschule {
     float: both;
-    /*background-color: blue;   */
     margin-left: 30px;
     height: 50px; 
-    /*width: 300px;*/
-    /* position: flex;
-    display:inline-block; */
 }
 
 /* ----------------------------- button in head container & home.ejs & details.ejs ----------------------------*/
+
 .navbtn {
     margin-bottom: 0;
     white-space: nowrap;
@@ -403,8 +391,8 @@ figure img {
 
 
 section.gradient a {
-    /* display: inline-block; */
     color: #fff;
+    width: auto;
     font-style: bold;
     margin-top: 0px;
     margin-bottom: 10px;
@@ -429,7 +417,6 @@ colr1 {
 /* ----------------------------- textdecoration ----------------------------*/
 .block {
     text-align: justify;
-    /* padding: 40px 10px; */
     margin-left: auto;
     margin-right: auto;
     width: 90%;    
@@ -443,7 +430,7 @@ colr1 {
 
 .center {
     text-align: center;
-    padding: 10px 0px;
+    padding: 5px 0px;
 	-webkit-align-items: center;
     -webkit-box-align: center;
     -ms-flex-align: center;

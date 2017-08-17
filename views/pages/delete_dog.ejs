@@ -16,22 +16,19 @@
         </div>
     
         <!-- content -->
-        <!--<div class="contentcontainer" role="main"> -->
             <div class="flexcontainer">
                 <form action="/hund_loeschen/<%= id %>" method="POST">
+                    <div> 
+                        <button style="background-color: red; margin-left: 25%" type"submit">         
+                            Hund wirklich löschen ?
+                        </button>
+                    </div>
 
-                <div> 
-                    <button style="background-color: red; margin-left: 33.3%" type"submit">         
-                        Hund löschen
-                    </button>
-                </div>
-
-                <% include ../partials/dogs_insert %>
-                <br/><br/>
-
+                    <div class="profile" style="width: 350px; float:left; margin-left: 5%; margin-bottom: 30px;">
+                        <% include ../partials/dogs_insert %>       
+                    </div>
                 </form>     
             </div>
-        <!--</div>  -->
 
         <!-- footer -->
         <% include ../partials/footer.ejs %>

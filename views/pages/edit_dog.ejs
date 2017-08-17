@@ -14,25 +14,33 @@
         <div class="contentcontainer" role="main">
             <% include ../partials/legend %>    
         </div>
-        <p style="color: black;  margin-left: 42.3%; margin-top: 30px; margin-bottom:0px; font-size: 20px; font-weight: bold;">
+        <p style="color: black;  margin-left: 33.3%; margin-top: 30px; margin-bottom:0px; font-size: 20px; font-weight: bold;">
             <%= text %>
         </p>
+
+        
+        <!-- content -->
+        <div class="profile" style="width: 350px; float:left; margin-left: 2%; margin-top: 50px;">
+            <p style="margin-left: 20px; font-size: 25px;"> Bisheriges Profil: </p>
+            <% include ../partials/dogs_insert %>       
+        </div>
 
         <div class="search_container">
 
          <div class="feld">
 
-            <form action="/hund_eintragen" method="POST" enctype="multipart/form-data">
+            <form action="/hund_bearbeiten/<%= id %>" method="POST" enctype="multipart/form-data">
 
                 <div class="eintragen_links">
                 <table cellspacing="0" cellpadding="0" width="50%" name="tabelle_links">
                     <tbody>
+
                        <!--Name des Hundes-->
                        <tr>
                            <td width="105px">
                                 <div class="textfeld" >Name</div>
                                    <div class="form-item">
-                                          <input name="name" pattern="[A-Z][a-z]+" type="text" placeholder="Bitte Namen angeben (A-Z)(a-z)" required />
+                                          <input name="name" pattern="[A-Z][a-z]+" type="text" placeholder="<%= dog.name %>" required />
                                       </div>
                         
                                   <p>
@@ -47,7 +55,7 @@
                            <td width="105px">
                                 <div class="textfeld">Tierheim</div>
                                     <div class="form-item">
-                                        <input name="institution" type="text" pattern="[A-Z][a-z]+[ ][A-Z][a-z]+" tabindex="300px" placeholder="Für den Hund zuständiges Tierheim angeben" required />
+                                        <input name="institution" type="text" pattern="[A-Z][a-z]+[ ][A-Z][a-z]+" tabindex="300px" placeholder="<%= dog.institution %>" required />
                                     </div>
 
                                   <p>
@@ -62,7 +70,7 @@
                            <td width="105px">
                                 <div class="textfeld" >seit wann im Tierheim?</div>
                                    <div class="form-item">
-                                          <input name="since_when" type="text" placeholder="seit wann ist der Hund im Tierheim?" required />
+                                          <input name="since_when" type="text" placeholder="<%= dog.since_when %>" required />
                                       </div>
                         
                                   <p>
@@ -73,13 +81,12 @@
                        </tr>
 
                         <!-- Größe des Hundes -->
-                        <!--<input type="hidden" id="size" value="" name="size"/> -->
                         <tr>
                             <td width="105px">
 
                                 <div class="textfeld">Schulterhöhe in cm</div>
                                     <div class="form-item">
-                                        <input name="height" type="number" min="0" max ="100" tabindex="300px" placeholder="Bitte Schulterhöhe in cm angeben (0-100)" required /> 
+                                        <input name="height" type="number" min="0" max ="100" tabindex="300px" required /> 
                                     </div>
 
                                     <p>
@@ -94,7 +101,7 @@
                             <td width="105px">
                                  <div class="textfeld">Rasse</div>
                                     <div class="form-item">
-                                          <input name="breed" type="text" tabindex="300px" placeholder="Bitte Rasse angeben" required />
+                                          <input name="breed" type="text" tabindex="300px" placeholder="<%= dog.breed %>" required />
                                     </div>
                                
                                     <p>
@@ -108,7 +115,7 @@
                            <td width="105px">
                                 <div class="textfeld">Fellfarbe(n)</div>
                                    <div class="form-item">
-                                          <input name="colour" type="text" tabindex="300px" placeholder="Bitte Fellfarbe(n) angeben (Farbe1,Farbe2,...)" required/>
+                                          <input name="colour" type="text" tabindex="300px" placeholder="<%= dog.colour %>" required/>
                                       </div>
 
                                   <p>
@@ -118,8 +125,7 @@
                            </td>
                        </tr>
 
-
-                         <!-- Geschlecht des Hundes -->
+                        <!-- Geschlecht des Hundes -->
                         <tr>
                             <td width="105px">
                                  <div class="textfeld">Geschlecht</div>
@@ -140,33 +146,28 @@
                                     <p>
                                         <div class="white_line"/>
                                     </p>
-
                             </td>
                         </tr>
-
-                    </tbody>
-                </table>
-                </div>
-
-                <div class="eintragen_rechts">
-                   <!--rechte Seite des Formulars-->
-                   <table cellspacing="0" cellpadding="0" width="100%" class="tabelle_rechts">
-                     <tbody>
 
                         <!--Geburtsdatum des Hundes-->
                        <tr>
                            <td width="105px">
                                 <div class="textfeld">Geburtsdatum</div>
                                    <div class="form-item">
-                                          <input id="aBirthdate" name="birthdate" type="date" tabindex="300px" placeholder="DD.MM.YY" required />
+                                          <input id="aBirthdate" name="birthdate" type="date" tabindex="300px" placeholder="<%= dog.birthdate %>" required />
                                       </div>
-
-                                  <p>
-                                      <div class="white_line"/>
-                                  </p>
-
                            </td>
                        </tr>
+
+                    </tbody>
+                </table>
+                </div>
+
+                <div class="eintragen_rechts">
+                    
+                   <!--rechte Seite des Formulars-->
+                   <table cellspacing="0" cellpadding="0" width="100%" class="tabelle_rechts">
+                     <tbody>
 
                         <!-- Eigenschaften des Hundes -->
                         <input type="hidden" id="traits" value="" name="traits"/>
@@ -229,7 +230,6 @@
                             </td>
                         </tr>
 
-
                         <!-- Hund kastriert JA/NEIN -->
                         <input type="hidden" id="castrated" value="" name="castrated" required/>
                         <tr>
@@ -248,12 +248,12 @@
                             </td>
                         </tr>
 
-                        <!--Link zum Profil-->
+                        <!--Link zum Profil auf der Tierheim-Website-->
                         <tr>
                            <td width="105px">
                                 <div class="textfeld">Link zum Profil des Hundes auf der Tierheim-Website</div>
                                     <div class="form-item">
-                                        <input name="link" type="url" tabindex="300px" placeholder="http://www.beispiel.de" />
+                                        <input name="link" type="url" tabindex="300px" placeholder="<%= dog.link %>" />
                                     </div>
 
                                   <p>
@@ -267,7 +267,7 @@
                            <td width="105px">
                                 <div class="textfeld">Beschreibungstext</div>
                                     <div class="form-item">
-                                        <textarea name="text" cols="40" rows="3" tabindex="93" maxlength="600" placeholder="Beschreibungstext des Hundes"></textarea>
+                                        <textarea name="text" cols="40" rows="3" tabindex="93" maxlength="600" placeholder="<%= dog.text %>"></textarea>
                                     </div>
 
                                   <p>
@@ -280,29 +280,26 @@
                         <tr>
                             <td width="105px">         
                                 <div class="textfeld">Foto</div>
-                                    <div class="durchsuchen">
+                                    <div class="form-item" style="">
                                         <input name="photo" type="file">
-                                        <!--<button type="submit" class="pure-button pure-button-primary">Upload</button>-->
-
-                                        <!--<input type="file" name="avatar">
-                                        <input type="submit" value="submit" id="upload" style="margin-bottom: 10px;">-->
-                                    </div>
+                                        <br/>
                                 </div>
                                 
+                                 <p>
+                                    <div class="white_line"/>
+                                </p>
                             </td>
                         </tr>
-
-
                     </tbody>
                 </table>
                     <div class="speichern">
-                      <button type="submit" value="speichern" class="pure-button pure-button-primary">Speichern</button>
+                      <button type="submit" value="speichern">Speichern</button>
                     </div>
                </div>
            </form>
         </div>
 
-        <script src="js/index.js"> </script>
+        <script src="/js/index.js"> </script>
 
          </div>
 

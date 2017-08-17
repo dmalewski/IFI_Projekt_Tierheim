@@ -4,13 +4,13 @@
   <a href="/hunde/details/<%= dog.id %>" >
     <p class="center figcap"><%= dog.name %> </p>
     <hr />
-    <% if(!dog.how_inserted.match(/handwritten/ig)) { %>
+    <% if(!dog.how_inserted.match(/handwritten/ig) && !dog.how_inserted.match(/edited/ig)) { %>
       <figure class="image-wrapper">
         <img src="<%= dog.img %>"></img>
       </figure> 
     <% } %>
 
-    <% if(dog.how_inserted.match(/handwritten/ig)) { %>
+    <% if(dog.how_inserted.match(/handwritten/ig) || dog.how_inserted.match(/edited/ig)) { %>
       <figure class="image-wrapper">
         <img id="insert_img" src="/uploads/<%= dog.img %>"/>       
       </figure> 

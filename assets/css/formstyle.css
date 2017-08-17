@@ -50,7 +50,7 @@ label {
 #div_schreib_uns {
 	float: left;   
 	height: 70px;
-	width: 480px;
+	width: 400px;
 }
 
 #div_schreib_uns p {
@@ -66,18 +66,15 @@ label {
 	float: left; 
 	height: 150px; 
 	width: 150px; 
-	margin-left: 50px;
+	margin-left: 20px;
 }
 
 #div_dog_letter img {
 	display:block;
-	height: 150px; 
-	width: 150px;
+	height: 100%; 
+	width: 100%;
 }
 
-#aGender {
-	
-}
 
 /* --- buttons --- */
 .form-button {

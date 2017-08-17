@@ -12,13 +12,23 @@
                 <p><%= text %></p>
             </div>
         </div>
+
         <!-- content -->
         <div class="contentcontainer" id="backgroundcolor">
 
             <div class="detail_div">
+                 <div class="back_cont">
+                    <a class="navbtn" role="button" onclick="goBack()">&laquo; zurück zur Übersicht</a>
+                    <script>
+                        function goBack() {
+                            window.history.back();
+                        }
+                    </script>
+                </div>
+
                 <p class="desc_name"><%= dog.name %></p>
 
-                <% if(dog.how_inserted.match(/handwritten/ig)) { %>
+                <% if(dog.how_inserted.match(/handwritten/ig) || dog.how_inserted.match(/edited/ig)) { %>
                     <div class="detail_img_div">
                         <img id="detail_img" src="/uploads/<%= dog.img %>" border="2px"/>  
                     </div>
@@ -37,6 +47,7 @@
                         </div>
                     <% } %>    
                 <% } %>
+
 
                 <% if(dog.institution.match(/Oldenburg/ig) || dog.how_inserted.match(/seeding/ig)) { %>
                     <div class="detail_img_div">
@@ -79,18 +90,10 @@
                     <% } %> </p>
                 </div>
 
-                
-                <div class="back_cont">
-                    <a class="navbtn" role="button" onclick="goBack()">&laquo; zurück zur Übersicht</a>
-                    <script>
-                        function goBack() {
-                            window.history.back();
-                        }
-                    </script>
-                </div>
 
             </div>
         </div>
+        
         <!-- footer -->
         <% include ../partials/footer.ejs %>
 

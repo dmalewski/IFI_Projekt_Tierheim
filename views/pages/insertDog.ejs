@@ -14,7 +14,7 @@
         <div class="contentcontainer" role="main">
             <% include ../partials/legend %>    
         </div>
-        <p style="color: black;  margin-left: 42.3%; margin-top: 30px; margin-bottom:0px; font-size: 20px; font-weight: bold;">
+        <p style="color: black;  margin-left:25%; margin-top: 30px; margin-bottom:0px; font-size: 20px; font-weight: bold;">
             <%= text %>
         </p>
 
@@ -27,6 +27,7 @@
                 <div class="eintragen_links">
                 <table cellspacing="0" cellpadding="0" width="50%" name="tabelle_links">
                     <tbody>
+
                        <!--Name des Hundes-->
                        <tr>
                            <td width="105px">
@@ -139,18 +140,8 @@
                                     <p>
                                         <div class="white_line"/>
                                     </p>
-
                             </td>
                         </tr>
-
-                    </tbody>
-                </table>
-                </div>
-
-                <div class="eintragen_rechts">
-                   <!--rechte Seite des Formulars-->
-                   <table cellspacing="0" cellpadding="0" width="100%" class="tabelle_rechts">
-                     <tbody>
 
                         <!--Geburtsdatum des Hundes-->
                        <tr>
@@ -159,13 +150,18 @@
                                    <div class="form-item">
                                           <input id="aBirthdate" name="birthdate" type="date" tabindex="300px" placeholder="DD.MM.YY" required />
                                       </div>
-
-                                  <p>
-                                      <div class="white_line"/>
-                                  </p>
-
                            </td>
                        </tr>
+
+                    </tbody>
+                </table>
+                </div>
+
+                <div class="eintragen_rechts">
+                    
+                   <!--rechte Seite des Formulars-->
+                   <table cellspacing="0" cellpadding="0" width="100%" class="tabelle_rechts">
+                     <tbody>
 
                         <!-- Eigenschaften des Hundes -->
                         <input type="hidden" id="traits" value="" name="traits"/>
@@ -265,7 +261,7 @@
                            <td width="105px">
                                 <div class="textfeld">Beschreibungstext</div>
                                     <div class="form-item">
-                                        <textarea name="text" cols="40" rows="3" tabindex="93" maxlength="600" placeholder="Beschreibungstext des Hundes"></textarea>
+                                        <textarea name="text" cols="40" rows="3" tabindex="93" maxlength="1000" placeholder="Beschreibungstext des Hundes"></textarea>
                                     </div>
 
                                   <p>
@@ -278,15 +274,14 @@
                         <tr>
                             <td width="105px">         
                                 <div class="textfeld">Foto</div>
-                                    <div class="durchsuchen">
-                                        <input name="photo" type="file">
-                                        <!--<button type="submit" class="pure-button pure-button-primary">Upload</button>-->
-
-                                        <!--<input type="file" name="avatar">
-                                        <input type="submit" value="submit" id="upload" style="margin-bottom: 10px;">-->
-                                    </div>
+                                    <div class="form-item">
+                                        <input name="photo" type="file" required>
+                                        <br/>
                                 </div>
                                 
+                                 <p>
+                                    <div class="white_line"/>
+                                </p>
                             </td>
                         </tr>
                     </tbody>

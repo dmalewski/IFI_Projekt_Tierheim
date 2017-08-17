@@ -1,5 +1,7 @@
 /* Deployment auf: https://ifi-tierheim.now.sh/ */
 
+const PORT = 8080;
+
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const exphbs = require('express-handlebars');
@@ -15,6 +17,7 @@ const objecthash = require('object-hash');
 const {read, findBreeds} = require("./lib/services/reader");
 const {filter} = require("./lib/services/filter");
 const {read_one} = require("./lib/services/read_one");
+const {update_one} = require("./lib/services/update_one");
 const {delete_one} = require("./lib/services/delete_one");
 const {findPhoto} = require('./lib/services/findPhoto');
 const {getHunde} = require('./lib/services/pagination');
@@ -32,8 +35,17 @@ const upload = multer({
     dest: `./uploads`
 });
 
-//-----------------------------------------------------------------------
+//Variable ob eingeloggt oder nicht
+let loggedin = false;
 
+//Variable für User Email
+let user = "";
+
+//Variable für Hunde ID
+let dog_id;
+
+
+//-----------------------------------------------------------------------
 // Init App
 const express = require('express');
 const bodyparser = require('body-parser');
@@ -84,12 +96,7 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-// routes ======================================================================
-require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
-
-
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 
 //Startseite Home
@@ -102,10 +109,12 @@ app.get('/', async (req, res)=>{
         Dabei empfinden Tiere wie der Mensch Freude und Schmerz, Glück und Unglück. Auf den folgenden Seiten
         finden Sie bei uns Hunde, Katzen, Kleintiere, Vögel und sogar Exoten, die darauf warten ein neues
         Zuhause zu finden.`,
+        log: loggedin
     });
 });
 
-// Hunde
+
+// alle Hunde mit pagination
 app.get('/hunde/:pages?', async (req, res) => {
     const page = req.params.pages || 0;
     const results = await getHunde(page);
@@ -121,12 +130,13 @@ app.get('/hunde/:pages?', async (req, res) => {
         Gute Hundeschulen bieten oft auch in diesen Fällen eine Hilfestellung. `,
         dogs: results.hunde,
         pagesCount: results.pagesCount,
-        currentPage: page
+        currentPage: page,
+        log: loggedin
     });
 });
 
 
-
+//Detailseiten der Hunde
 app.get('/hunde/details/:id?', (req, res) => {
     const id = req.params.id;
 
@@ -138,7 +148,8 @@ app.get('/hunde/details/:id?', (req, res) => {
                 text: "Hier finden Sie detailliertere Informationen zum Hund " + result.name + 
                 `. Wenn Sie mehr über den Hund erfahren wollen oder Kontaktdaten haben möchten, 
                 klicken Sie bitte auf den Link 'zur Tierheim-Profilseite des Hundes'.`,
-                dog: result
+                dog: result,
+                log: loggedin
             });
         
         })
@@ -147,14 +158,16 @@ app.get('/hunde/details/:id?', (req, res) => {
         });
 });
 
-//Suche
+
+//Suche von Hunden
 app.get('/suche', async (req, res)=>{
     findBreeds().then((breeds) => {
         res.render('pages/suche',{
             title: 'Suche',
             headline: 'Suche',
             text: "Bitte wählen Sie Kriterien aus, die Ihnen bei einem Hund wichtig sind!",
-            breeds: breeds
+            breeds: breeds,
+            log: loggedin
         });
     });
  });
@@ -206,7 +219,8 @@ app.get("/suche_ergebnis",(req, res) => {
             res.render("pages/suche_ergebnis",{
                 title: "Suchergebnis",  
                 headline: "Passend zu Ihren Suchkriterien wurden folgende Hunde gefunden:",
-                dogs: results
+                dogs: results,
+                log: loggedin
             });
         }
         else if(sizes !="" || genders !="" || breed !="" || ages !="" || castrated !="" || traits !="") {
@@ -214,7 +228,8 @@ app.get("/suche_ergebnis",(req, res) => {
                 title: ":(",
                 headline: "Es wurde leider kein passender Hund gefunden!",
                 text: "Versuchen Sie es doch noch einmal mit anderen Suchkriterien!",
-                dogs: []
+                dogs: [],
+                log: loggedin
             })
         }
     })
@@ -224,7 +239,8 @@ app.get("/suche_ergebnis",(req, res) => {
                 title: "Fehler",
                 headline: "Es wurde nichts ausgewählt!",
                 text: "Bitte versuchen Sie es doch nochmal!",
-                dogs: []
+                dogs: [],
+                log: loggedin
             })
         }
     })
@@ -241,6 +257,7 @@ app.get('/katzen',(req, res)=>{
         Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das
         ein oder andere Tier aus dem Tierheim zu adoptieren und ihm ein tolles neues Zuhause zu bieten.`,
         signature: `Bis Bald euer Team4!`,
+        log: loggedin
     });
 });
 
@@ -255,6 +272,7 @@ app.get('/kleintiere',(req, res)=>{
         Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das
         ein oder andere Tier aus dem Tierheim zu adoptieren und ihm ein tolles neues Zuhause zu bieten.`,
         signature: `Bis Bald euer Team4!`,
+        log: loggedin
     });
 });
 
@@ -269,6 +287,7 @@ app.get('/voegel',(req, res)=>{
         Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das
         ein oder andere Tier aus dem Tierheim zu adoptieren und ihm ein tolles neues Zuhause zu bieten.`,
         signature: `Bis Bald euer Team4!`,
+        log: loggedin
     });
 });
 
@@ -287,28 +306,6 @@ app.get('/exoten',(req, res)=>{
 });
 
 
-// // Login- und Registrierung
-// app.get('/registrierung',(req, res)=>{
-//     res.render('pages/anmelden',{
-//         title: 'Anmelden',
-//         headline: `Melden Sie sich jetzt an!`,
-//         text: `Melden Sie sich jetzt bei Tiervermittlung an und fügen Sie unkompliziert und mit wenigen Klicks Ihre Schützlinge
-//                  im gesamten deutschsprachigen Raum ein. Wir helfen Ihnen die passenden Halter schnell und einfach zu ermitteln.
-//                  Das Einstellen ist intuitiv und schnell zu erledigen`
-//               });
-// });
-
-
-// //Registrierung
-// app.post('/registrierung',(req, res)=>{
-//     res.render('pages/registriert',{
-//         title: 'Anmelden',
-//         headline: 'Herzlich Willkommen!',
-//         text: `Sie haben sich erfolgreich registriert!`
-//     });
-// });
-
-
 // Impressum
 app.get('/impressum',(req, res)=>{
     res.render('pages/impressum',{
@@ -325,7 +322,8 @@ app.get('/impressum',(req, res)=>{
                 statistischen Zwecken auf dem Server gespeichert, ohne dass diese Daten unmittelbar auf
                 Ihre Person bezogen werden. Personenbezogene Daten, insbesondere Name, Adresse oder
                 E-Mail-Adresse werden soweit möglich auf freiwilliger Basis erhoben. Ohne Ihre Einwilligung
-                erfolgt keine Weitergabe der Daten an Dritte.`
+                erfolgt keine Weitergabe der Daten an Dritte.`,
+        log: loggedin        
     });
 });
 
@@ -338,7 +336,8 @@ app.get('/kontakt', (req, res)=>{
         text: `Haben Sie Fragen, Anregungen, Tipps oder Interesse an unserer Seite, füllen Sie doch einfach
                 das unten stehende Kontaktformular aus und senden Sie es ab. Wir freuen uns auf Ihre Nachricht!
                 
-                Euer team4`
+                Euer team4`,
+        log: loggedin
     });
 });
 
@@ -358,6 +357,7 @@ app.post('/kontakt', (req, res) => {
                 title: `Danke`,
                 headline: `Danke, ${vorname}!`, 
                 text:'Ihre Nachricht wurde erfolgreich gesendet!',
+                log: loggedin
             });
     })
     .catch((err) => {
@@ -371,7 +371,8 @@ app.get('/links',(req, res)=>{
     res.render('pages/links',{
         title: 'Links',
         headline: 'weiterführende Links',
-        text: `Auf den Nachfolgenden Links können Sie sich über uns, die Tiere und die mit uns kooperierenden Tierheime informieren.`
+        text: `Auf den Nachfolgenden Links können Sie sich über uns, die Tiere und die mit uns kooperierenden Tierheime informieren.`,
+        log: loggedin
     });
 });
 
@@ -385,6 +386,7 @@ app.get('/spenden',(req, res)=>{
         Seite gefällt, auch wenn noch nicht alle Funktionen möglich sind. Vielleicht konnten wir Sie dazu animieren, das
         ein oder andere Tier aus dem Tierheim zu adoptieren und ihm ein tolles neues Zuhause zu bieten.`,
         signature: `Bis Bald euer Team4!`,
+        log: loggedin
     });
 });
 
@@ -394,6 +396,7 @@ app.get('/spenden',(req, res)=>{
 app.get('/comingSoon',(req, res)=>{
     res.render('pages/comingSoon',{
         title: 'Error',
+        log: loggedin
         });
 });
 
@@ -403,33 +406,28 @@ app.get('/hund_eintragen',(req, res)=> {
     res.render('pages/insertDog',{
         title: 'Eintragen',
         headline: 'Hund eintragen',
-        text: `Tragen Sie einen Hund ein!`
+        text: `Tragen Sie einen Hund ein!`,
+        log: loggedin
     });
 });
 
 
 //Hunde eintragen POST
-// app.post('/hund_eintragen', upload.single('photo'), (req, res)=> {
 app.post('/hund_eintragen',  upload.single('photo'), (req, res) => {
     const { filename, mimetype, size } = req.file;
     
     const institution =  req.body.institution;
     const name = req.body.name;
-    // const { filename, mimetype: type, size } = req.file;
+     const breed = req.body.breed;
     const colour =  req.body.colour;
-    const birthdate = req.body.birthdate;
-    const height = req.body.height;
-    const since_when = req.body.since_when;
-    const breed = req.body.breed;
     const gender = req.body.gender;
     const castrated = req.body.castrated;
+    const birthdate = req.body.birthdate;
+    const height = req.body.height;
+    const since_when = req.body.since_when
 
     //Wenn es einen Link gibt, wird dieser aus req.body rausgezogen
     const link = req.body.link;
-   
-
-    // console.log("link: "+ link);
-    //   console.log("birthdate: "+ birthdate);
 
 
     //Wenn es einen Text gibt, wird dieser aus req.body rausgezogen
@@ -447,16 +445,17 @@ app.post('/hund_eintragen',  upload.single('photo'), (req, res) => {
 
     persistPhoto(filename, size, mimetype, id)
             .then((filename) => {
-                console.log(filename);
-                // console.log(img);
-                insertDog(id, institution, name, filename, height, birthdate, since_when, breed,colour, gender, traits, castrated, link, text)
-                    .then((name) => {
+                insertDog(id, institution, name, filename, height, birthdate, since_when, breed,colour, gender, traits, castrated, link, text, user)
+                    .then((id,name) => {
+                        dog_id = id;
                         read_one(id)
                             .then((result) => {
                                 res.render('pages/hund_gespeichert',{
                                     title: "Erfolg",
-                                    headline: `Ihr Hund ${name} wurde erfolgreich gespeichert!!`,
-                                    dog: result
+                                    headline: `Ihr Hund ${result.name} wurde erfolgreich gespeichert!!`,
+                                    text: "",
+                                    dog: result,
+                                    log: loggedin,
                             });
                         })
                     })
@@ -467,7 +466,8 @@ app.post('/hund_eintragen',  upload.single('photo'), (req, res) => {
                     title: "Fehler",
                     headline: "Das hat nicht geklappt.",
                     text: "Bitte versuchen Sie es doch nochmal!",
-                    dogs: []
+                    dogs: [],
+                    log: loggedin
                 })
             })   
 });
@@ -483,7 +483,8 @@ const id = req.params.id;
                 headline: 'Hund löschen',
                 text: `Mit dem Knopfdruck auf "Hund löschen", löschen Sie ${result.name} aus unserem System komplett raus.`,
                 dog: result,
-                id
+                id,
+                log: loggedin
             });
         })
         .catch((err) => {
@@ -492,7 +493,8 @@ const id = req.params.id;
                 title: "Fehler",
                 headline: "Das hat nicht geklappt.",
                 text: "Bitte versuchen Sie es doch nochmal!",
-                dogs: []
+                dogs: [],
+                log: loggedin
             })
         })   
 });
@@ -508,30 +510,204 @@ const id = req.params.id;
                 title: 'Erfolg',
                 headline: 'Erfolgreich gelöscht',
                 text: `Der Hund wurde erfolgreich gelöscht.`,
+                log: loggedin
             });
-        });
+        })
+        .catch((err) => {
+                console.log(err);
+                res.render("pages/insert_error", {
+                    title: "Fehler",
+                    headline: "Das hat nicht geklappt.",
+                    text: "Bitte versuchen Sie es doch nochmal!",
+                    dogs: [],
+                    log: loggedin
+                })
+        });       
 });
-
 
 
 //Hunde editieren
-app.get('/hund_bearbeiten',(req, res)=> {
+app.get('/hund_bearbeiten/:id?',(req, res)=> {
+    const id = req.params.id;
 
-
-    res.render('pages/edit_dog',{
-        title: 'Bearbeiten',
-        headline: 'Hund bearbeiten',
-        text: `Bearbeiten Sie einen Hund!`
-    });
-
-    
+     read_one(id)
+        .then((result) => {
+            res.render('pages/edit_dog',{
+                title: 'Bearbeiten',
+                headline: 'Hund bearbeiten',
+                text: `Hier können Sie ${result.name} bearbeiten!`,
+                dog: result,
+                id,
+                log: loggedin
+            });
+        })
 });
 
 
+//Hunde editieren
+app.post('/hund_bearbeiten/:id?', upload.single('photo'), (req, res)=> {
+    const { filename, mimetype, size } = req.file;
+
+    const id_ed = req.params.id;
+    const name_ed = req.body.name;
+    const institution_ed =  req.body.institution;
+    const since_when_ed = req.body.since_when;
+    const height_ed = req.body.height;
+    const breed_ed = req.body.breed;
+    const colour_ed =  req.body.colour;
+    const gender_ed =  req.body.gender;
+    const birthdate_ed = req.body.birthdate;
+    const castrated_ed = req.body.castrated;
+    
+    const link_ed = req.body.link;
+    const text_ed = req.body.text;
+
+    //Eigenschaften splitten für Array
+    let traits_ed = "";
+  
+    if(req.body.traits.length) {
+        traits_ed = req.body.traits.split(',');
+    };
+
+    persistPhoto(filename, size, mimetype, id_ed)
+            .then((filename) => {
+                update_one(id_ed,institution_ed, name_ed, filename, height_ed, birthdate_ed, since_when_ed, breed_ed, colour_ed, gender_ed,traits_ed, castrated_ed, link_ed, text_ed)
+                    .then(() => {
+                        read_one(id_ed)
+                            .then((result) => {
+                                res.render('pages/erfolg_editieren', {
+                                    title: 'Erfolg',
+                                    headline: 'Erfolgreich bearbeitet',
+                                    text: `Der Hund wurde erfolgreich bearbeitet.`,
+                                    dog: result,
+                                    log: loggedin
+                                });
+                            })  
+                    })
+            })  
+            .catch((err) => {
+                console.log(err);
+                res.render("pages/insert_error", {
+                    title: "Fehler",
+                    headline: "Das hat nicht geklappt.",
+                    text: "Bitte versuchen Sie es doch nochmal!",
+                    dogs: [],
+                    log: loggedin
+                })
+            })       
+});
+
+
+    
+//Allgemeine Anmeldeseite mit Login, Registrierung...
+app.get('/anmelden', function(req, res) {
+    res.render('index.ejs', {
+        title: "Anmeldung", 
+        headline: "Anmeldung",
+        text: "Bitte wählen Sie aus!",
+        log: loggedin
+    });
+});
+    
+// PROFILE SECTION =========================
+app.get('/anmelden/profile', isLoggedIn, function(req, res) {
+    loggedin = true;
+    user = req.user.email;
+
+    const my_dogs = [];
+
+    read()
+        .then((results) => {
+            for(let i=0; i < results.length; i++) {
+                if(results[i].user_id) {
+                    if(results[i].user_id.match(user)) {
+                        my_dogs.push(results[i]);
+            
+
+                    }
+                }
+            }
+        }).then(() => {
+            res.render('profile.ejs', {
+                title: "Profil", 
+                headline: "Profil",
+                text: "Hier sehen sie ihr Profil mit ihren bereits eingetragenen Hunden, die sie bearbeiten oder löschen können. Außerdem können Sie neue Hunde in unser System eintragen.",
+                user : req.user,
+                log: loggedin,
+                dogs: my_dogs,
+            });
+        })
+});
+    
+// LOGOUT ==============================
+app.get('/anmelden/logout', function(req, res) {
+    loggedin =  false;
+    user = "";
+    req.logout();
+    res.redirect('/');
+});
+    
+    
+// LOGIN ===============================
+// show the login form
+app.get('/anmelden/login', function(req, res) {
+    res.render('login.ejs', { 
+        title: "Login", 
+        headline: "Login",
+        text: "Bitte melden Sie sich mit Ihren Anmeldedaten an!",
+        log: loggedin,
+        message: req.flash('loginMessage') });
+});
+    
+// process the login form
+app.post('/anmelden/login', passport.authenticate('local-login', {
+    successRedirect : '/anmelden/profile', // redirect to the secure profile section
+    failureRedirect : '/anmelden/login', // redirect back to the signup page if there is an error
+    failureFlash : true // allow flash messages
+}))
+    
+// SIGNUP =================================
+// show the signup form
+app.get('/anmelden/signup', function(req, res) {
+    res.render('signup.ejs', { 
+        title: "Registrierung", 
+        headline: "Registrierung",
+        log: loggedin,
+        text: "Geben Sie Ihre Daten zur Registrierung ein.",
+        message: req.flash('signupMessage') });
+});
+    
+// process the signup form
+app.post('/anmelden/signup', passport.authenticate('local-signup', {
+    log: loggedin,
+    successRedirect : '/anmelden/profile', // redirect to the secure profile section
+    failureRedirect : '/anmelden/signup', // redirect back to the signup page if there is an error
+    failureFlash : true // allow flash messages
+}));
+    
+    
+// route middleware to ensure user is logged in
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+    
+    res.redirect('/');
+}
+
+
+
+
+
+
+
+
+
+
+
 // Set Port & listen Port
-app.listen(8080, (err)=>{
+app.listen(PORT, (err)=>{
     if (err){
         return console.error(err.message);
     }
-    console.log('Tiervermittlung is listening for request');
+    console.log(`Tiervermittlung is listening for request on Port ${PORT}`);
 });

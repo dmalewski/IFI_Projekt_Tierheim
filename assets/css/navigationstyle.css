@@ -21,7 +21,6 @@
 .topnav {
   z-index: 3;
   width: 100%;
-  /* height:60px; */
   overflow: hidden;
   background-color: rosybrown;
   position: fixed;
@@ -35,7 +34,6 @@
   padding: 14px 16px;
   text-decoration: none;
   line-height: 20px;
-  /* border-top: 1px solid #a68383; */
   font-size: 19px;
   margin-top: 8px;
 }
@@ -74,7 +72,6 @@
   background-color: sandybrown;
   margin-top: 6px;
   margin-bottom: 6px;
-  /* margin-left: 45%; */
 }
 
 

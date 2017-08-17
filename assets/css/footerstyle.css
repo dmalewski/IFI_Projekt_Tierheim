@@ -12,6 +12,7 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+
 .footer-distributed{
 	background-color: grey;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
@@ -21,31 +22,37 @@
 	font: bold 16px sans-serif;
 	padding: 55px 50px;
 }
+
 .footer-distributed .footer-left,
 .footer-distributed .footer-center,
 .footer-distributed .footer-right{
 	display: inline-block;
 	vertical-align: top;
 }
+
 /* footer left */
 .footer-distributed .footer-left{
     width: 40%;
 }
+
 /* company logo here please */
 .footer-distributed h3{
 	color:  #ffffff;
 	font: normal 36px 'Cookie', cursive;
 	margin: 0;
 }
+
 .footer-distributed h3 span{
 	color:  sandybrown;
 }
+
 /* footer left */
 .footer-distributed .footer-links{
 	color:  #ffffff;
 	margin: 20px 0 12px;
 	padding: 0;
 }
+
 .footer-distributed .footer-links a{
 	display:inline-block;
 	margin-top: 15px;
@@ -56,16 +63,19 @@
 	text-decoration: none;
 	color:  inherit;
 }
+
 .footer-distributed .footer-company-name{
 	color:  #cccccc;
 	font-size: 14px;
 	font-weight: normal;
 	margin: 0;
 }
+
 /* footer center */
 .footer-distributed .footer-center{
 	width: 35%;
 }
+
 .footer-distributed .footer-center i{
 	background-color:  #cccccc;
 	color: rgba(51, 51, 51, 0.72);
@@ -78,30 +88,36 @@
 	margin: 10px 15px;
 	vertical-align: middle;
 }
+
 .footer-distributed .footer-center i.fa-envelope{
 	font-size: 19px;
 	line-height: 24px;
 }
+
 .footer-distributed .footer-center p{
 	display: inline-block;
 	color: #ffffff;
 	vertical-align: middle;
 	margin:0;
 }
+
 .footer-distributed .footer-center p span{
 	display:block;
 	font-weight: normal;
 	font-size:14px;
 	line-height:2;
 }
+
 .footer-distributed .footer-center p a{
 	color:  sandybrown;
 	text-decoration: none;;
 }
+
 /* footer right */
 .footer-distributed .footer-right{
     width: 20%;
 }
+
 .footer-distributed .footer-company-about{
 	line-height: 20px;
 	color:  #cccccc;
@@ -109,6 +125,7 @@
 	font-weight: normal;
 	margin: 0;
 }
+
 .footer-distributed .footer-company-about span{
 	display: block;
 	color:  #ffffff;
@@ -116,10 +133,12 @@
 	font-weight: bold;
 	margin-bottom: 20px;
 }
+
 .footer-distributed .footer-icons{
 	margin-top: 25px;
 	margin-bottom: 25px;
 }
+
 .footer-distributed .footer-icons a{
 	display: inline-block;
 	width: 35px;
@@ -134,6 +153,7 @@
 	margin-right: 3px;
 	margin-bottom: 5px;
 }
+
 i{
 	padding-top: 8px;
 }

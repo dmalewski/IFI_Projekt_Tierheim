@@ -17,8 +17,25 @@
                 <a href="/kleintiere" class="links">Kleintiere</a>
                 <a href="/voegel" class="links">Vögel</a>
                 <a href="/exoten" class="links">Exoten</a>
-                <a href="/anmelden" class="anmelden" title="als Tierheim anmelden">als Tierheim Anmelden</a>
-                <a href="/"> <img src="/images/home_logo.png" class="home_logo" title="Home"> </a> <br/>
+                <a href="/anmelden/login" class="anmelden" title="als Tierheim anmelden">als Tierheim Anmelden</a>
+
+                <% if(log) { %>
+                    <a href="/anmelden/profile">
+                <% } %>
+                <% if(!log) { %>
+                    <a href="/anmelden/login">
+                <% } %>
+                    <img src="/images/profile.png" title="Profil" style="height: 50px; width: 50px; margin-left: 20px; margin-top: 5px;">
+                </a>
+
+                <% if(log) { %>
+                    <a href="/anmelden/logout">
+                        <img src="/images/logout.png" title="ausloggen" style="height: 50px; width: 50px; margin-left: 20px; margin-top: 5px;">
+                    </a>
+                <% } %>
+
+
+                <a href="/"> <img src="/images/home_logo.png" class="home_logo" title="Home"></a><br/>
             </div>
             <div class="bar">
                 <a href="javascript:void(0);" style="font-size:20px;" class="icon" onclick="myFunction()">&#9776;</a>
