@@ -22,6 +22,7 @@ Es gibt zwei von uns erstellte Hunde zum Seeden, Moreno und Mabel. Diese haben v
 
 
 **Zum Seeden wird folgender _Befehl_ benötigt:**
+im Ordner "Tiervermittlung":
 ``` 
 NODE_ENV=dev npm run import 
 ```
@@ -72,7 +73,7 @@ Es kann jederzeit ein neues Profil registriert werden und auch darüber sind all
 
 
 ## Starten der Applikation "Tiervermittlung"
-Unsere "Haupt"-Applikation _Tiervermittlung_ wird im Ordner **IFI_Tierheim** über folgenden Befehl gestartet:
+Unsere "Haupt"-Applikation _Tiervermittlung_ wird im Ordner **Tiervermittlung** über folgenden Befehl gestartet:
 ```
 node index.js
 ```
