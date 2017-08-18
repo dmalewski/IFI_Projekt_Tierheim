@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <% include ../partials/header %>
+
+    <title>Fehler</title>
+
+</head>
+    <body>
+        <!-- navigation with navheader -->
+        <% include ../partials/navigations %>
+        <div class="maincontainer" style="height: 100%">
+            <div class="container">
+                 <h1><%= headline %></h1> 
+                 <p><%= text %></p>
+            </div>
+        </div> 
+
+            <div style="width: 180px; margin-left: 70px; margin-top: 50px;">
+                <a href="/suche"><img src="/images/back_arrow.png" style="height: 50px; width: 50px;"></a>
+                <p style="float: right;">Zurück zur Suche</p>
+            </div>
+
+            <div style="width: 800px; height: 750px; margin-top: 30px; margin-bottom: 50px; margin-left: 70px;">
+                <img src="/images/moonmoon.png" style="float: left;"/>
+            </div>
+       
+
+        <!-- footer -->
+        <% include ../partials/footer.ejs %>
+    </body>
+</html>    

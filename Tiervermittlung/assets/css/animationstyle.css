@@ -1,0 +1,338 @@
+
+
+/* ---------------------------- Headline Kontakt ---------------------------------------- */
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
+.cssload-container * {
+	color: white;
+	font-size: 33px;
+	font-weight: 700;
+}
+.cssload-container {
+	width: 0px;
+	height: 25px;
+	transform: translate(-50%, -50%);
+		-o-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		-webkit-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+}
+.cssload-container > div {
+	position: absolute;
+	transform-origin: center;
+		-o-transform-origin: center;
+		-ms-transform-origin: center;
+		-webkit-transform-origin: center;
+		-moz-transform-origin: center;
+}
+.cssload-k {
+	left: 5px;
+}
+.cssload-kk {
+	left: 123px;
+}
+.cssload-n {
+	left: 56px;
+}
+.cssload-t {
+	left: 81px;
+}
+.cssload-tt {
+	left: 147px;
+}
+.cssload-a {
+	left: 99px;
+}
+.cssload-square,
+.cssload-circle,
+.cssload-triangle {
+	left: 29px;
+}
+.cssload-square {
+	background: #82a9c9;
+	width: 23px;
+	height: 23px;
+	left: 31px;
+	top: 4px;
+	transform: scale(0);
+		-o-transform: scale(0);
+		-ms-transform: scale(0);
+		-webkit-transform: scale(0);
+		-moz-transform: scale(0);
+	animation: cssload-shrinkgrow 9.75s ease-in-out infinite;
+		-o-animation: cssload-shrinkgrow 9.75s ease-in-out infinite;
+		-ms-animation: cssload-shrinkgrow 9.75s ease-in-out infinite;
+		-webkit-animation: cssload-shrinkgrow 9.75s ease-in-out infinite;
+		-moz-animation: cssload-shrinkgrow 9.75s ease-in-out infinite;
+	animation-delay: 6.5s;
+		-o-animation-delay: 6.5s;
+		-ms-animation-delay: 6.5s;
+		-webkit-animation-delay: 6.5s;
+		-moz-animation-delay: 6.5s;
+}
+.cssload-circle {
+	background: indianred;
+	width: 26px;
+	height: 26px;
+	top: 3px;
+	left: 29px;
+	border-radius: 50%;
+	animation: cssload-shrinkgrow 9.75s ease-in-out infinite;
+		-o-animation: cssload-shrinkgrow 9.75s ease-in-out infinite;
+		-ms-animation: cssload-shrinkgrow 9.75s ease-in-out infinite;
+		-webkit-animation: cssload-shrinkgrow 9.75s ease-in-out infinite;
+		-moz-animation: cssload-shrinkgrow 9.75s ease-in-out infinite;
+	animation-delay: 0s;
+		-o-animation-delay: 0s;
+		-ms-animation-delay: 0s;
+		-webkit-animation-delay: 0s;
+		-moz-animation-delay: 0s;
+}
+.cssload-triangle {
+	width: 0;
+	height: 0;
+	left: 29px;
+	top: 3px;
+	border-style: solid;
+	border-width: 0 14.5px 24.1px 14.5px;
+	border-color: transparent transparent #e4be5f transparent;
+	transform: scale(0);
+		-o-transform: scale(0);
+		-ms-transform: scale(0);
+		-webkit-transform: scale(0);
+		-moz-transform: scale(0);
+	animation: cssload-shrinkgrow 9.75s ease-in-out infinite;
+		-o-animation: cssload-shrinkgrow 9.75s ease-in-out infinite;
+		-ms-animation: cssload-shrinkgrow 9.75s ease-in-out infinite;
+		-webkit-animation: cssload-shrinkgrow 9.75s ease-in-out infinite;
+		-moz-animation: cssload-shrinkgrow 9.75s ease-in-out infinite;
+	animation-delay: 3.25s;
+		-o-animation-delay: 3.25s;
+		-ms-animation-delay: 3.25s;
+		-webkit-animation-delay: 3.25s;
+		-moz-animation-delay: 3.25s;
+}
+
+
+@keyframes cssload-shrinkgrow {
+	0% {
+		transform: scale(0);
+	}
+	12.5% {
+		transform: scale(1);
+	}
+	25% {
+		transform: scale(1);
+	}
+	33% {
+		transform: scale(0);
+	}
+	100% {
+		transform: scale(0);
+	}
+}
+
+@-o-keyframes cssload-shrinkgrow {
+	0% {
+		-o-transform: scale(0);
+	}
+	12.5% {
+		-o-transform: scale(1);
+	}
+	25% {
+		-o-transform: scale(1);
+	}
+	33% {
+		-o-transform: scale(0);
+	}
+	100% {
+		-o-transform: scale(0);
+	}
+}
+
+@-ms-keyframes cssload-shrinkgrow {
+	0% {
+		-ms-transform: scale(0);
+	}
+	12.5% {
+		-ms-transform: scale(1);
+	}
+	25% {
+		-ms-transform: scale(1);
+	}
+	33% {
+		-ms-transform: scale(0);
+	}
+	100% {
+		-ms-transform: scale(0);
+	}
+}
+
+@-webkit-keyframes cssload-shrinkgrow {
+	0% {
+		-webkit-transform: scale(0);
+	}
+	12.5% {
+		-webkit-transform: scale(1);
+	}
+	25% {
+		-webkit-transform: scale(1);
+	}
+	33% {
+		-webkit-transform: scale(0);
+	}
+	100% {
+		-webkit-transform: scale(0);
+	}
+}
+
+@-moz-keyframes cssload-shrinkgrow {
+	0% {
+		-moz-transform: scale(0);
+	}
+	12.5% {
+		-moz-transform: scale(1);
+	}
+	25% {
+		-moz-transform: scale(1);
+	}
+	33% {
+		-moz-transform: scale(0);
+	}
+	100% {
+		-moz-transform: scale(0);
+	}
+}
+
+/* ---------------------------- Headline Links ---------------------------------------- */
+
+/* ---------------------------- Headline Impressum ---------------------------------------- */
+
+
+
+/* ---------------------------- in progress page styling ---------------------------------------- */
+.errorpage {
+    background: url(../images/error3.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    position: fixed;
+    padding: 0px;
+    margin: 0px;
+}
+.errorNav {
+    width: 100%;
+    padding-top: 20px;
+    padding-right: 20px;
+    text-align: right;
+    color: tomato;
+    text-shadow: -1px 1px 2px black;
+    font-size: 22px;
+}
+.errorNav a{
+    text-decoration: none;
+    color:  inherit;
+}
+.errorheader {
+    z-index: 4;
+    width: 100%;
+    height: 43%;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow:  1px  1px 2px #4f4f4f ,
+                  1px -1px 2px #4f4f4f ,
+                 -1px  1px 2px #4f4f4f ,
+                 -1px -1px 2px #4f4f4f ;
+    padding: 20px;
+    padding-left: 60px;
+}
+.errorText {
+    z-index: 3;
+    width: 100%;
+    font-size: 22px;
+    color: black;
+    text-shadow:  1px  1px 2px grey,
+                  1px -1px 2px #CD8500 ,
+                 -1px  1px 2px white,
+                 -1px -1px 2px white;
+    text-align: right;
+    padding-right: 30px;
+    padding-left: 10px;
+}
+.errorFooter {
+    width: 97%;
+    text-align: right;
+    bottom: 0px;
+    right: 20px;
+    position: fixed;
+}
+.errorFooter a {
+    text-decoration: none;
+}
+.errorFooter i {
+    width: 42px;
+    height: 42px;
+    text-decoration: none;
+display: table-caption;
+    border: 2px groove;
+    background: tomato;
+    padding: 12px;
+    color: #ffffff ;
+}
+
+.hinge {
+    animation-duration: 3s;
+    animation-fill-mode: both;
+}
+
+@keyframes hinge {
+  0% {
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+
+ 20%, 60% {
+    transform: rotate3d(0, 0, 1, 80deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+  }
+
+ 40%, 80% {
+    transform: rotate3d(0, 0, 1, 60deg);
+    transform-origin: top left;
+    animation-timing-function: ease-in-out;
+    opacity: 1;
+  }
+
+ to {
+    transform: translate3d(0, 1450px, 0);
+    opacity: 10;
+  }
+}
+
+.hinge {
+  animation-name: hinge;
+}
+
+
+/* mobile devices */
+@media screen and (max-width: 800px) {
+    .errorheader {
+        height: 10%;
+        padding:0px;
+        padding-left: 20px;
+        margin: 0px;
+    }
+    .errorNav {
+        padding-top: 8px;
+    }
+    .errorText {
+		padding-top: 20px;
+		padding-right: 40px;
+        height: 50%;
+         font-size: 16px;
+    }
+}
