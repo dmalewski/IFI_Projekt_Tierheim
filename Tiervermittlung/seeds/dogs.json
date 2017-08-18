@@ -1,0 +1,46 @@
+[
+    {
+        "id": "1",
+        "institution": "Tierheim Bremen",
+        "name": "Moreno",
+        "img": "https://thek9harperlee.files.wordpress.com/2014/01/no-snow-1-thek9harperlee.jpg",
+        "breed": "Golden Retriever",
+        "colour": "creme",
+        "gender": "männlich",
+        "castrated": "Ja",
+        "birthdate": "09.04.2008",
+        "age": "senior",
+        "height": "Mittel",
+        "since_when": "seit August 2017 im Tierheim Bremen",
+        "traits": [
+            "verträglich mit Männchen", 
+            "Einzeltier",
+            "mag Wasser"
+        ],
+        "how_inserted" : "seeding",
+        "link": "",
+        "text": ""
+    },
+
+    {
+        "id": "2",
+        "institution": "Tierheim Bremen",
+        "name": "Mabel",
+        "img": "http://cdn2-www.dogtime.com/assets/uploads/gallery/labrador-retriever-dog-breed-pictures/labrador-retriever-dog-pictures-6.jpg",
+        "breed": "Labrador Retriever",
+        "colour": "creme",
+        "gender": "weiblich",
+        "castrated": "Ja",
+        "birthdate": "23.06.2012",
+        "age": "erwachsen",
+        "height": "Mittel",
+        "since_when": "seit August 2017 im Tierheim Bremen",
+        "traits": [
+            "kinderfreundlich", 
+            "katzenfreundlich"
+        ],
+        "how_inserted" : "seeding",
+        "link": "",
+        "text": ""
+    }
+]

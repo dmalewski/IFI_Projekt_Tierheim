@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <% include ../partials/header %>
+    </head>
+
+    <body>
+        <!-- navigation with navheader -->
+        <% include ../partials/navigations %>
+        <div class="maincontainer">
+            <div class="container">
+                <h1><%= headline %></h1>
+                 <div class="center opacity">
+                        <p style="font-size: 30px; font-weight: bold; text-shadow: 1.5px 1.5px #ffffff;">team4</p>
+                        <p>Flughafenallee 10, 28199 Bremen</p>
+                        <p><i class="fa fa-phone"></i><span> 0421 - 6 44 23</span></p>
+                        <p><i class="fa fa-fax"></i> 0421 - 64 62 37</p>
+                        <p><i class="fa fa-envelope"></i><a href="mailto:smartymarta@web.de"> ifi-tierheim@web.de</a></p>
+                        <p>Vertreten durch: team4 GmbH</p>
+                        <br/>
+                    </div>
+            </div>
+        </div>
+
+        <!-- content -->
+        <div class="contentcontainer">
+            <div class ="inner">        
+               <div class="innercontainer">
+                    <div class="center hidden">
+                        <h2 class="page-header"><%= headline %></h2>
+                        <p>Team4</p>
+                        <p>Flughafenallee, 10 Bremen</p>
+                        <p><i class="fa fa-phone"></i><span> 0421 - 6 44 23</span></p>
+                        <p><i class="fa fa-fax"></i> 0421 - 64 62 37</p>
+                        <p><i class="fa fa-envelope"></i><a href="mailto:smartymarta@web.de"> smartymarta@web.de</a></p>
+                        <p>Vertreten durch: Team4 GmbH</p>
+                    </div>
+                    
+                    <div class="block">
+                        <h2><%= headline1 %></h2>
+                        <hr />
+                        <p><%= text1 %><p>
+                        <hr />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- footer -->
+        <% include ../partials/footer.ejs %>
+          
+    </body>
+</html>
