@@ -1,5 +1,6 @@
 # Tiervermittlung
-Das Repository für unsere Projektarbeit zum Thema "Tiervermittlung"
+Das Repository für unsere Projektarbeit zum Thema "Tiervermittlung".
+Im Ordner "schedule" befindet sich unsere scraping-Applikation, im Ordner "Tiervermittlung" unsere eigentliche Webapplikation.
 
 
 ## Scraping und Schedule (eigene Applikation)
