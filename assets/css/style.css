@@ -428,6 +428,17 @@ colr1 {
     margin-top: 35px;  
 }
 
+
+.center_name {
+    text-align: center;
+    padding: 5px 0px;
+	-webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
 .center {
     text-align: center;
     padding: 5px 0px;
@@ -436,6 +447,8 @@ colr1 {
     -ms-flex-align: center;
     align-items: center;
     justify-content: center;
+    background:rgba(255,255,255,0.5);
+    margin-right: 20px;
 }
 
 /* ---------------------------- image style of the objects ---------------------------------------- */

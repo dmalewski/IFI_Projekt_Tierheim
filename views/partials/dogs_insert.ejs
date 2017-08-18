@@ -1,7 +1,7 @@
 <div class="elementgrid">
 
     <a href="/hunde/details/<%= dog.id %>" >
-        <p class="center figcap"><%= dog.name %> </p>
+        <p class="center_name figcap"><%= dog.name %> </p>
         <hr />
 
         <% if(dog.how_inserted.match(/handwritten/ig) || dog.how_inserted.match(/edited/ig)) { %>
@@ -17,7 +17,7 @@
         <% } %>
 
         <figcaption>
-            <P class="center figbreed"><%= dog.breed %></P>
+            <P class="center_name figbreed"><%= dog.breed %></P>
         </figcaption>
     </a>
 
