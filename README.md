@@ -1,4 +1,4 @@
-# IFI_Projekt_Tierheim
+# Tiervermittlung
 Das Repository für unsere Projektarbeit zum Thema "Tiervermittlung"
 
 
@@ -76,10 +76,12 @@ Unsere "Haupt"-Applikation _Tiervermittlung_ wird im Ordner **IFI_Tierheim** üb
 ```
 node index.js
 ```
-![Port 8080](/assets/images/port_8080.png)
-
 Im Webbrowser ist unsere Website dann über **localhost:8080** erreichbar (oder natürlich über das Deployment).
 
+## Deployment
+
+Die Anwendung ist über now deployed, man erreicht sie über folgende URL:
+ifi-tierheim.now.sh
 
 
 -------
