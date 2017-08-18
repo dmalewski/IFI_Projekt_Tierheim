@@ -90,5 +90,9 @@ Die schedule-Applikation ist ebenfalls deployed, allerdings wird man beim Aufruf
 
 -------
 **Internationaler Frauenstudiengang Informatik, Hochschule Bremen**
+
+
 **Projekt, Sommersemester 2017 bei Herrn König**
+
+
 **Entwicklerinnen:** Hajiba Belmass, Christiane Manfo, Martha Düpont, Diana Malewski
