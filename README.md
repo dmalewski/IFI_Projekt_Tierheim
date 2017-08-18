@@ -23,6 +23,7 @@ Es gibt zwei von uns erstellte Hunde zum Seeden, Moreno und Mabel. Diese haben v
 
 
 **Zum Seeden wird folgender _Befehl_ benötigt:**
+
 im Ordner "Tiervermittlung":
 ``` 
 NODE_ENV=dev npm run import 
