@@ -83,6 +83,7 @@ Im Webbrowser ist unsere Website dann über **localhost:8080** erreichbar (oder 
 Die Anwendung ist über now deployed, man erreicht sie über folgende URL:
 ifi-tierheim.now.sh
 
+Die schedule-Applikation ist ebenfalls deployed, allerdings wird man beim Aufruf der URL nichts sehen. Sie läuft trotzdem, aber reagiert nur alle 4 Stunden zur richtigen Zeit von selbst. (_Beobachtung: 9:30, 13:30, 17:30, ..._)
 
 -------
 **Internationaler Frauenstudiengang Informatik, Hochschule Bremen**
