@@ -22,15 +22,15 @@
   </a>
   <div id="attribute_links" style="margin-left: 8px;">
 
-    <% if (dog.height.match(/Klein/ig)) { %>
+    <% if (dog.height != null && dog.height.match(/Klein/ig)) { %>
       <img id="icon" src="/images/small_s.png" title="Klein"/>
     <% } %>
 
-    <% if (dog.height.match(/Mittel/ig)) { %>
+    <% if (dog.height != null && dog.height.match(/Mittel/ig)) { %>
       <img id="icon" src="/images/middle_m.png" title="Mittelgroß "/>
     <% } %>
 
-    <% if (dog.height.match(/Groß/ig)) { %>
+    <% if (dog.height != null && dog.height.match(/Groß/ig)) { %>
       <img id="icon" src="/images/big_l.png" title="Groß"/>
     <% } %>
 
@@ -54,7 +54,7 @@
       <img id="icon" src="/images/female_legend.png" title="weiblich"/>
     <% } %>
 
-    <% if (dog.castrated.match(/Ja/ig)) { %>
+    <% if (dog.castrated != null && dog.castrated.match(/Ja/ig)) { %>
         <img id="icon" src="/images/castrated_unfilled.png" title="Kastriert"/>
     <% } %>
 
