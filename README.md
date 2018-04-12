@@ -33,6 +33,11 @@ NODE_ENV=dev npm run import
 ## Datenbank
 Unsere Datenbank läuft über mLab mit folgender URL: *mongodb://dmalewski:1234@ds163711.mlab.com:63711/ifi_tierheim*
 
+``` 
+Benutzername: dmalewski
+Passwort: 1234
+```
+
 - In der collection "dogs" befinden sich die Hunde, egal ob gescraped, geseedet oder selbst eingetragen. 
 
  - In der collection "dogs_new" befinden sich die Hunde Moreno und Mabel, die auch geseedet werden können. Zur Not kann man von dort die Dokumente kopieren, wenn man es braucht. (Haben wir für Testzwecke drin gelassen.)

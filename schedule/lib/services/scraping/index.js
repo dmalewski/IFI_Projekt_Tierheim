@@ -213,19 +213,21 @@ x('http://www.tierheim-ol.de/vermittlung/hunde/index.php','.info-list li',
 
 //Tierheim München filtern
 const scrapePage = (page) => new Promise((resolve, reject) => {
-    x(`https://www.tierschutzverein-muenchen.de/das-tun-wir/tiervermittlung/hunde/tier-seite/${page}.html`, '.column50p .gallery-cell .list.clearfix',
+    x(`https://www.tierschutzverein-muenchen.de/das-tun-wir/tiervermittlung/hunde/tier-seite/${page}.html`, '.column50p',
         [{
-                name: '.animal-data .nameNno .name',
-                img: '.preview-image a img@src',
-                breed: '.animal-data .art',
-                colour: '.animal-data .color',
-                gender: '.animal-data .gender',
-                castrated: '.animal-data .castrated',
-                birthdate: '.animal-data .date-of-birth',
-                height: '.animal-data .height',
-                link: '.preview-image a@href',
-                text: x('.preview-image a@href', '.online-suche'),
-                img_big: x('.preview-image a@href', '.image_block img@src')
+                name: '.gallery-cell .list.clearfix .animal-data .nameNno .name',
+                img: '.gallery-cell .list.clearfix .preview-image img@src',
+                breed: '.gallery-cell .list.clearfix .animal-data .art',
+                colour: '.gallery-cell .list.clearfix .animal-data .color',
+                gender: '.gallery-cell .list.clearfix .animal-data .gender',
+                castrated: '.gallery-cell .list.clearfix .animal-data .castrated',
+                birthdate: '.gallery-cell .list.clearfix .animal-data .date-of-birth',
+                height: '.gallery-cell .list.clearfix .animal-data .height',
+                link: 'a@href',
+                text: x('.column50p a@href', '.online-suche'),
+                img_big: x('.column50p a@href', '.image_block img@src')
+
+                
     }])
     ((err, results) => {
         if(err) {
@@ -311,6 +313,18 @@ const scrapePage = (page) => new Promise((resolve, reject) => {
                 else if(age_new.match(/Jahre/ig) && years > 1) {
                     age_new ="erwachsen";
                 }
+
+
+                const link_res = result.link;
+                let link_matched;
+          
+                if(link_res) {
+                    link_matched = "https://www.tierschutzverein-muenchen.de" + link_res;
+                }
+                else {
+                    link_matched = "";
+                }
+                
                 
                 //console.log("4: " + age_new);
 
@@ -324,6 +338,7 @@ const scrapePage = (page) => new Promise((resolve, reject) => {
                     birthdate: birthdate_new,
                     age: age_new,
                     height: height_new,
+                    // link: link_matched,
                     since_when: 'im Tierheim Muenchen'
                 });
 
